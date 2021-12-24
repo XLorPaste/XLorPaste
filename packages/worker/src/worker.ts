@@ -29,7 +29,7 @@ export class Worker {
   }
 
   get(url: string | RegExp, handler: Handler) {
-    const get = (req: Request) => req.method === 'GET';
+    const get = (req: Request) => req.method === 'GET'
     const match = (req: Request) => {
       const reqUrl = new URL(req.url);
       if (typeof url === 'string') {
@@ -43,7 +43,7 @@ export class Worker {
   }
 
   post(url: string | RegExp, handler: Handler) {
-    const get = (req: Request) => req.method === 'POST';
+    const post = (req: Request) => req.method === 'POST';
     const match = (req: Request) => {
       const reqUrl = new URL(req.url);
       if (typeof url === 'string') {
@@ -54,7 +54,7 @@ export class Worker {
         return !!match && match[0] === reqUrl.pathname;
       }
     }
-    this.routes.push(new Route([get, match], handler));
+    this.routes.push(new Route([post, match], handler));
   }
 }
 

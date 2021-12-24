@@ -2,7 +2,7 @@ import { Worker } from "./worker"
 
 const worker = new Worker();
 
-worker.post('/', async (req: Request) => {
+worker.get('/', async (req: Request) => {
   return 'Hello'
 });
 
