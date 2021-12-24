@@ -8,6 +8,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsup src/index.ts",
+    "dev": "wrangler dev",
     "format": "prettier --write '**/*.{js,css,json,md}'"
   },
   "devDependencies": {

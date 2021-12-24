@@ -5,7 +5,8 @@
   "author": "XLor",
   "scripts": {
     "build": "pnpm -C packages/app build",
-    "dev": "pnpm -C packages/app dev"
+    "dev:app": "pnpm -C packages/app dev",
+    "dev:worker": "pnpm -C packages/worker dev"
   },
   "lint-staged": {
     "*.ts": [

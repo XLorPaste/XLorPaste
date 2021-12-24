@@ -1,13 +1,11 @@
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
-})
+import { Worker } from "./worker"
 
-/**
- * Respond with hello worker text
- * @param {Request} request
- */
-async function handleRequest(request: Request): Promise<Response> {
-  return new Response('Hello worker!', {
-    headers: { 'content-type': 'text/plain' },
-  })
-}
+const worker = new Worker();
+
+worker.post('/', async (req: Request) => {
+  return 'Hello'
+});
+
+addEventListener('fetch', event => {
+  event.respondWith(worker.handle(event.request))
+});
