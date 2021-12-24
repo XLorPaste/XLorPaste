@@ -2,25 +2,26 @@ type Return = string | Object | Response;
 
 type Handler = (ctx: Context) => Return | Promise<Return>;
 
-export class Context extends Request {
-  params: Record<string, string> = {};
+export interface Context extends Request {
+  params: Record<string, string>;
 
-  readonly query: Record<string, string> = {};
+  query: Record<string, string>;
 
-  readonly origin: string;
+  origin: string;
 
-  readonly path: string;
+  path: string;
+}
 
-  constructor(req: Request) {
-    super(req);
-    const url = new URL(req.url);
-    this.origin = url.origin;
-    this.path = url.pathname;
-    this.query = {};
-    for (const key of url.searchParams.keys()) {
-      this.query[key] = url.searchParams.get(key) ?? '';
-    }
+function makeContext(req: Request) {
+  const ctx: Context = req as Context;
+  const url = new URL(req.url);
+  ctx.origin = url.origin;
+  ctx.path = url.pathname;
+  ctx.query = {};
+  for (const key of url.searchParams.keys()) {
+    ctx.query[key] = url.searchParams.get(key) ?? '';
   }
+  return ctx;
 }
 
 export class Worker {
@@ -54,14 +55,14 @@ export class Worker {
 
   async handle(req: Request): Promise<Response> {
     for (const route of this.routes) {
-      const ctx = new Context(req);
+      const ctx = makeContext(req);
       if (route.test(ctx)) {
         const result = await route.handle(ctx);
         return Worker.makeResponse(ctx, result);
       }
     }
     return Worker.makeResponse(
-      new Context(req),
+      makeContext(req),
       {
         status: '404',
         message: 'Not Found'
