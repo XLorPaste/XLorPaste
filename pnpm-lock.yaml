@@ -33,9 +33,17 @@ importers:
 
   packages/worker:
     specifiers:
+      '@cloudflare/workers-types': ^3.0.0
+      '@types/service-worker-mock': ^2.0.1
       prettier: ^2.3.2
+      tsup: ^4.14.0
+      typescript: ^4.3.5
     devDependencies:
+      '@cloudflare/workers-types': 3.3.0
+      '@types/service-worker-mock': 2.0.1
       prettier: 2.5.1
+      tsup: 4.14.0_typescript@4.5.4
+      typescript: 4.5.4
 
 packages:
 
@@ -71,6 +79,10 @@ packages:
     dependencies:
       '@babel/helper-validator-identifier': 7.15.7
       to-fast-properties: 2.0.0
+    dev: true
+
+  /@cloudflare/workers-types/3.3.0:
+    resolution: {integrity: sha512-3v3bm/hOuzNtHgDqPowrRE63H0GEn40LfhLMVpzS5yeg5tlE5nEQ0qobmGOJBCvJJ1LhgRRHZTJszXHs1DXQWg==}
     dev: true
 
   /@emmetio/abbreviation/2.2.2:
@@ -112,6 +124,10 @@ packages:
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
+    dev: true
+
+  /@types/service-worker-mock/2.0.1:
+    resolution: {integrity: sha512-LqaP0QmgppRF7YEaqx4amoazHNXaX5bIFDAu62LnWIc5ku0HbgqlPKroQstAu8WsdmWIqEfI9VGlP8Skkq+m5A==}
     dev: true
 
   /@vitejs/plugin-vue/2.0.1_vite@2.7.6+vue@3.2.26:
