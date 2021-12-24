@@ -3,11 +3,14 @@ type = "javascript"
 
 workers_dev = true
 account_id = "7cbfb60ad7052f0d8cf590a51e024987"
-zone_id = "d46a34c01748b72153a78669c137092d"
-route = "api.xlorpaste.cn/*"
+route = "xlorpaste-worker.yjl9903.workers.dev/*"
 compatibility_date = "2021-12-24"
 
 [build]
 command = "npm install -g pnpm; pnpm install; pnpm run build"
 [build.upload]
 format = "service-worker"
+
+[env.production]
+zone_id = "d46a34c01748b72153a78669c137092d"
+route = "api.xlorpaste.cn/*"
