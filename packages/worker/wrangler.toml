@@ -7,7 +7,7 @@ account_id = "7cbfb60ad7052f0d8cf590a51e024987"
 route = "xlorpaste-worker.yjl9903.workers.dev/*"
 
 kv_namespaces = [ 
-  { binding = "XLORPASTE", id = "<STORE>" }
+  { binding = "XLORPASTE", id = "", preview_id = "<STORE>" }
 ]
 
 [build]
