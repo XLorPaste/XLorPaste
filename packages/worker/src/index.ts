@@ -3,7 +3,7 @@ import { Worker } from "./worker"
 const worker = new Worker();
 
 worker.get('/', async (req: Request) => {
-  return 'Hello'
+  return 'Hello, this is XLorPaste Workers API!'
 });
 
 addEventListener('fetch', event => {
