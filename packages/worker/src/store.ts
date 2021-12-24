@@ -19,6 +19,6 @@ export class KvStore<V> {
   }
 
   async put(key: string, value: V): Promise<void> {
-    await this.store.put(this.prefix + key, JSON.stringify(value))
+    await this.store.put(this.prefix + key, JSON.stringify(value));
   }
 }

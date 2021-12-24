@@ -1,10 +1,10 @@
-import { getSub, updateSub } from "./model";
-import { Context, Worker } from "./worker"
+import { getSub, updateSub } from './model';
+import { Context, Worker } from './worker';
 
 const worker = new Worker();
 
 worker.get('/', async (ctx: Context) => {
-  return 'Hello, this is XLorPaste Workers API!'
+  return 'Hello, this is XLorPaste Workers API!';
 });
 
 worker.get('/:token', async (ctx: Context) => {
@@ -14,13 +14,13 @@ worker.get('/:token', async (ctx: Context) => {
   } else {
     return sub ?? { error: 'Not Found' };
   }
-})
+});
 
 worker.post('/', async (ctx: Context) => {
-  const payload = await ctx.json<{ lang: string, body: string }>();
+  const payload = await ctx.json<{ lang: string; body: string }>();
   return await updateSub(payload.lang, payload.body);
 });
 
-addEventListener('fetch', event => {
-  event.respondWith(worker.handle(event.request))
+addEventListener('fetch', (event) => {
+  event.respondWith(worker.handle(event.request));
 });

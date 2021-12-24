@@ -1,5 +1,5 @@
 import { KvStore } from './store';
-import { randomString } from './utils'
+import { randomString } from './utils';
 
 interface Submission {
   token: string;
@@ -11,9 +11,9 @@ const subStore = new KvStore<Submission>(XLORPASTE, 'sub');
 
 export async function updateSub(lang: string, body: string) {
   const token = await genToken();
-  const sub = { token, lang, body }
-  await subStore.put(token, sub)
-  return sub
+  const sub = { token, lang, body };
+  await subStore.put(token, sub);
+  return sub;
 }
 
 export async function getSub(key: string) {
