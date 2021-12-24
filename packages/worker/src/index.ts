@@ -7,20 +7,18 @@ worker.get('/', async (ctx: Context) => {
   return 'Hello, this is XLorPaste Workers API!'
 });
 
-worker.get('/:id', async (ctx: Context) => {
-  const sub = await getSub(ctx.params.id);
+worker.get('/:token', async (ctx: Context) => {
+  const sub = await getSub(ctx.params.token);
   if (!!ctx.query.raw) {
-    return sub?.body ?? 'Not - Found';
+    return sub?.body ?? '';
   } else {
-    return sub ?? {};
+    return sub ?? { error: 'Not Found' };
   }
 })
 
 worker.post('/', async (ctx: Context) => {
-  await updateSub();
-  return {
-    status: 'ok'
-  }
+  const payload = await ctx.json<{ lang: string, body: string }>();
+  return await updateSub(payload.lang, payload.body);
 });
 
 addEventListener('fetch', event => {
