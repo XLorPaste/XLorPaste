@@ -1,14 +1,25 @@
 type Return = Object | string | Response;
 
-type Handler = (req: Request) => Return | Promise<Return>;
+type Handler = (ctx: Context) => Return | Promise<Return>;
+
+export class Context extends Request {
+  query: Record<string, string> = {}
+
+  params: Record<string, string> = {}
+
+  constructor(req: Request) {
+    super(req);
+  }
+}
 
 export class Worker {
   private routes: Route[] = []
 
   async handle(req: Request): Promise<Response> {
     for (const route of this.routes) {
-      if (route.test(req)) {
-        const result = await route.handle(req);
+      const ctx = new Context(req);
+      if (route.test(ctx)) {
+        const result = await route.handle(ctx);
         if (typeof result === 'string') {
           return new Response(result, {
             headers: { 'content-type': 'text/plain' },
@@ -22,50 +33,60 @@ export class Worker {
         }
       }
     }
-    return new Response('404 - Not Found', {
+    return new Response(JSON.stringify({
+      status: '404',
+      message: 'Not Found'
+    }), {
       status: 404,
-      headers: { 'content-type': 'text/plain' },
+      headers: { 'content-type': 'application/json' },
     });
   }
 
-  get(url: string | RegExp, handler: Handler) {
+  get(url: string, handler: Handler) {
     const get = (req: Request) => req.method === 'GET'
-    const match = (req: Request) => {
-      const reqUrl = new URL(req.url);
-      if (typeof url === 'string') {
-        return url === reqUrl.pathname;
-      } else {  
-        const match = url.exec(reqUrl.pathname);
-        return !!match && match[0] === reqUrl.pathname;
-      }
-    }
+    const match = Route.match(url);
     this.routes.push(new Route([get, match], handler));
   }
 
-  post(url: string | RegExp, handler: Handler) {
+  post(url: string, handler: Handler) {
     const post = (req: Request) => req.method === 'POST';
-    const match = (req: Request) => {
-      const reqUrl = new URL(req.url);
-      if (typeof url === 'string') {
-        return url === reqUrl.pathname;
-      } else {
-        const reqUrl = new URL(req.url);
-        const match = url.exec(reqUrl.pathname);
-        return !!match && match[0] === reqUrl.pathname;
-      }
-    }
+    const match = Route.match(url);
     this.routes.push(new Route([post, match], handler));
   }
 }
 
 export class Route {
-  constructor(private conditions: Array<(req: Request) => boolean>, private handler: Handler) {}
+  constructor(private conditions: Array<(ctx: Context) => boolean>, private handler: Handler) {}
 
-  test(req: Request) {
-    return this.conditions.every(cond => cond(req));
+  static match(_pat: string) {
+    const pat = _pat.replace(/:[a-zA-Z_][a-zA-Z0-9_]*/g, (text) => {
+      return `(?<${text.slice(1)}>[a-zA-Z0-9_]+)`
+    })
+    const reg = new RegExp(`^${pat}$`);
+
+    return (ctx: Context) => {
+      const url = new URL(ctx.url);
+      const path = url.pathname;
+      const result = reg.exec(path);
+      if (result !== null && result[0] === path) {
+        if (!!result.groups) {
+          ctx.params = { ...result.groups }
+        }
+        for (const key of url.searchParams.keys()) {
+          ctx.query[key] = url.searchParams.get(key) ?? '';
+        }
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 
-  handle(req: Request) {
-    return this.handler(req);
+  test(ctx: Context) {
+    return this.conditions.every(cond => cond(ctx));
+  }
+
+  handle(ctx: Context) {
+    return this.handler(ctx);
   }
 }
