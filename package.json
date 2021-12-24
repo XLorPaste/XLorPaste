@@ -1,0 +1,25 @@
+{
+  "private": "true",
+  "description": "",
+  "license": "MIT",
+  "author": "XLor",
+  "scripts": {
+    "build": "pnpm -C packages/app build",
+    "dev": "pnpm -C packages/app dev"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --parser=typescript --write"
+    ],
+    "*.vue": [
+      "prettier --parser=vue --write"
+    ]
+  },
+  "devDependencies": {
+    "lint-staged": "^11.0.0",
+    "pnpm": "^6.24.2",
+    "prettier": "^2.3.2",
+    "tsup": "^4.14.0",
+    "typescript": "^4.3.5"
+  }
+}
