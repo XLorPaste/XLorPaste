@@ -3,13 +3,13 @@ type Return = string | Object | Response;
 type Handler = (ctx: Context) => Return | Promise<Return>;
 
 export interface Context extends Request {
-  params: Record<string, string>;
-
-  query: Record<string, string>;
-
   origin: string;
 
   path: string;
+
+  params: Record<string, string>;
+
+  query: Record<string, string>;
 }
 
 function makeContext(req: Request) {
@@ -17,6 +17,7 @@ function makeContext(req: Request) {
   const url = new URL(req.url);
   ctx.origin = url.origin;
   ctx.path = url.pathname;
+  ctx.params = {};
   ctx.query = {};
   for (const key of url.searchParams.keys()) {
     ctx.query[key] = url.searchParams.get(key) ?? '';
