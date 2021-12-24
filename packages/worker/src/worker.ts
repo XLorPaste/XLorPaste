@@ -15,7 +15,7 @@ export interface Context extends Request {
 function makeContext(req: Request) {
   const ctx: Context = req as Context;
   const url = new URL(req.url);
-  ctx.origin = url.origin;
+  ctx.origin = req.headers.get('origin') ?? url.origin;
   ctx.path = url.pathname;
   ctx.params = {};
   ctx.query = {};
