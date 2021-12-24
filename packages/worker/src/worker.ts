@@ -60,28 +60,40 @@ export class Worker {
         return Worker.makeResponse(ctx, result);
       }
     }
-    return new Response(
-      JSON.stringify({
+    return Worker.makeResponse(
+      new Context(req),
+      {
         status: '404',
         message: 'Not Found'
-      }),
-      {
-        status: 404,
-        headers: { 'content-type': 'application/json' }
-      }
+      },
+      { status: 404 }
     );
   }
 
-  private static makeResponse(ctx: Context, body: Return) {
+  private static makeResponse(
+    ctx: Context,
+    body: Return,
+    options: { status: number } = { status: 200 }
+  ) {
     if (typeof body === 'string') {
       return new Response(body, {
-        headers: { 'content-type': 'text/plain', 'Access-Control-Allow-Origin': ctx.origin, "Vary": "Origin" }
+        status: options.status,
+        headers: {
+          'content-type': 'text/plain',
+          'Access-Control-Allow-Origin': ctx.origin,
+          Vary: 'Origin'
+        }
       });
     } else if (body instanceof Response) {
       return body;
     } else {
       return new Response(JSON.stringify(body), {
-        headers: { 'content-type': 'application/json', 'Access-Control-Allow-Origin': ctx.origin, "Vary": "Origin" }
+        status: options.status,
+        headers: {
+          'content-type': 'application/json',
+          'Access-Control-Allow-Origin': ctx.origin,
+          Vary: 'Origin'
+        }
       });
     }
   }
