@@ -3,33 +3,42 @@ type Return = string | Object | Response;
 type Handler = (ctx: Context) => Return | Promise<Return>;
 
 export class Context extends Request {
-  query: Record<string, string> = {};
-
   params: Record<string, string> = {};
+
+  readonly query: Record<string, string> = {};
+
+  readonly origin: string;
+
+  readonly path: string;
 
   constructor(req: Request) {
     super(req);
+    const url = new URL(req.url);
+    this.origin = url.origin;
+    this.path = url.pathname;
+    this.query = {};
+    for (const key of url.searchParams.keys()) {
+      this.query[key] = url.searchParams.get(key) ?? '';
+    }
   }
 }
 
 export class Worker {
-  private static readonly corsHeaders = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,HEAD,POST,OPTIONS',
-    'Access-Control-Max-Age': '86400'
-  };
-
   private routes: Route[] = [
     new Route([(req: Request) => req.method === 'OPTIONS'], async (req: Request) => {
-      let headers = req.headers;
+      const corsHeaders = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,HEAD,POST,OPTIONS',
+        'Access-Control-Max-Age': '86400'
+      };
+      const headers = req.headers;
       if (
-        headers.get('Origin') !== null &&
         headers.get('Access-Control-Request-Method') !== null &&
         headers.get('Access-Control-Request-Headers') !== null
       ) {
         return new Response(null, {
           headers: {
-            ...Worker.corsHeaders,
+            ...corsHeaders,
             'Access-Control-Allow-Headers': req.headers.get('Access-Control-Request-Headers')!
           }
         });
@@ -48,7 +57,7 @@ export class Worker {
       const ctx = new Context(req);
       if (route.test(ctx)) {
         const result = await route.handle(ctx);
-        return Worker.makeResponse(result);
+        return Worker.makeResponse(ctx, result);
       }
     }
     return new Response(
@@ -63,16 +72,16 @@ export class Worker {
     );
   }
 
-  private static makeResponse(body: Return) {
+  private static makeResponse(ctx: Context, body: Return) {
     if (typeof body === 'string') {
       return new Response(body, {
-        headers: { 'content-type': 'text/plain', ...Worker.corsHeaders }
+        headers: { 'content-type': 'text/plain', 'Access-Control-Allow-Origin': ctx.origin, "Vary": "Origin" }
       });
     } else if (body instanceof Response) {
       return body;
     } else {
       return new Response(JSON.stringify(body), {
-        headers: { 'content-type': 'application/json', ...Worker.corsHeaders }
+        headers: { 'content-type': 'application/json', 'Access-Control-Allow-Origin': ctx.origin, "Vary": "Origin" }
       });
     }
   }
@@ -106,9 +115,6 @@ export class Route {
       if (result !== null && result[0] === path) {
         if (!!result.groups) {
           ctx.params = { ...result.groups };
-        }
-        for (const key of url.searchParams.keys()) {
-          ctx.query[key] = url.searchParams.get(key) ?? '';
         }
         return true;
       } else {
