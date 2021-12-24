@@ -2,8 +2,9 @@ name = "xlorpaste-worker"
 type = "javascript"
 
 workers_dev = true
-route = ""
-zone_id = ""
+account_id = "7cbfb60ad7052f0d8cf590a51e024987"
+zone_id = "d46a34c01748b72153a78669c137092d"
+route = ["api.xlorpaste.cn"]
 compatibility_date = "2021-12-24"
 
 [build]
