@@ -7,6 +7,6 @@ zone_id = ""
 compatibility_date = "2021-12-24"
 
 [build]
-command = "npm install; npx pnpm run build"
+command = "npm install -g pnpm; pnpm install; pnpm run build"
 [build.upload]
 format = "service-worker"
