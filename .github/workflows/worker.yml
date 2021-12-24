@@ -23,3 +23,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           workingDirectory: ./packages/worker
+          secrets: STORE
+        env:
+          STORE: ${{ secrets.CF_KV_STORE }}
