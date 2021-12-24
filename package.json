@@ -6,7 +6,8 @@
   "scripts": {
     "build": "pnpm -C packages/app build",
     "dev:app": "pnpm -C packages/app dev",
-    "dev:worker": "pnpm -C packages/worker dev"
+    "dev:worker": "pnpm -C packages/worker dev",
+    "format": "prettier --write '**/*.{js,css,json,md}'"
   },
   "lint-staged": {
     "*.ts": [
