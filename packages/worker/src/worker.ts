@@ -87,6 +87,11 @@ export class Worker {
         }
       });
     } else if (body instanceof Response) {
+      if (!body.headers.get('Access-Control-Allow-Origin')) {
+        // Skip options
+        body.headers.set('Access-Control-Allow-Origin', ctx.origin);
+        body.headers.set('Vary', 'Origin');
+      }
       return body;
     } else {
       return new Response(JSON.stringify(body), {
