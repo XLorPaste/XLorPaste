@@ -1,4 +1,4 @@
-name = "@xlorpaste/worker"
+name = "xlorpaste-worker"
 type = "javascript"
 
 workers_dev = true
