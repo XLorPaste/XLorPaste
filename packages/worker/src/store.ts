@@ -21,4 +21,8 @@ export class KvStore<V> {
   async put(key: string, value: V): Promise<void> {
     await this.store.put(this.prefix + key, JSON.stringify(value));
   }
+
+  async remove(key: string): Promise<void> {
+    await this.store.delete(this.prefix + key);
+  }
 }

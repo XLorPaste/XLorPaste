@@ -21,6 +21,11 @@ worker.post('/', async (ctx: Context) => {
   return await updateSub(payload.lang, payload.body);
 });
 
+worker.post('/once', async (ctx: Context) => {
+  const payload = await ctx.json<{ lang: string; body: string }>();
+  return await updateSub(payload.lang, payload.body, { once: true });
+});
+
 addEventListener('fetch', (event) => {
   event.respondWith(worker.handle(event.request));
 });
