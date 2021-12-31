@@ -1,18 +1,37 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+import IconGithub from '~icons/mdi/github';
 import { Navbar, NavbarItem } from './components/navbar';
+
+const searchInput = ref('');
+
+const version = __VERSION__;
 </script>
 
 <template>
   <Navbar>
     <template #brand>
-      <NavbarItem tag="router-link" :to="{ name: 'Home' }" class="font-bold text-lg"
+      <NavbarItem tag="router-link" :to="{ name: 'Home' }" class="font-mono font-bold text-xl"
         >XLorPaste</NavbarItem
       >
     </template>
-    <template #start> </template>
+    <template #start>
+      <NavbarItem>
+        <div class="relative font-mono">
+          <input
+            type="text"
+            name="contest_search"
+            id="contest_search"
+            placeholder="代码 Token"
+            class="text-lg w-full px-2 py-1 outline-none rounded-md border-1 border-light-900 focus:(border-blue-300)"
+            v-model="searchInput"
+          />
+        </div>
+      </NavbarItem>
+    </template>
   </Navbar>
 
-  <div class="px-screen py-4 main-view">
+  <div class="md:px-8 <md:px-4 py-4 main-view">
     <router-view v-slot="{ Component }">
       <transition name="fade">
         <component :is="Component" />
@@ -34,7 +53,7 @@ import { Navbar, NavbarItem } from './components/navbar';
             :href="`https://github.com/XLorPaste/XLorPaste`"
             target="_blank"
           >
-            XLorPaste</a
+            XLorPaste: {{ version }}</a
           >
         </div>
       </div>

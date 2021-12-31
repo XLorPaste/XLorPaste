@@ -12,11 +12,13 @@
     "vue-router": "4"
   },
   "devDependencies": {
+    "@iconify/json": "^1.1.450",
     "@unocss/preset-uno": "^0.18.0",
     "@unocss/preset-wind": "^0.18.0",
     "@vitejs/plugin-vue": "^2.0.0",
     "typescript": "^4.4.4",
     "unocss": "^0.18.0",
+    "unplugin-icons": "^0.13.0",
     "vite": "^2.7.2",
     "vue-tsc": "^0.29.8"
   }
