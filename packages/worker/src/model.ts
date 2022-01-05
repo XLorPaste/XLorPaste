@@ -7,6 +7,8 @@ interface Submission {
   lang: string;
   body: string;
 
+  timestamp: string;
+
   // for security
   pass?: string;
   once?: boolean;
@@ -19,14 +21,15 @@ const delStore = new KvStore<string>(XLORPASTE, 'del');
 export async function updateSub(
   lang: string,
   body: string,
-  options: Omit<Submission, 'token' | 'lang' | 'body' | 'delete'> = {}
+  options: Pick<Submission, 'pass' | 'once'> = {}
 ) {
+  const timestamp = new Date().toISOString();
   const token = await genToken(subStore);
   const delToken = await genToken(delStore);
-  const sub = { token, lang, body, delete: delToken, ...options };
+  const sub = { token, lang, body, timestamp, delete: delToken, ...options };
   await subStore.put(token, sub);
   await delStore.put(delToken, token);
-  return { token, lang, body, delete: delToken, once: !!options.once };
+  return { token, lang, body, timestamp, delete: delToken, once: !!options.once };
 }
 
 export async function getSub(key: string) {
