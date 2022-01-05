@@ -25,7 +25,7 @@ export async function updateSub(
 ) {
   const timestamp = new Date().toISOString();
   const token = await genToken(subStore);
-  const delToken = await genToken(delStore);
+  const delToken = await genToken(delStore, 12);
   const sub = { token, lang, body, timestamp, delete: delToken, ...options };
   await subStore.put(token, sub);
   await delStore.put(delToken, token);
@@ -52,10 +52,10 @@ export async function removeSub(delToken: string) {
   }
 }
 
-async function genToken<T>(store: KvStore<T>) {
+async function genToken<T>(store: KvStore<T>, len?: number) {
   let token = randomString();
   while (await store.has(token)) {
-    token = randomString();
+    token = randomString(len);
   }
   return token;
 }
