@@ -49,26 +49,22 @@ const search = async () => {
 
   <footer class="px-1 py-4">
     <div class="text-center text-gray-400">
-      <div class="flex items-center justify-center my-2 font-mono">
-        <div class="mr-2">
-          <a class="text-$text-light-1" href="https://github.com/" target="_blank"
-            ><icon-github class="align-middle"></icon-github
-          ></a>
-        </div>
-        <div>
-          <a
-            class="block text-left"
-            :href="`https://github.com/XLorPaste/XLorPaste`"
-            target="_blank"
-          >
-            XLorPaste: {{ version }}</a
-          >
-        </div>
+      <div class="flex items-center justify-center my-2 font-mono h-4">
+        <a class="text-$text-light-1 inline-block mr-2" href="https://github.com/" target="_blank"
+          ><icon-github class="align-middle"></icon-github
+        ></a>
+        <a
+          class="inline-block block"
+          :href="`https://github.com/XLorPaste/XLorPaste`"
+          target="_blank"
+        >
+          XLorPaste: {{ version }}</a
+        >
       </div>
 
       <p class="mt-2 font-mono">
         <a href="https://github.com/XLorPaste/XLorPaste/blob/master/LICENSE" target="_blank">MIT</a>
-        Licensed | Copyright © 2021
+        <span> Licensed | Copyright © 2021 </span>
         <a href="https://xlor.cn" target="_blank">XLor</a>
       </p>
     </div>
