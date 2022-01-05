@@ -8,7 +8,7 @@ export const routes = createRouter({
     {
       path: '/',
       name: 'Home',
-      component: Home,
+      component: Home
     },
     {
       path: '/view/:token',

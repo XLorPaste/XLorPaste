@@ -16,7 +16,7 @@ export default defineConfig({
     Unocss({
       presets: [presetWind()],
       shortcuts: {
-        'navbar-flex': 'flex items-stretch min-h-12 relative'
+        'navbar-flex': 'flex <md:flex-col items-stretch min-h-12 relative'
       },
       theme: {
         boxShadow: {
@@ -25,7 +25,24 @@ export default defineConfig({
         fontFamily: {
           mono: ['var(--font-family-mono)', 'var(--font-family-base)']
         }
-      }
+      },
+      variants: [
+        (matcher) => {
+          if (matcher.startsWith('<md:')) {
+            return {
+              matcher: matcher.slice(4),
+              parent: [`@media (max-width: 767.9px)`, 999]
+            };
+          } else if (matcher.startsWith('md:')) {
+            return {
+              matcher: matcher.slice(3),
+              parent: [`@media (min-width: 768px)`, 1001]
+            };
+          } else {
+            return matcher;
+          }
+        }
+      ]
     })
   ]
 });

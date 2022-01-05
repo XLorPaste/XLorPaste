@@ -17,13 +17,13 @@ const version = __VERSION__;
     </template>
     <template #start>
       <NavbarItem>
-        <div class="relative font-mono">
+        <div class="flex relative font-mono <md:w-full">
           <input
             type="text"
             name="contest_search"
             id="contest_search"
             placeholder="代码 Token"
-            class="text-lg w-full px-2 py-1 outline-none rounded-md border-1 border-light-900 focus:(border-blue-300)"
+            class="flex-1 text-lg px-2 py-1 outline-none rounded-md border-1 border-light-900 focus:(border-blue-300)"
             v-model="searchInput"
           />
         </div>
