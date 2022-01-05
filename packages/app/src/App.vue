@@ -29,7 +29,8 @@ const search = async () => {
             name="search"
             id="search"
             placeholder="代码 Token"
-            class="flex-1 text-lg px-2 py-1 outline-none rounded-md border-1 border-light-900 focus:(border-blue-300)"
+            autocomplete="off"
+            class="flex-1 text-lg px-2 py-1 rounded-md border-1 border-light-900 outline-none focus:border-blue-300"
             v-model="searchInput"
             @keypress.enter="search"
           />
@@ -38,7 +39,7 @@ const search = async () => {
     </template>
   </Navbar>
 
-  <div class="px-8 py-4 main-view">
+  <div class="md:px-8 <md:px-[1.75rem] pt-8 pb-4 main-view">
     <router-view v-slot="{ Component }">
       <transition name="fade">
         <component :is="Component" />

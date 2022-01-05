@@ -41,6 +41,16 @@ export default defineConfig({
           } else {
             return matcher;
           }
+        },
+        (matcher) => {
+          if (matcher.startsWith('focus:')) {
+            return {
+              matcher: matcher.slice(6),
+              selector: (s) => `${s}:focus`
+            };
+          } else {
+            return matcher;
+          }
         }
       ]
     })
