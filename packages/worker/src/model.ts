@@ -35,6 +35,7 @@ export async function updateSub(
 export async function getSub(key: string) {
   const sub = await subStore.get(key);
   if (!!sub?.once) {
+    await delStore.remove(sub.delete);
     await subStore.remove(key);
   }
   return sub;
@@ -43,6 +44,7 @@ export async function getSub(key: string) {
 export async function removeSub(delToken: string) {
   const token = await delStore.get(delToken);
   if (!!token) {
+    await delStore.remove(delToken);
     await subStore.remove(token);
     return { status: 'OK' };
   } else {
