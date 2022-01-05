@@ -76,7 +76,7 @@ const version = __VERSION__;
     min-height: 100%;
   }
   .main-view {
-    min-height: calc(100% - 13.5rem);
+    min-height: calc(100% - 14rem);
   }
 }
 
