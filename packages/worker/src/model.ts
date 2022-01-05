@@ -3,6 +3,7 @@ import { randomString } from './utils';
 
 interface Submission {
   token: string;
+  delete: string;
   lang: string;
   body: string;
 
@@ -13,15 +14,19 @@ interface Submission {
 
 const subStore = new KvStore<Submission>(XLORPASTE, 'sub');
 
+const delStore = new KvStore<string>(XLORPASTE, 'del');
+
 export async function updateSub(
   lang: string,
   body: string,
-  options: Omit<Submission, 'token' | 'lang' | 'body'> = {}
+  options: Omit<Submission, 'token' | 'lang' | 'body' | 'delete'> = {}
 ) {
-  const token = await genToken();
-  const sub = { token, lang, body, ...options };
+  const token = await genToken(subStore);
+  const delToken = await genToken(delStore);
+  const sub = { token, lang, body, delete: delToken, ...options };
   await subStore.put(token, sub);
-  return sub;
+  await delStore.put(delToken, token);
+  return { token, lang, body, delete: delToken, once: !!options.once };
 }
 
 export async function getSub(key: string) {
@@ -32,9 +37,19 @@ export async function getSub(key: string) {
   return sub;
 }
 
-async function genToken() {
+export async function removeSub(delToken: string) {
+  const token = await delStore.get(delToken);
+  if (!!token) {
+    await subStore.remove(token);
+    return { status: 'OK' };
+  } else {
+    return { status: 'ERROR' };
+  }
+}
+
+async function genToken<T>(store: KvStore<T>) {
   let token = randomString();
-  while (await subStore.has(token)) {
+  while (await store.has(token)) {
     token = randomString();
   }
   return token;
