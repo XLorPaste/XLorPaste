@@ -30,7 +30,7 @@ export class Worker {
     new Route([(req: Request) => req.method === 'OPTIONS'], async (req: Request) => {
       const corsHeaders = {
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,HEAD,POST,OPTIONS',
+        'Access-Control-Allow-Methods': 'GET,HEAD,POST,PUT,DELETE,OPTIONS',
         'Access-Control-Max-Age': '86400'
       };
       const headers = req.headers;
@@ -113,6 +113,18 @@ export class Worker {
 
   post(url: string, handler: Handler) {
     const post = (req: Request) => req.method === 'POST';
+    const match = Route.match(url);
+    this.routes.push(new Route([post, match], handler));
+  }
+
+  put(url: string, handler: Handler) {
+    const post = (req: Request) => req.method === 'PUT';
+    const match = Route.match(url);
+    this.routes.push(new Route([post, match], handler));
+  }
+
+  delete(url: string, handler: Handler) {
+    const post = (req: Request) => req.method === 'DELETE';
     const match = Route.match(url);
     this.routes.push(new Route([post, match], handler));
   }

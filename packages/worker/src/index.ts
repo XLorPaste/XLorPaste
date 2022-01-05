@@ -1,4 +1,4 @@
-import { getSub, updateSub } from './model';
+import { getSub, removeSub, updateSub } from './model';
 import { Context, Worker } from './worker';
 
 const worker = new Worker();
@@ -28,6 +28,10 @@ worker.post('/', async (ctx: Context) => {
 worker.post('/once', async (ctx: Context) => {
   const payload = await ctx.json<IUploadPayload>();
   return await updateSub(payload.lang, payload.body, { once: true });
+});
+
+worker.delete('/:token', async (ctx: Context) => {
+  return await removeSub(ctx.params.token);
 });
 
 interface IUploadPayload {
