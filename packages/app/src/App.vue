@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import IconGithub from '~icons/mdi/github';
 import { Navbar, NavbarItem } from './components/navbar';
 
+const version = __VERSION__;
+const router = useRouter();
 const searchInput = ref('');
 
-const version = __VERSION__;
+const search = async () => {
+  await router.push({ name: 'View', params: { token: searchInput.value } });
+  searchInput.value = '';
+};
 </script>
 
 <template>
@@ -20,18 +26,19 @@ const version = __VERSION__;
         <div class="flex relative font-mono <md:w-full">
           <input
             type="text"
-            name="contest_search"
-            id="contest_search"
+            name="search"
+            id="search"
             placeholder="代码 Token"
             class="flex-1 text-lg px-2 py-1 outline-none rounded-md border-1 border-light-900 focus:(border-blue-300)"
             v-model="searchInput"
+            @keypress.enter="search"
           />
         </div>
       </NavbarItem>
     </template>
   </Navbar>
 
-  <div class="md:px-8 <md:px-4 py-4 main-view">
+  <div class="px-8 py-4 main-view">
     <router-view v-slot="{ Component }">
       <transition name="fade">
         <component :is="Component" />
