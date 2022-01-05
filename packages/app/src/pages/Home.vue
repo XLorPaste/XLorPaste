@@ -1,20 +1,43 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import IconUpload from '~icons/mdi/cloud-upload';
+import CButton from '../components/c-button.vue';
+import { CSelect } from '../components/select';
 
 const body = ref('');
-const handleTab = () => {};
+const upload = () => {};
 </script>
 
 <template>
-  <div class="flex">
-    <textarea
-      ref="elBody"
-      name="area-body"
-      id="area-body"
-      rows="15"
-      class="font-mono text-lg flex-1 rounded p-2 outline-none focus:border-blue-300"
-      @keydown.tab.prevent="handleTab"
-      v-model="body"
-    ></textarea>
+  <div>
+    <div class="mb-4 flex">
+      <div class="inline-flex items-center mr-4">
+        <label for="lang" class="font-bold mr-2">语言 </label>
+        <c-select name="lang" id="lang">
+          <option value="cpp">C++</option>
+          <option value="c">C</option>
+          <option value="java">Java</option>
+          <option value="javascript">JavaScript</option>
+          <option value="json">JSON</option>
+        </c-select>
+      </div>
+      <c-button success @click="upload"><IconUpload class="mr-2" /> 提交</c-button>
+    </div>
+    <div class="flex mb-4">
+      <textarea
+        ref="elBody"
+        name="area-body"
+        id="area-body"
+        rows="15"
+        class="font-mono text-lg flex-1 border-1 border-light-900 rounded px-3 py-2 outline-none focus:border-blue-300"
+        @keydown.tab.prevent="() => {}"
+        @keydown.ctrl.enter="upload"
+        @keydown.ctrl.s.prevent="upload"
+        v-model="body"
+      ></textarea>
+    </div>
+    <div>
+      <c-button success @click="upload"><IconUpload class="mr-2" /> 提交</c-button>
+    </div>
   </div>
 </template>
