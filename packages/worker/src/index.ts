@@ -22,12 +22,12 @@ worker.get('/:token', async (ctx: Context) => {
 
 worker.post('/', async (ctx: Context) => {
   const payload = await ctx.json<IUploadPayload>();
-  return await updateSub(payload.lang, payload.body);
+  return await updateSub(payload.lang, payload.body, payload.timestamp);
 });
 
 worker.post('/once', async (ctx: Context) => {
   const payload = await ctx.json<IUploadPayload>();
-  return await updateSub(payload.lang, payload.body, { once: true });
+  return await updateSub(payload.lang, payload.body, payload.timestamp, { once: true });
 });
 
 worker.delete('/:token', async (ctx: Context) => {
@@ -37,6 +37,7 @@ worker.delete('/:token', async (ctx: Context) => {
 interface IUploadPayload {
   lang: string;
   body: string;
+  timestamp: string;
   title?: string;
   pass?: string;
 }

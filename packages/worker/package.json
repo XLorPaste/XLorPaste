@@ -10,6 +10,9 @@
     "build": "tsup src/index.ts",
     "dev": "wrangler dev"
   },
+  "dependencies": {
+    "xlorpaste": "workspace:*"
+  },
   "devDependencies": {
     "@cloudflare/workers-types": "^3.0.0",
     "@types/node": "^17.0.4",

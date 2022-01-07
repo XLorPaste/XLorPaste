@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
+import { Submission } from './types';
 
-class XLorPasteClient {
+export class XLorPasteClient {
   private readonly api: AxiosInstance;
 
   constructor(apiURL?: string) {
@@ -9,16 +10,26 @@ class XLorPasteClient {
     });
   }
 
-  async upload(lang: string, body: string) {
-    await this.api.post('/', { body, lang });
+  async upload(lang: string, body: string, options: Pick<Submission, 'once' | 'pass'> = {}) {
+    await this.api.post('/', {
+      lang,
+      body,
+      timestamp: new Date().toISOString(),
+      once: options.once,
+      pass: options.pass
+    });
   }
 
-  async fetch(token: string) {
-    const { data } = await this.api.get(`/${token}`);
+  async fetch(token: string): Promise<Submission> {
+    const { data } = await this.api.get<Submission>(`/${token}`);
     return data;
   }
 }
 
-export function client() {
-  return new XLorPasteClient();
+export interface ClientOptions {
+  apiURL?: string;
+}
+
+export function client(options: ClientOptions = {}) {
+  return new XLorPasteClient(options.apiURL);
 }

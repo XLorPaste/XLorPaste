@@ -1,18 +1,6 @@
+import type { Submission } from 'xlorpaste';
 import { KvStore } from './store';
 import { randomString } from './utils';
-
-interface Submission {
-  token: string;
-  delete: string;
-  lang: string;
-  body: string;
-
-  timestamp: string;
-
-  // for security
-  pass?: string;
-  once?: boolean;
-}
 
 const subStore = new KvStore<Submission>(XLORPASTE, 'sub');
 
@@ -21,9 +9,9 @@ const delStore = new KvStore<string>(XLORPASTE, 'del');
 export async function updateSub(
   lang: string,
   body: string,
+  timestamp: string = new Date().toISOString(), // Compatible with old version
   options: Pick<Submission, 'pass' | 'once'> = {}
 ) {
-  const timestamp = new Date().toISOString();
   const token = await genToken(subStore);
   const delToken = await genToken(delStore, 12);
   const sub = { token, lang, body, timestamp, delete: delToken, ...options };
