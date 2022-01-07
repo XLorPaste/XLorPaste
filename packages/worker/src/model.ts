@@ -36,7 +36,7 @@ export async function removeSub(delToken: string) {
     await subStore.remove(token);
     return { status: 'OK' };
   } else {
-    return { status: 'ERROR' };
+    return { status: '404' };
   }
 }
 

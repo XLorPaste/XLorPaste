@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import { Submission } from './types';
+import type { Submission, FetchError } from './types';
 
 export class XLorPasteClient {
   private readonly api: AxiosInstance;
@@ -10,19 +10,28 @@ export class XLorPasteClient {
     });
   }
 
-  async upload(lang: string, body: string, options: Pick<Submission, 'once' | 'pass'> = {}) {
-    await this.api.post('/', {
+  async upload(
+    lang: string,
+    body: string,
+    options: Pick<Submission, 'once' | 'pass'> = {}
+  ): Promise<Submission> {
+    const { data } = await this.api.post<Submission>('/', {
       lang,
       body,
       timestamp: new Date().toISOString(),
       once: options.once,
       pass: options.pass
     });
+    return data;
   }
 
   async fetch(token: string): Promise<Submission> {
-    const { data } = await this.api.get<Submission>(`/${token}`);
-    return data;
+    const { data } = await this.api.get<Submission | FetchError>(`/${token}`);
+    if ('status' in data) {
+      throw data;
+    } else {
+      return data;
+    }
   }
 }
 

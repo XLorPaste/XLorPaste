@@ -16,7 +16,7 @@ worker.get('/:token', async (ctx: Context) => {
   if (!!ctx.query.raw) {
     return sub?.body ?? '';
   } else {
-    return sub ?? { error: 'Not Found' };
+    return sub ?? { status: '404', message: 'Not Found' };
   }
 });
 

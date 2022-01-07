@@ -9,3 +9,8 @@ export interface Submission {
   pass?: string;
   once?: boolean;
 }
+
+export interface FetchError {
+  status: string;
+  message?: string;
+}
