@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "shiki": "^0.10.0",
     "vue": "^3.2.25",
     "vue-router": "4",
     "xlorpaste": "workspace:*"

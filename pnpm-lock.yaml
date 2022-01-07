@@ -26,6 +26,7 @@ importers:
       '@unocss/preset-uno': ^0.18.0
       '@unocss/preset-wind': ^0.18.0
       '@vitejs/plugin-vue': ^2.0.0
+      shiki: ^0.10.0
       typescript: ^4.4.4
       unocss: ^0.18.0
       unplugin-icons: ^0.13.0
@@ -35,6 +36,7 @@ importers:
       vue-tsc: ^0.30.2
       xlorpaste: workspace:*
     dependencies:
+      shiki: 0.10.0
       vue: 3.2.26
       vue-router: 4.0.12_vue@3.2.26
       xlorpaste: link:../cli
@@ -1500,7 +1502,6 @@ packages:
 
   /jsonc-parser/3.0.0:
     resolution: {integrity: sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==}
-    dev: true
 
   /jstransformer/1.0.0:
     resolution: {integrity: sha1-7Yvwkh4vPx7U1cGkT2hwntJHIsM=}
@@ -2118,6 +2119,14 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /shiki/0.10.0:
+    resolution: {integrity: sha512-iczxaIYeBFHTFrQPb9DVy2SKgYxC4Wo7Iucm7C17cCh2Ge/refnvHscUOxM85u57MfLoNOtjoEFUWt9gBexblA==}
+    dependencies:
+      jsonc-parser: 3.0.0
+      vscode-oniguruma: 1.6.1
+      vscode-textmate: 5.2.0
+    dev: false
+
   /signal-exit/3.0.6:
     resolution: {integrity: sha512-sDl4qMFpijcGw22U5w63KmD3cZJfBuFlVNbVMKje2keoKML7X2UzWbc4XrmEbDwg0NXJc3yv4/ox7b+JWb57kQ==}
     dev: true
@@ -2535,6 +2544,10 @@ packages:
     resolution: {integrity: sha512-u0Lw+IYlgbEJFF6/qAqG2d1jQmJl0eyAGJHoAJqr2HT4M2BNuQYSEiSE75f52pXHSJm8AlTjnLLbBFPrdz2hpA==}
     dev: true
 
+  /vscode-oniguruma/1.6.1:
+    resolution: {integrity: sha512-vc4WhSIaVpgJ0jJIejjYxPvURJavX6QG41vu0mGhqywMkQqulezEqEQ3cO3gc8GvcOpX6ycmKGqRoROEMBNXTQ==}
+    dev: false
+
   /vscode-pug-languageservice/0.30.2:
     resolution: {integrity: sha512-YkrBodqSzNrtLaEIeMnRJAcnqCWysIiOdkzxF6XHuOc+wDvbZ1U4XgxoLvNNjQdzNQIEYKbsLW0ldq5TYphjiA==}
     dependencies:
@@ -2547,6 +2560,10 @@ packages:
       vscode-languageserver-textdocument: 1.0.3
       vscode-languageserver-types: 3.17.0-next.5
     dev: true
+
+  /vscode-textmate/5.2.0:
+    resolution: {integrity: sha512-Uw5ooOQxRASHgu6C7GVvUxisKXfSgW4oFlO+aa+PAkgmH89O3CXxEEzNRNtHSqtXFTl0nAC1uYj0GMSH27uwtQ==}
+    dev: false
 
   /vscode-typescript-languageservice/0.30.2:
     resolution: {integrity: sha512-5l+gMfbHTZnJy7V7xdH78ai1ViR/scrIVQT5KFraDWLKTYHjGBkHDZ1E9fF+jbeyEizyy2ayldTQ7kCz8jWqVA==}

@@ -47,9 +47,9 @@ const search = async () => {
     </router-view>
   </div>
 
-  <footer class="px-1 py-4 text-sm">
+  <footer class="mt-4 px-1 py-4 text-sm">
     <div class="text-center text-gray-400">
-      <div class="flex items-center justify-center font-mono h-4">
+      <div class="flex items-center justify-center font-mono h-4 my-1">
         <a class="text-$text-light-1 inline-block mr-2" href="https://github.com/" target="_blank"
           ><icon-github class="align-middle"></icon-github
         ></a>
@@ -62,7 +62,7 @@ const search = async () => {
         >
       </div>
 
-      <p class="font-mono">
+      <p class="font-mono my-1">
         <a
           href="https://github.com/XLorPaste/XLorPaste/blob/master/LICENSE"
           target="_blank"
@@ -77,7 +77,7 @@ const search = async () => {
         >
       </p>
 
-      <p class="mt-2 font-mono">
+      <p class="font-mono my-1">
         <span>© 2021 </span>
         <a href="https://github.com/yjl9903" target="_blank">XLor</a>
         <span> All rights reserved</span>
