@@ -9,12 +9,14 @@ importers:
       prettier: ^2.3.2
       tsup: ^4.14.0
       typescript: ^4.3.5
+      xlorpaste: workspace:*
     devDependencies:
       lint-staged: 11.2.6
       pnpm: 6.24.2
       prettier: 2.5.1
       tsup: 4.14.0_typescript@4.5.4
       typescript: 4.5.4
+      xlorpaste: link:packages/cli
 
   packages/app:
     specifiers:
@@ -29,9 +31,11 @@ importers:
       vue: ^3.2.25
       vue-router: '4'
       vue-tsc: ^0.29.8
+      xlorpaste: workspace:*
     dependencies:
       vue: 3.2.26
       vue-router: 4.0.12_vue@3.2.26
+      xlorpaste: link:../cli
     devDependencies:
       '@iconify/json': 1.1.450
       '@unocss/preset-uno': 0.18.0
@@ -43,6 +47,19 @@ importers:
       vite: 2.7.6
       vue-tsc: 0.29.8_typescript@4.5.4
 
+  packages/cli:
+    specifiers:
+      cac: ^6.7.12
+      resolve-from: ^5.0.0
+      tsup: ^4.14.0
+      typescript: ^4.4.4
+    dependencies:
+      cac: 6.7.12
+      resolve-from: 5.0.0
+    devDependencies:
+      tsup: 4.14.0_typescript@4.5.4
+      typescript: 4.5.4
+
   packages/worker:
     specifiers:
       '@cloudflare/workers-types': ^3.0.0
@@ -51,7 +68,7 @@ importers:
       pnpm: ^6.24.2
       prettier: ^2.3.2
       tsup: ^4.14.0
-      typescript: ^4.3.5
+      typescript: ^4.4.4
     devDependencies:
       '@cloudflare/workers-types': 3.3.0
       '@types/node': 17.0.4
@@ -555,7 +572,6 @@ packages:
   /cac/6.7.12:
     resolution: {integrity: sha512-rM7E2ygtMkJqD9c7WnFU6fruFcN3xe4FM5yUmgxhZzIKJk4uHl9U/fhwdajGFQbQuv43FAUo1Fe8gX/oIKDeSA==}
     engines: {node: '>=8'}
-    dev: true
 
   /call-bind/1.0.2:
     resolution: {integrity: sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==}
@@ -1721,7 +1737,6 @@ packages:
   /resolve-from/5.0.0:
     resolution: {integrity: sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==}
     engines: {node: '>=8'}
-    dev: true
 
   /resolve/1.20.0:
     resolution: {integrity: sha512-wENBPt4ySzg4ybFQW2TT1zMQucPK95HSh/nq2CFTZVOGut2+pQvSsgtda4d26YrYcr067wjbmzOG8byDPBX63A==}
