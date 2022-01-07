@@ -3,6 +3,7 @@ import { reactive, toRefs, watch, ref, Ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { Submission } from 'xlorpaste';
 import { fetch } from '../logic/client';
+import { CodeBox } from '../components/codebox';
 
 const route = useRoute();
 const router = useRouter();
@@ -26,6 +27,6 @@ watch(
 
 <template>
   <div v-if="!!sub">
-    {{ sub.token }}
+    <code-box :sub="sub" />
   </div>
 </template>

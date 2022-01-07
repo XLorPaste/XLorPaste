@@ -8,6 +8,10 @@ import { upload } from '../logic/client';
 const body = ref('');
 const lang = ref('cpp');
 const submit = async () => {
+  if (body.value.length === 0) {
+    // Cannot submit empty code
+    return;
+  }
   const sub = await upload(lang.value, body.value);
   console.log(sub);
 };
