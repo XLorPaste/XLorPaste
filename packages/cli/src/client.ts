@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
+import { Base64 } from 'js-base64';
 import type { Submission, FetchError } from './types';
 
 export class XLorPasteClient {
@@ -17,7 +18,7 @@ export class XLorPasteClient {
   ): Promise<Submission> {
     const { data } = await this.api.post<Submission>('/', {
       lang,
-      body,
+      body: Base64.encode(body),
       timestamp: new Date().toISOString(),
       once: options.once,
       pass: options.pass
@@ -30,6 +31,7 @@ export class XLorPasteClient {
     if ('status' in data) {
       throw data;
     } else {
+      data.body = Base64.decode(data.body);
       return data;
     }
   }

@@ -53,6 +53,7 @@ importers:
     specifiers:
       axios: ^0.24.0
       cac: ^6.7.12
+      js-base64: ^3.7.2
       kolorist: ^1.5.1
       resolve-from: ^5.0.0
       tsup: ^4.14.0
@@ -60,6 +61,7 @@ importers:
     dependencies:
       axios: 0.24.0
       cac: 6.7.12
+      js-base64: 3.7.2
       kolorist: 1.5.1
       resolve-from: 5.0.0
     devDependencies:
@@ -1463,6 +1465,10 @@ packages:
     resolution: {integrity: sha512-34wB/Y7MW7bzjKRjUKTa46I2Z7eV62Rkhva+KkopW7Qvv/OSWBqvkSY7vusOPrNuZcUG3tApvdVgNB8POj3SPw==}
     engines: {node: '>=10'}
     dev: true
+
+  /js-base64/3.7.2:
+    resolution: {integrity: sha512-NnRs6dsyqUXejqk/yv2aiXlAvOs56sLkX6nUdeaNezI5LFFLlsZjOThmwnrcwh5ZZRwZlCMnVAY3CvhIhoVEKQ==}
+    dev: false
 
   /js-stringify/1.0.2:
     resolution: {integrity: sha1-Fzb939lyTyijaCrcYjCufk6Weds=}
