@@ -41,7 +41,7 @@ export async function removeSub(delToken: string) {
 }
 
 async function genToken<T>(store: KvStore<T>, len?: number) {
-  let token = randomString();
+  let token = randomString(len);
   while (await store.has(token)) {
     token = randomString(len);
   }

@@ -1,21 +1,31 @@
 <script setup lang="ts">
-import { reactive, toRefs, watch, Ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { reactive, toRefs, watch, ref, Ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { Submission } from 'xlorpaste';
 import { fetch } from '../logic/client';
 
 const route = useRoute();
+const router = useRouter();
+
 const { token } = toRefs(reactive(route.params));
+const sub = ref<Submission | null>(null);
 
 watch(
   token as Ref<string>,
   async (token) => {
-    const sub = await fetch(token);
-    console.log(sub);
+    try {
+      const data = await fetch(token);
+      sub.value = data;
+    } catch (error) {
+      setTimeout(() => router.push({ name: 'Home' }), 3000);
+    }
   },
   { immediate: true }
 );
 </script>
 
 <template>
-  {{ token }}
+  <div v-if="!!sub">
+    {{ sub.token }}
+  </div>
 </template>

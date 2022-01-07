@@ -3,9 +3,14 @@ import { ref } from 'vue';
 import IconUpload from '~icons/mdi/cloud-upload';
 import CButton from '../components/c-button.vue';
 import { CSelect } from '../components/select';
+import { upload } from '../logic/client';
 
 const body = ref('');
-const upload = () => {};
+const lang = ref('cpp');
+const submit = async () => {
+  const sub = await upload(lang.value, body.value);
+  console.log(sub);
+};
 </script>
 
 <template>
@@ -21,7 +26,7 @@ const upload = () => {};
           <option value="json">JSON</option>
         </c-select>
       </div>
-      <c-button success @click="upload"><IconUpload class="mr-2" /> 提交</c-button>
+      <c-button success @click="submit"><IconUpload class="mr-2" /> 提交</c-button>
     </div>
     <div class="flex mb-4">
       <textarea
@@ -31,13 +36,13 @@ const upload = () => {};
         rows="15"
         class="font-mono text-lg flex-1 border-1 border-light-900 rounded px-3 py-2 outline-none focus:border-blue-300"
         @keydown.tab.prevent="() => {}"
-        @keydown.ctrl.enter="upload"
-        @keydown.ctrl.s.prevent="upload"
+        @keydown.ctrl.enter="submit"
+        @keydown.ctrl.s.prevent="submit"
         v-model="body"
       ></textarea>
     </div>
     <div>
-      <c-button success @click="upload"><IconUpload class="mr-2" /> 提交</c-button>
+      <c-button success @click="submit"><IconUpload class="mr-2" /> 提交</c-button>
     </div>
   </div>
 </template>
