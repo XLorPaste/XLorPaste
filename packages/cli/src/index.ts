@@ -1,1 +1,1 @@
-export const xlorpaste = 'xlorpaste';
+export * from './client';

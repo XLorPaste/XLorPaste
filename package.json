@@ -8,6 +8,11 @@
     "dev:worker": "pnpm -C packages/worker dev",
     "format": "prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.ts": [
       "prettier --parser=typescript --write"
@@ -17,6 +22,7 @@
     ]
   },
   "devDependencies": {
+    "husky": "^1.2.0",
     "lint-staged": "^11.0.0",
     "pnpm": "^6.24.2",
     "prettier": "^2.3.2",
