@@ -1,24 +1,27 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { Submission } from 'xlorpaste';
 import IconUpload from '~icons/mdi/cloud-upload';
 import CButton from '../components/c-button.vue';
 import { CSelect } from '../components/select';
 import { upload } from '../logic/client';
+import Response from './Response.vue';
 
 const body = ref('');
 const lang = ref('cpp');
+const sub = ref<Submission | null>(null);
 const submit = async () => {
   if (body.value.length === 0) {
     // Cannot submit empty code
     return;
   }
-  const sub = await upload(lang.value, body.value);
-  console.log(sub);
+  const data = await upload(lang.value, body.value);
+  sub.value = data;
 };
 </script>
 
 <template>
-  <div>
+  <div v-if="!sub">
     <div class="mb-4 flex">
       <div class="inline-flex items-center mr-4">
         <label for="lang" class="font-bold mr-2">语言 </label>
@@ -48,5 +51,9 @@ const submit = async () => {
     <div>
       <c-button success @click="submit"><IconUpload class="mr-2" /> 提交</c-button>
     </div>
+  </div>
+  <div v-else>
+    <Response :sub="sub"></Response>
+    <c-button @click="sub = null" info>返回</c-button>
   </div>
 </template>
