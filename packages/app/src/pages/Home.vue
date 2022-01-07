@@ -18,6 +18,11 @@ const submit = async () => {
   const data = await upload(lang.value, body.value);
   sub.value = data;
 };
+
+const rows =
+  window.innerWidth >= 768
+    ? Math.max(10, Math.floor((window.innerHeight - 320 * window.devicePixelRatio) / 16))
+    : 0;
 </script>
 
 <template>
@@ -42,7 +47,7 @@ const submit = async () => {
         ref="elBody"
         name="area-body"
         id="area-body"
-        rows="15"
+        :rows="rows"
         class="font-mono flex-1 border-1 border-light-900 rounded px-3 py-2 outline-none focus:border-blue-300"
         @keydown.tab.prevent="() => {}"
         @keydown.ctrl.enter="submit"
