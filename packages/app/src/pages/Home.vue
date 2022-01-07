@@ -29,6 +29,7 @@ const submit = async () => {
           <option value="cpp">C++</option>
           <option value="c">C</option>
           <option value="java">Java</option>
+          <option value="python">Python</option>
           <option value="javascript">JavaScript</option>
           <option value="json">JSON</option>
           <option value="yaml">Yaml</option>
@@ -42,7 +43,7 @@ const submit = async () => {
         name="area-body"
         id="area-body"
         rows="15"
-        class="font-mono text-lg flex-1 border-1 border-light-900 rounded px-3 py-2 outline-none focus:border-blue-300"
+        class="font-mono flex-1 border-1 border-light-900 rounded px-3 py-2 outline-none focus:border-blue-300"
         @keydown.tab.prevent="() => {}"
         @keydown.ctrl.enter="submit"
         @keydown.ctrl.s.prevent="submit"

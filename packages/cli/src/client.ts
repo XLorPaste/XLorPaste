@@ -11,6 +11,10 @@ export class XLorPasteClient {
     });
   }
 
+  private format(code: string) {
+    return code.trim();
+  }
+
   async upload(
     lang: string,
     body: string,
@@ -18,7 +22,7 @@ export class XLorPasteClient {
   ): Promise<Submission> {
     const { data } = await this.api.post<Submission>('/', {
       lang,
-      body: Base64.encode(body),
+      body: Base64.encode(this.format(body)),
       timestamp: new Date().toISOString(),
       once: options.once,
       pass: options.pass
@@ -31,7 +35,7 @@ export class XLorPasteClient {
     if ('status' in data) {
       throw data;
     } else {
-      data.body = Base64.decode(data.body);
+      data.body = this.format(Base64.decode(data.body));
       return data;
     }
   }
