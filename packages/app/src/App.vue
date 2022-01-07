@@ -47,9 +47,9 @@ const search = async () => {
     </router-view>
   </div>
 
-  <footer class="px-1 py-4">
+  <footer class="px-1 py-4 text-sm">
     <div class="text-center text-gray-400">
-      <div class="flex items-center justify-center my-2 font-mono h-4">
+      <div class="flex items-center justify-center font-mono h-4">
         <a class="text-$text-light-1 inline-block mr-2" href="https://github.com/" target="_blank"
           ><icon-github class="align-middle"></icon-github
         ></a>
@@ -62,10 +62,25 @@ const search = async () => {
         >
       </div>
 
+      <p class="font-mono">
+        <a
+          href="https://github.com/XLorPaste/XLorPaste/blob/master/LICENSE"
+          target="_blank"
+          rel="noopener noreferrer"
+          >MIT</a
+        >
+        Licensed |
+        <a href="https://upptime.xlorpaste.cn/" target="_blank" rel="noopener noreferrer">Status</a>
+        |
+        <a href="http://www.miitbeian.gov.cn" target="_blank" rel="noopener noreferrer"
+          >苏ICP备19000844号</a
+        >
+      </p>
+
       <p class="mt-2 font-mono">
-        <a href="https://github.com/XLorPaste/XLorPaste/blob/master/LICENSE" target="_blank">MIT</a>
-        <span> Licensed | Copyright © 2021 </span>
-        <a href="https://xlor.cn" target="_blank">XLor</a>
+        <span>© 2021 </span>
+        <a href="https://github.com/yjl9903" target="_blank">XLor</a>
+        <span> All rights reserved</span>
       </p>
     </div>
   </footer>
