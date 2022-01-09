@@ -20,9 +20,17 @@ const copy = async () => {
   await navigator.clipboard.writeText(sub.value.body);
 };
 
+const line = computed(() => {
+  return sub.value.body.split('\n').length;
+});
+const measure = ref<HTMLElement | null>(null);
 const width = computed(() => {
-  const line = sub.value.body.split('\n').length;
-  return Math.round(Math.log10(line)) * 1.5 + 'em';
+  console.log(measure.value?.clientWidth);
+  if (measure.value) {
+    return Math.ceil(measure.value.clientWidth) + 2 + 'px';
+  } else {
+    return '1em';
+  }
 });
 </script>
 
@@ -44,6 +52,8 @@ const width = computed(() => {
       <div><a class="px-2 py-2 cursor-pointer" @click="copy">复制</a></div>
     </div>
     <div class="px-4 py-4 overflow-x-auto <md:text-xs <md:p-2" v-html="code"></div>
+
+    <div class="hidden-measure font-mono" ref="measure">{{ line + 1 }}</div>
   </div>
 </template>
 
@@ -56,6 +66,7 @@ const width = computed(() => {
 .shiki {
   margin: 0;
   background-color: white !important;
+  tab-size: 2;
 }
 
 .shiki code {
@@ -82,5 +93,13 @@ const width = computed(() => {
   display: inline-block;
   text-align: right;
   color: rgba(115, 138, 148, 0.4);
+}
+
+.hidden-measure {
+  position: absolute;
+  visibility: hidden;
+  height: auto;
+  width: auto;
+  white-space: nowrap;
 }
 </style>
