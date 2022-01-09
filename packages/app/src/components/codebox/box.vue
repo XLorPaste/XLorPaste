@@ -7,6 +7,8 @@ import CButton from '../c-button.vue';
 const props = defineProps<{ sub: Submission }>();
 const { sub } = toRefs(props);
 
+const line = sub.value.body.split('\n').length;
+const width = Math.round(Math.log10(line)) + 'rem';
 const code = ref('');
 highlight(sub.value.lang, sub.value.body).then((html) => (code.value = html));
 
@@ -47,7 +49,7 @@ const copy = async () => {
 .shiki code .line::before {
   content: counter(step);
   counter-increment: step;
-  width: 1rem;
+  width: v-bind(width);
   margin-right: 1rem;
   display: inline-block;
   text-align: right;

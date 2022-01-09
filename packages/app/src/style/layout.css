@@ -81,6 +81,10 @@ a {
   color: var(--c-brand);
 }
 
+pre {
+  font-family: var(--font-family-mono);
+}
+
 .border-left {
   border-top: none;
   border-bottom: none;
