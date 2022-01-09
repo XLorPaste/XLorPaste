@@ -8,7 +8,8 @@ import presetWind from '@unocss/preset-wind';
 // https://vitejs.dev/config/
 export default defineConfig({
   define: {
-    __VERSION__: JSON.stringify(version)
+    __VERSION__: JSON.stringify(version),
+    __COMMIT__: JSON.stringify(process.env.GITHUB_SHA)
   },
   plugins: [
     vue(),

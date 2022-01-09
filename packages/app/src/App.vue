@@ -5,6 +5,7 @@ import IconGithub from '~icons/mdi/github';
 import { Navbar, NavbarItem } from './components/navbar';
 
 const version = __VERSION__;
+const commit = __COMMIT__;
 const router = useRouter();
 const searchInput = ref('');
 
@@ -50,16 +51,28 @@ const search = async () => {
   <footer class="mt-4 px-1 py-4 text-sm">
     <div class="text-center text-gray-400">
       <div class="flex items-center justify-center font-mono h-4 my-1">
-        <a class="text-$text-light-1 inline-block mr-2" href="https://github.com/" target="_blank"
+        <a
+          class="text-$text-light-1 inline-block mr-2"
+          href="https://github.com/XLorPaste"
+          target="_blank"
           ><icon-github class="align-middle"></icon-github
         ></a>
         <a
-          class="inline-block block"
+          v-if="!commit"
+          class="inline-block"
           :href="`https://github.com/XLorPaste/XLorPaste`"
           target="_blank"
         >
-          XLorPaste: {{ version }}</a
+          <span>XLorPaste: {{ version }}</span>
+        </a>
+        <a
+          v-else
+          class="inline-block"
+          :href="`https://github.com/XLorPaste/XLorPaste/tree/${commit}`"
+          target="_blank"
         >
+          <span>XLorPaste: {{ commit.slice(0, 10) }}</span>
+        </a>
       </div>
 
       <p class="font-mono my-1">
