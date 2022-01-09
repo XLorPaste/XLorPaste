@@ -12,7 +12,7 @@ async function setup() {
 
     highlighter = await getHighlighter({
       themes,
-      langs: ['cpp']
+      langs: ['c', 'cpp', 'java', 'javascript', 'json', 'python', 'typescript', 'yaml']
     });
   }
 }

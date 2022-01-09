@@ -30,8 +30,8 @@ const rows =
     <div class="mb-4 flex">
       <div class="inline-flex items-center mr-4">
         <label for="lang" class="font-bold mr-2">语言 </label>
-        <c-select name="lang" id="lang">
-          <option value="cpp">C++</option>
+        <c-select name="lang" id="lang" v-model="lang">
+          <option value="cpp" selected>C++</option>
           <option value="c">C</option>
           <option value="java">Java</option>
           <option value="python">Python</option>

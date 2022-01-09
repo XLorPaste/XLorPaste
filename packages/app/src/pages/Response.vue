@@ -8,7 +8,7 @@ const { sub } = toRefs(props);
 
 <template>
   <p>
-    Token:
+    <span class="font-bold">Token </span>
     <router-link :to="{ name: 'View', params: { token: sub.token } }">{{ sub.token }}</router-link>
   </p>
 </template>
