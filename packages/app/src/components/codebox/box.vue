@@ -25,9 +25,8 @@ const line = computed(() => {
 });
 const measure = ref<HTMLElement | null>(null);
 const width = computed(() => {
-  console.log(measure.value?.clientWidth);
   if (measure.value) {
-    return Math.ceil(measure.value.clientWidth) + 2 + 'px';
+    return measure.value.clientWidth + 2 + 'px';
   } else {
     return '1em';
   }
@@ -53,7 +52,7 @@ const width = computed(() => {
     </div>
     <div class="px-4 py-4 overflow-x-auto <md:text-xs <md:p-2" v-html="code"></div>
 
-    <div class="hidden-measure font-mono" ref="measure">{{ line + 1 }}</div>
+    <div class="hidden-measure font-mono <md:text-xs" ref="measure">{{ line + 1 }}</div>
   </div>
 </template>
 
@@ -93,6 +92,15 @@ const width = computed(() => {
   display: inline-block;
   text-align: right;
   color: rgba(115, 138, 148, 0.4);
+}
+
+@media (min-width: 768px) {
+  .ml-token {
+    margin-left: calc(v-bind(width) + 0.5em);
+  }
+  .shiki code .line::before {
+    margin-right: 1em;
+  }
 }
 
 .hidden-measure {
