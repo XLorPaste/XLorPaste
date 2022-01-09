@@ -21,7 +21,7 @@ const submit = async () => {
 
 const rows =
   window.innerWidth >= 768
-    ? Math.max(10, Math.floor((window.innerHeight - 320 * window.devicePixelRatio) / 16))
+    ? Math.max(10, Math.floor((window.innerHeight - 250) / 16 / window.devicePixelRatio))
     : 0;
 </script>
 
@@ -48,7 +48,7 @@ const rows =
         name="area-body"
         id="area-body"
         :rows="rows"
-        class="font-mono flex-1 border-1 border-light-900 rounded px-3 py-2 outline-none focus:border-blue-300"
+        class="font-mono text-base flex-1 border-1 border-light-900 rounded px-3 py-2 outline-none focus:border-blue-300"
         @keydown.tab.prevent="() => {}"
         @keydown.ctrl.enter="submit"
         @keydown.ctrl.s.prevent="submit"
