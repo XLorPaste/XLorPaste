@@ -8,7 +8,7 @@ const props = defineProps<{ sub: Submission }>();
 const { sub } = toRefs(props);
 
 const line = sub.value.body.split('\n').length;
-const width = Math.round(Math.log10(line)) + 'rem';
+const width = Math.round(Math.log10(line)) * 0.8 + 'em';
 const code = ref('');
 highlight(sub.value.lang, sub.value.body).then((html) => (code.value = html));
 
@@ -26,7 +26,7 @@ const copy = async () => {
       <div class="inline-block">Token: {{ sub.token }}</div>
       <div><c-button padding="px-2 py-2" info @click="copy">复制</c-button></div>
     </div>
-    <div class="px-4 py-4 overflow-x-auto" v-html="code"></div>
+    <div class="px-4 py-4 overflow-x-auto <md:text-xs <md:p-2" v-html="code"></div>
   </div>
 </template>
 
@@ -47,15 +47,15 @@ const copy = async () => {
 }
 
 .shiki code .line {
-  height: 1rem;
-  line-height: 1rem;
+  height: 1em;
+  line-height: 1em;
 }
 
 .shiki code .line::before {
   content: counter(step);
   counter-increment: step;
   width: v-bind(width);
-  margin-right: 1rem;
+  margin-right: 1em;
   display: inline-block;
   text-align: right;
   color: rgba(115, 138, 148, 0.4);
