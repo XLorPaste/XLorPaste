@@ -22,7 +22,7 @@ const copy = async () => {
 
 const width = computed(() => {
   const line = sub.value.body.split('\n').length;
-  return Math.round(Math.log10(line)) * 0.8 + 'em';
+  return Math.round(Math.log10(line)) * 1.5 + 'em';
 });
 </script>
 
@@ -75,8 +75,10 @@ const width = computed(() => {
 .shiki code .line::before {
   content: counter(step);
   counter-increment: step;
+  height: 1em;
   width: v-bind(width);
-  margin-right: 1em;
+  line-height: 1em;
+  margin-right: 0.5em;
   display: inline-block;
   text-align: right;
   color: rgba(115, 138, 148, 0.4);

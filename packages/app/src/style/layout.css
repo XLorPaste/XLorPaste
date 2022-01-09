@@ -81,7 +81,7 @@ a {
   color: var(--c-brand);
 }
 
-pre {
+pre, code {
   font-family: var(--font-family-mono);
 }
 
