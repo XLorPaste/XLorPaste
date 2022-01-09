@@ -96,7 +96,7 @@ const width = computed(() => {
 
 @media (min-width: 768px) {
   .ml-token {
-    margin-left: calc(v-bind(width) + 0.5em);
+    margin-left: calc(v-bind(width) + 1em);
   }
   .shiki code .line::before {
     margin-right: 1em;
