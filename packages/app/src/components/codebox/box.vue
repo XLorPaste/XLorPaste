@@ -46,6 +46,11 @@ const copy = async () => {
   counter-increment: step 0;
 }
 
+.shiki code .line {
+  height: 1rem;
+  line-height: 1rem;
+}
+
 .shiki code .line::before {
   content: counter(step);
   counter-increment: step;
