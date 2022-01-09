@@ -22,7 +22,7 @@ const submit = async () => {
 const rows =
   window.innerWidth >= 768
     ? Math.max(10, Math.floor((window.innerHeight - 250) / 16 / window.devicePixelRatio))
-    : 0;
+    : 10;
 </script>
 
 <template>
