@@ -1,19 +1,29 @@
 <script setup lang="ts">
-import { toRefs, ref } from 'vue';
+import { toRefs, ref, watch, computed } from 'vue';
 import { Submission } from 'xlorpaste';
 import { highlight } from '../../logic/highlight';
 
 const props = defineProps<{ sub: Submission }>();
 const { sub } = toRefs(props);
 
-const line = sub.value.body.split('\n').length;
-const width = Math.round(Math.log10(line)) * 0.8 + 'em';
 const code = ref('');
-highlight(sub.value.lang, sub.value.body).then((html) => (code.value = html));
+
+watch(
+  sub,
+  (sub) => {
+    highlight(sub.lang, sub.body).then((html) => (code.value = html));
+  },
+  { immediate: true }
+);
 
 const copy = async () => {
   await navigator.clipboard.writeText(sub.value.body);
 };
+
+const width = computed(() => {
+  const line = sub.value.body.split('\n').length;
+  return Math.round(Math.log10(line)) * 0.8 + 'em';
+});
 </script>
 
 <template>

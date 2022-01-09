@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, toRefs, watch, ref, Ref } from 'vue';
+import { watch, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { Submission } from 'xlorpaste';
 import { fetch } from '../logic/client';
@@ -8,12 +8,11 @@ import { CodeBox } from '../components/codebox';
 const route = useRoute();
 const router = useRouter();
 
-const { token } = toRefs(reactive(route.params));
 const sub = ref<Submission | null>(null);
 
 watch(
-  token as Ref<string>,
-  async (token) => {
+  () => route.params.token as string,
+  async (token: string) => {
     try {
       const data = await fetch(token);
       sub.value = data;
