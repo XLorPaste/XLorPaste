@@ -32,7 +32,7 @@ const width = computed(() => {
       class="px-4 py-4 <md:px-2 font-mono flex justify-between items-center"
       style="border-bottom: 1px solid rgb(235, 238, 245)"
     >
-      <div>
+      <div class="<md:text-sm">
         <span class="ml-token <md:text-xs"></span>
         <span class="font-bold">Token </span>
         <router-link :to="{ name: 'View', params: { token: sub.token } }">{{
@@ -69,7 +69,7 @@ const width = computed(() => {
 }
 
 .ml-token {
-  margin-left: calc(v-bind(width) + 1em);
+  margin-left: calc(v-bind(width) + 0.5em);
 }
 
 .shiki code .line::before {
