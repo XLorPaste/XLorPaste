@@ -23,7 +23,7 @@ const copy = async () => {
       style="border-bottom: 1px solid rgb(235, 238, 245)"
     >
       <div>
-        <span class="ml-token <md:text-xs"></span><span class="font-bold">Token</span>
+        <span class="ml-token <md:text-xs"></span><span class="font-bold">Token </span>
         <router-link :to="{ name: 'View', params: { token: sub.token } }">{{
           sub.token
         }}</router-link>
