@@ -1,6 +1,6 @@
 {
   "name": "@xlorpaste/worker",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "A template for kick starting a Cloudflare Workers project",
   "license": "MIT",
