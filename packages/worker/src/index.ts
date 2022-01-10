@@ -25,7 +25,7 @@ worker.post('/once', async (ctx: Context) => {
 
 worker.get('/admin', async (ctx: Context) => {
   const auth = ctx.headers.get('Authorization');
-  const key = process.env.ADMIN_KEY ?? '';
+  const key = ADMIN_KEY ?? '';
   if (key.length > 0 && auth === key) {
     return { status: 'ok' };
   } else {
