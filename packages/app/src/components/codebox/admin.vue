@@ -17,9 +17,9 @@ const copyDelete = async () => {
   <code-box :sub="sub" footer>
     <template #footer>
       <div>
-        <div><span class="font-bold">创建时间</span> {{ timestamp }}</div>
+        <div><span class="font-bold">创建时间 </span>{{ timestamp }}</div>
         <div>
-          <span class="font-bold">删除</span>
+          <span class="font-bold">删除 </span>
           <span class="text-brand cursor-pointer" @click="copyDelete">{{ sub.delete }}</span>
         </div>
       </div>
