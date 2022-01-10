@@ -8,6 +8,7 @@ importers:
       lint-staged: ^11.0.0
       pnpm: ^6.24.2
       prettier: ^2.3.2
+      tslib: ^2.3.1
       tsup: ^4.14.0
       typescript: ^4.3.5
       xlorpaste: workspace:*
@@ -16,6 +17,7 @@ importers:
       lint-staged: 11.2.6
       pnpm: 6.24.2
       prettier: 2.5.1
+      tslib: 2.3.1
       tsup: 4.14.0_typescript@4.5.4
       typescript: 4.5.4
       xlorpaste: link:packages/cli
@@ -29,6 +31,7 @@ importers:
       '@vitejs/plugin-vue': ^2.0.0
       qrcode: ^1.5.0
       shiki: ^0.10.0
+      tslib: ^2.3.1
       typescript: ^4.4.4
       unocss: ^0.18.0
       unplugin-icons: ^0.13.0
@@ -49,6 +52,7 @@ importers:
       '@unocss/preset-uno': 0.18.0
       '@unocss/preset-wind': 0.18.0
       '@vitejs/plugin-vue': 2.0.1_vite@2.7.6+vue@3.2.26
+      tslib: 2.3.1
       typescript: 4.5.4
       unocss: 0.18.0
       unplugin-icons: 0.13.0_vite@2.7.6
@@ -2414,6 +2418,10 @@ packages:
 
   /tslib/2.1.0:
     resolution: {integrity: sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==}
+    dev: true
+
+  /tslib/2.3.1:
+    resolution: {integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==}
     dev: true
 
   /tsup/4.14.0_typescript@4.5.4:
