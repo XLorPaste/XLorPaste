@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { toRefs, ref } from 'vue';
 import { Submission } from 'xlorpaste';
+import IconAlert from '~icons/mdi/alert';
 import Qrcode from '@chenfengyuan/vue-qrcode';
 import CButton from '../components/c-button.vue';
 
@@ -14,6 +15,9 @@ const copyToken = async () => {
 };
 const copyURL = async () => {
   await window.navigator.clipboard.writeText(tokenURL);
+};
+const copyDelete = async () => {
+  await window.navigator.clipboard.writeText(sub.value.delete);
 };
 
 const showQrcode = ref(false);
@@ -34,15 +38,17 @@ const showQrcode = ref(false);
     <p>您现在可以</p>
     <ul>
       <li class="h-8">
-        在导航栏输入 <span class="font-bold font-mono">Token</span>
+        在导航栏输入 <span class="font-bold font-mono">Token </span>
         <span class="text-brand font-mono">{{ sub.token }}</span>
-        <c-button padding="px-2 py-1" class="text-xs" success @click="copyToken"
+        <c-button padding="px-2 py-1" class="ml-2 text-xs" success @click="copyToken"
           >复制 Token</c-button
         >
       </li>
       <li class="h-8">
         访问代码链接 <a class="font-mono" :href="tokenURL" target="_blank">{{ tokenURL }}</a>
-        <c-button padding="px-2 py-1" class="text-xs" success @click="copyURL">复制链接</c-button>
+        <c-button padding="px-2 py-1" class="ml-2 text-xs" success @click="copyURL"
+          >复制链接</c-button
+        >
       </li>
       <li class="min-h-8">
         <div class="cursor-pointer text-brand select-none" @click="showQrcode = !showQrcode">
@@ -56,6 +62,16 @@ const showQrcode = ref(false);
         ></qrcode>
       </li>
     </ul>
+    <p class="flex items-center">
+      <icon-alert class="text-red-500" />
+      <span class="ml-2"
+        >您可以使用
+        <span class="text-brand font-mono cursor-pointer" @click="copyDelete">{{
+          sub.delete
+        }}</span>
+        删除这份代码.</span
+      >
+    </p>
     <slot></slot>
   </div>
 </template>
