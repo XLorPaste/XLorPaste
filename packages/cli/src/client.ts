@@ -1,7 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
-import { UploadResponse } from 'dist';
 import { Base64 } from 'js-base64';
-import type { Payload, Submission, FetchError, FetchSubmission } from './types';
+import type { Payload, UploadResponse, Submission, FetchError, FetchSubmission } from './types';
 
 export class XLorPasteClient {
   private readonly api: AxiosInstance;
