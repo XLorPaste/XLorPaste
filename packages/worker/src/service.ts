@@ -1,4 +1,4 @@
-import type { Submission } from 'xlorpaste';
+import type { Payload, UploadResponse, Submission, FetchSubmission } from 'xlorpaste';
 import { KvStore } from './store';
 import { randomString } from './utils';
 
@@ -6,27 +6,61 @@ const subStore = new KvStore<Submission>(XLORPASTE, 'sub');
 
 const delStore = new KvStore<string>(XLORPASTE, 'del');
 
-export async function updateSub(
-  lang: string,
-  body: string,
-  timestamp: string = new Date().toISOString(), // Compatible with old version
-  options: Pick<Submission, 'pass' | 'once'> = {}
-) {
+async function createSub(payload: Payload): Promise<Submission> {
   const token = await genToken(subStore);
   const delToken = await genToken(delStore, 12);
-  const sub = { token, lang, body, timestamp, delete: delToken, ...options };
-  await subStore.put(token, sub);
-  await delStore.put(delToken, token);
-  return { token, lang, body, timestamp, delete: delToken, once: !!options.once };
+  const sub: Submission = {
+    token,
+    delete: delToken,
+    lang: payload.lang,
+    body: payload.body,
+    timestamp: payload.timestamp
+  };
+  if ('once' in payload && !!payload.once) {
+    sub.once = payload.once;
+  }
+  if ('pass' in payload && !!payload.pass && payload.pass.length > 0) {
+    sub.pass = payload.pass;
+  }
+  return sub;
 }
 
-export async function getSub(key: string) {
+function createUploadResp(sub: Submission): UploadResponse {
+  return {
+    timestamp: sub.timestamp,
+    token: sub.token,
+    delete: sub.delete,
+    once: sub.once
+  };
+}
+
+function createFetchSub(sub: Submission): FetchSubmission {
+  return {
+    timestamp: sub.timestamp,
+    token: sub.token,
+    lang: sub.lang,
+    body: sub.body
+  };
+}
+
+export async function updateSub(payload: Payload): Promise<UploadResponse> {
+  const sub = await createSub(payload);
+  await subStore.put(sub.token, sub);
+  await delStore.put(sub.delete, sub.token);
+  return createUploadResp(sub);
+}
+
+export async function getSub(key: string): Promise<FetchSubmission | null> {
   const sub = await subStore.get(key);
   if (!!sub?.once) {
     await delStore.remove(sub.delete);
     await subStore.remove(key);
   }
-  return sub;
+  if (sub !== null) {
+    return createFetchSub(sub);
+  } else {
+    return null;
+  }
 }
 
 export async function removeSub(delToken: string) {

@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
+import { UploadResponse } from 'dist';
 import { Base64 } from 'js-base64';
-import type { Submission, FetchError } from './types';
+import type { Payload, Submission, FetchError, FetchSubmission } from './types';
 
 export class XLorPasteClient {
   private readonly api: AxiosInstance;
@@ -19,19 +20,20 @@ export class XLorPasteClient {
     lang: string,
     body: string,
     options: Pick<Submission, 'once' | 'pass'> = {}
-  ): Promise<Submission> {
-    const { data } = await this.api.post<Submission>('/', {
+  ): Promise<UploadResponse> {
+    const payload: Payload = {
       lang,
       body: Base64.encode(this.format(body)),
       timestamp: new Date().toISOString(),
       once: options.once,
       pass: options.pass
-    });
+    };
+    const { data } = await this.api.post<UploadResponse>('/', payload);
     return data;
   }
 
-  async fetch(token: string): Promise<Submission> {
-    const { data } = await this.api.get<Submission | FetchError>(`/${token}`);
+  async fetch(token: string): Promise<FetchSubmission> {
+    const { data } = await this.api.get<FetchSubmission | FetchError>(`/${token}`);
     if ('status' in data) {
       throw data;
     } else {

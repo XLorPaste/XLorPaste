@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { toRefs, ref, watch, computed } from 'vue';
-import { Submission } from 'xlorpaste';
+import { FetchSubmission } from 'xlorpaste';
 import { highlight } from '../../logic/highlight';
 
-const props = defineProps<{ sub: Submission }>();
+const props = defineProps<{ sub: FetchSubmission }>();
 const { sub } = toRefs(props);
 
 const code = ref('');

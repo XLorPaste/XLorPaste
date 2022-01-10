@@ -1,3 +1,4 @@
+import type { Payload } from 'xlorpaste';
 import { getSub, removeSub, updateSub } from './service';
 import { Context, Worker } from './worker';
 
@@ -21,23 +22,16 @@ worker.get('/:token', async (ctx: Context) => {
 });
 
 worker.post('/', async (ctx: Context) => {
-  const payload = await ctx.json<IUploadPayload>();
-  return await updateSub(payload.lang, payload.body, payload.timestamp);
+  const payload = await ctx.json<Payload>();
+  return await updateSub(payload);
 });
 
 worker.post('/once', async (ctx: Context) => {
-  const payload = await ctx.json<IUploadPayload>();
-  return await updateSub(payload.lang, payload.body, payload.timestamp, { once: true });
+  const payload = await ctx.json<Payload>();
+  payload.once = true;
+  return await updateSub(payload);
 });
 
 worker.delete('/:token', async (ctx: Context) => {
   return await removeSub(ctx.params.token);
 });
-
-interface IUploadPayload {
-  lang: string;
-  body: string;
-  timestamp: string;
-  title?: string;
-  pass?: string;
-}
