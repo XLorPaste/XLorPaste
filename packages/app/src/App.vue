@@ -77,7 +77,7 @@ const search = async () => {
 
       <p class="font-mono my-1">
         <router-link :to="{ name: 'Help' }">帮助</router-link> |
-        <a href="https://upptime.xlorpaste.cn/" target="_blank" rel="noopener noreferrer">Status</a>
+        <a href="https://upptime.xlorpaste.cn/" target="_blank" rel="noopener noreferrer">状态</a>
         |
         <a href="http://www.miitbeian.gov.cn" target="_blank" rel="noopener noreferrer"
           >苏ICP备19000844号</a
