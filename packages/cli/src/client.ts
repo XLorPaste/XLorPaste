@@ -60,7 +60,11 @@ export class XLorPasteClient {
       for (const sub of subs) {
         sub.body = this.format(Base64.decode(sub.body));
       }
-      return subs;
+      return subs.sort((lhs, rhs) => {
+        const a = new Date(lhs.timestamp).getTime();
+        const b = new Date(rhs.timestamp).getTime();
+        return b - a;
+      });
     } catch {
       return [];
     }
