@@ -14,6 +14,18 @@ export class KvStore<V> {
     }
   }
 
+  async list(): Promise<V[]> {
+    const result = await this.store.list({ prefix: this.prefix });
+    const arr: V[] = [];
+    for (const { name } of result.keys) {
+      const value = await this.get(name);
+      if (!!value) {
+        arr.push(value);
+      }
+    }
+    return arr;
+  }
+
   async has(key: string): Promise<boolean> {
     return !!(await this.store.get(this.prefix + key));
   }

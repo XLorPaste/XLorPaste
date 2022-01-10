@@ -1,5 +1,5 @@
 import type { Payload } from 'xlorpaste';
-import { getSub, removeSub, updateSub } from './service';
+import { getSub, listSub, removeSub, updateSub } from './service';
 import { Context, Worker } from './worker';
 
 const worker = new Worker();
@@ -27,9 +27,9 @@ worker.get('/admin', async (ctx: Context) => {
   const auth = ctx.headers.get('Authorization');
   const key = ADMIN_KEY ?? '';
   if (key.length > 0 && auth === key) {
-    return { status: 'ok' };
+    return { status: 'OK', submissions: await listSub() };
   } else {
-    return { status: 'error' };
+    return { status: '403', message: 'Forbidden' };
   }
 });
 
