@@ -36,6 +36,14 @@ export const routes = createRouter({
       }
     },
     {
+      path: '/admin',
+      name: 'Admin',
+      component: () => import('./pages/Admin/Admin.vue'),
+      meta: {
+        title: '管理'
+      }
+    },
+    {
       path: '/help',
       name: 'Help',
       component: () => import('./pages/About.vue'),

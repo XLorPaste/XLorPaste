@@ -12,15 +12,6 @@ worker.get('/', async (ctx: Context) => {
   return 'Hello, this is XLorPaste Workers API!';
 });
 
-worker.get('/:token', async (ctx: Context) => {
-  const sub = await getSub(ctx.params.token);
-  if (!!ctx.query.raw) {
-    return sub?.body ?? '';
-  } else {
-    return sub ?? { status: '404', message: 'Not Found' };
-  }
-});
-
 worker.post('/', async (ctx: Context) => {
   const payload = await ctx.json<Payload>();
   return await updateSub(payload);
@@ -30,6 +21,25 @@ worker.post('/once', async (ctx: Context) => {
   const payload = await ctx.json<Payload>();
   payload.once = true;
   return await updateSub(payload);
+});
+
+worker.get('/admin', async (ctx: Context) => {
+  const auth = ctx.headers.get('Authorization');
+  const key = process.env.ADMIN_KEY ?? '';
+  if (key.length > 0 && auth === key) {
+    return { status: 'ok' };
+  } else {
+    return { status: 'error' };
+  }
+});
+
+worker.get('/:token', async (ctx: Context) => {
+  const sub = await getSub(ctx.params.token);
+  if (!!ctx.query.raw) {
+    return sub?.body ?? '';
+  } else {
+    return sub ?? { status: '404', message: 'Not Found' };
+  }
 });
 
 worker.delete('/:token', async (ctx: Context) => {
