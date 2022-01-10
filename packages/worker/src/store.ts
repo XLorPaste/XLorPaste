@@ -18,9 +18,9 @@ export class KvStore<V> {
     const result = await this.store.list({ prefix: this.prefix });
     const arr: V[] = [];
     for (const { name } of result.keys) {
-      const value = await this.get(name);
+      const value = await this.store.get(name);
       if (!!value) {
-        arr.push(value);
+        arr.push(JSON.parse(value));
       }
     }
     return arr;
