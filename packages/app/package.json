@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@chenfengyuan/vue-qrcode": "^2.0.0-rc.1",
+    "github-markdown-css": "^5.1.0",
     "qrcode": "^1.5.0",
     "shiki": "^0.10.0",
     "vue": "^3.2.25",
@@ -25,6 +26,7 @@
     "unocss": "^0.18.0",
     "unplugin-icons": "^0.13.0",
     "vite": "^2.7.2",
+    "vite-plugin-md": "^0.11.7",
     "vue-tsc": "^0.30.2"
   }
 }

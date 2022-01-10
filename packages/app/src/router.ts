@@ -34,6 +34,14 @@ export const routes = createRouter({
       meta: {
         title: '代码'
       }
+    },
+    {
+      path: '/help',
+      name: 'Help',
+      component: () => import('./pages/About.vue'),
+      meta: {
+        title: '帮助'
+      }
     }
   ],
   scrollBehavior(to, from, savedPosition) {

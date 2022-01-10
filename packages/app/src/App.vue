@@ -76,13 +76,7 @@ const search = async () => {
       </div>
 
       <p class="font-mono my-1">
-        <a
-          href="https://github.com/XLorPaste/XLorPaste/blob/master/LICENSE"
-          target="_blank"
-          rel="noopener noreferrer"
-          >MIT</a
-        >
-        Licensed |
+        <router-link :to="{ name: 'Help' }">帮助</router-link> |
         <a href="https://upptime.xlorpaste.cn/" target="_blank" rel="noopener noreferrer">Status</a>
         |
         <a href="http://www.miitbeian.gov.cn" target="_blank" rel="noopener noreferrer"

@@ -62,7 +62,7 @@ const showQrcode = ref(false);
         ></qrcode>
       </li>
     </ul>
-    <p class="flex items-center">
+    <p class="h-8 flex items-center">
       <icon-alert class="text-red-500" />
       <span class="ml-2"
         >您可以使用

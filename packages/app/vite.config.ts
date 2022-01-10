@@ -1,9 +1,31 @@
-import { defineConfig } from 'vite';
-import { version } from './package.json';
-import vue from '@vitejs/plugin-vue';
+import { readFileSync } from 'fs';
+import { defineConfig, Plugin } from 'vite';
+import Vue from '@vitejs/plugin-vue';
+import Markdown from 'vite-plugin-md';
 import Icons from 'unplugin-icons/vite';
 import Unocss from 'unocss/vite';
 import presetWind from '@unocss/preset-wind';
+import { version } from './package.json';
+
+const mdPlugin: Plugin[] = [
+  Markdown({
+    wrapperClasses: 'markdown-body'
+  }),
+  {
+    name: 'readme',
+    resolveId(id) {
+      if (id === '~README.md') {
+        return id;
+      }
+    },
+    async load(id) {
+      if (id === '~README.md') {
+        const text = readFileSync('./README.md', 'utf-8');
+        return text.replace(/public\/(.+\.png)/g, '/$1');
+      }
+    }
+  }
+];
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,7 +34,8 @@ export default defineConfig({
     __COMMIT__: JSON.stringify(process.env.GITHUB_SHA)
   },
   plugins: [
-    vue(),
+    Vue({ include: [/\.vue$/, /\.md$/] }),
+    mdPlugin,
     Icons(),
     Unocss({
       presets: [presetWind()],
