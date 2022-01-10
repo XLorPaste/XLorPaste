@@ -55,6 +55,7 @@ const rows =
         @keydown.ctrl.enter="submit"
         @keydown.ctrl.s.prevent="submit"
         v-model="body"
+        autofocus
       ></textarea>
     </div>
     <div>
