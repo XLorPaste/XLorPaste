@@ -17,6 +17,7 @@ const submit = async () => {
   }
   const data = await upload(lang.value, body.value);
   sub.value = data;
+  body.value = '';
 };
 
 const rows =
@@ -31,6 +32,7 @@ const rows =
       <div class="inline-flex items-center mr-4">
         <label for="lang" class="font-bold mr-2">语言 </label>
         <c-select name="lang" id="lang" v-model="lang">
+          <option value="text" selected>纯文本</option>
           <option value="cpp" selected>C++</option>
           <option value="c">C</option>
           <option value="java">Java</option>
@@ -60,7 +62,8 @@ const rows =
     </div>
   </div>
   <div v-else>
-    <Response :sub="sub"></Response>
-    <c-button @click="sub = null" info>返回</c-button>
+    <Response :sub="sub">
+      <c-button @click="sub = null" info>返回</c-button>
+    </Response>
   </div>
 </template>

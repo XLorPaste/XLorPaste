@@ -18,6 +18,30 @@ async function setup() {
 }
 
 export async function highlight(lang: string, code: string) {
-  await setup();
-  return highlighter!.codeToHtml(code, { lang });
+  if (lang === 'text') {
+    const lines = code
+      .replace(/[<>"& ]/g, (match) => {
+        switch (match) {
+          case '<':
+            return '&lt;';
+          case '>':
+            return '&gt;';
+          case '"':
+            return '&quot;';
+          case '&':
+            return '&amp;';
+          case ' ':
+            return '&nbsp;';
+          default:
+            return '';
+        }
+      })
+      .split('\n');
+    return `<pre class="shiki"><code>${lines
+      .map((l) => `<span class="line">${l}</span>`)
+      .join('\n')}</code></pre>`;
+  } else {
+    await setup();
+    return highlighter!.codeToHtml(code, { lang });
+  }
 }

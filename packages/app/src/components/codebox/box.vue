@@ -50,6 +50,7 @@ const width = computed(() => {
       </div>
       <div><a class="px-2 py-2 cursor-pointer" @click="copy">复制</a></div>
     </div>
+
     <div class="px-4 py-4 overflow-x-auto <md:text-xs <md:p-2" v-html="code"></div>
 
     <div class="hidden-measure font-mono <md:text-xs" ref="measure">{{ line + 1 }}</div>

@@ -85,6 +85,10 @@ pre, code {
   font-family: var(--font-family-mono);
 }
 
+.text-brand {
+  color: var(--c-brand);
+}
+
 .border-left {
   border-top: none;
   border-bottom: none;

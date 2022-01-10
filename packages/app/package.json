@@ -8,6 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chenfengyuan/vue-qrcode": "^2.0.0-rc.1",
+    "qrcode": "^1.5.0",
     "shiki": "^0.10.0",
     "vue": "^3.2.25",
     "vue-router": "4",
