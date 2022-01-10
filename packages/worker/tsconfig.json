@@ -5,6 +5,8 @@
     "target": "esnext",
     "lib": ["esnext"],
     "alwaysStrict": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
     "strict": true,
     "preserveConstEnums": true,
     "moduleResolution": "node",

@@ -39,6 +39,15 @@ export class XLorPasteClient {
       return data;
     }
   }
+
+  async remove(token: string): Promise<boolean> {
+    try {
+      const { data } = await this.api.delete<{ status: 'OK' | '404' }>(`/${token}`);
+      return data.status === 'OK';
+    } catch {
+      return false;
+    }
+  }
 }
 
 export interface ClientOptions {

@@ -1,10 +1,27 @@
 import { cac } from 'cac';
-import { lightRed } from 'kolorist';
+import { green, lightRed } from 'kolorist';
 import { version } from '../package.json';
+import { client } from './client';
 
 const cli = cac('xlorpaste');
 
-cli.command('<token>').action(async () => {});
+const xlorpaste = client();
+
+cli.command('<token>').action(async (token: string) => {
+  const sub = await xlorpaste.fetch(token);
+  console.log(sub.body);
+});
+
+cli.command('up [file]').action(async () => {});
+
+cli.command('rm <token>').action(async (token: string) => {
+  const ok = await xlorpaste.remove(token);
+  if (ok) {
+    console.log(green('OK'));
+  } else {
+    console.log(lightRed('Fail'));
+  }
+});
 
 cli.help();
 

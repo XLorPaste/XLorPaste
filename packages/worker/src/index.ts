@@ -1,4 +1,4 @@
-import { getSub, removeSub, updateSub } from './model';
+import { getSub, removeSub, updateSub } from './service';
 import { Context, Worker } from './worker';
 
 const worker = new Worker();
