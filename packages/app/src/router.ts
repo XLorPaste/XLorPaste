@@ -41,6 +41,14 @@ export const routes = createRouter({
       component: () => import('./pages/Admin/Admin.vue'),
       meta: {
         title: '管理'
+      },
+      beforeEnter(to, from) {
+        const key = window.localStorage.getItem('ADMIN_KEY');
+        if (!!key && key.length > 0) {
+          return true;
+        } else {
+          return false;
+        }
       }
     },
     {
