@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { toRefs, ref } from 'vue';
-import { Submission } from 'xlorpaste';
+import { UploadResponse } from 'xlorpaste';
 import IconAlert from '~icons/mdi/alert';
 import Qrcode from '@chenfengyuan/vue-qrcode';
 import CButton from '../components/c-button.vue';
 
-const props = defineProps<{ sub: Submission }>();
+const props = defineProps<{ sub: UploadResponse }>();
 const { sub } = toRefs(props);
 
 const tokenURL = window.origin + '/view/' + sub.value.token;

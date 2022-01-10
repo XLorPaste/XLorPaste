@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Submission } from 'xlorpaste';
+import { UploadResponse } from 'xlorpaste';
 import IconUpload from '~icons/mdi/cloud-upload';
 import CButton from '../components/c-button.vue';
 import { CSelect } from '../components/select';
@@ -9,7 +9,7 @@ import Response from './Response.vue';
 
 const body = ref('');
 const lang = ref('cpp');
-const sub = ref<Submission | null>(null);
+const sub = ref<UploadResponse | null>(null);
 const submit = async () => {
   if (body.value.length === 0) {
     // Cannot submit empty code
