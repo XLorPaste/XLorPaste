@@ -3,7 +3,7 @@ import { toRefs, ref, watch, computed } from 'vue';
 import { FetchSubmission } from 'xlorpaste';
 import { highlight } from '../../logic/highlight';
 
-const props = defineProps<{ sub: FetchSubmission }>();
+const props = defineProps<{ sub: FetchSubmission; footer?: boolean }>();
 const { sub } = toRefs(props);
 
 const code = ref('');
@@ -52,6 +52,16 @@ const width = computed(() => {
     </div>
 
     <div class="px-4 py-4 overflow-x-auto <md:text-xs <md:p-2" v-html="code"></div>
+
+    <div
+      v-if="footer"
+      class="p-4 font-mono flex justify-between items-center"
+      style="border-top: 1px solid rgb(235, 238, 245)"
+    >
+      <div class="ml-token <md:text-xs">
+        <slot name="footer"></slot>
+      </div>
+    </div>
 
     <div class="hidden-measure font-mono <md:text-xs" ref="measure">{{ line + 1 }}</div>
   </div>
