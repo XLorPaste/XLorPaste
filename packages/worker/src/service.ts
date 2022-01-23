@@ -43,8 +43,16 @@ function createFetchSub(sub: Submission): FetchSubmission {
   };
 }
 
-export async function updateSub(payload: Payload): Promise<UploadResponse> {
+export async function uploadSub(ctx: Request, payload: Payload): Promise<UploadResponse> {
   const sub = await createSub(payload);
+  sub.author = {
+    ip: ctx.headers.get('CF-Connecting-IP'),
+    country: ctx.cf?.country,
+    region: ctx.cf?.region,
+    city: ctx.cf?.city,
+    latitude: ctx.cf?.latitude,
+    longitude: ctx.cf?.longitude
+  };
   await subStore.put(sub.token, sub);
   await delStore.put(sub.delete, sub.token);
   return createUploadResp(sub);

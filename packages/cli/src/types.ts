@@ -25,6 +25,14 @@ export interface Submission {
   // for security
   pass?: string;
   once?: boolean;
+  author?: {
+    ip: string | undefined | null;
+    country: string | undefined | null;
+    region: string | undefined | null;
+    city: string | undefined | null;
+    latitude: string | undefined | null;
+    longitude: string | undefined | null;
+  };
 }
 
 export interface FetchSubmission {

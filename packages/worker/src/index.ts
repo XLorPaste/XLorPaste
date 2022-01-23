@@ -1,5 +1,5 @@
 import type { Payload } from 'xlorpaste';
-import { getSub, listSub, removeSub, updateSub } from './service';
+import { getSub, listSub, removeSub, uploadSub } from './service';
 import { Context, Worker } from './worker';
 
 const worker = new Worker();
@@ -8,19 +8,19 @@ addEventListener('fetch', (event) => {
   event.respondWith(worker.handle(event.request));
 });
 
-worker.get('/', async (ctx: Context) => {
+worker.get('/', async (_ctx: Context) => {
   return 'Hello, this is XLorPaste Workers API!';
 });
 
 worker.post('/', async (ctx: Context) => {
   const payload = await ctx.json<Payload>();
-  return await updateSub(payload);
+  return await uploadSub(ctx, payload);
 });
 
 worker.post('/once', async (ctx: Context) => {
   const payload = await ctx.json<Payload>();
   payload.once = true;
-  return await updateSub(payload);
+  return await uploadSub(ctx, payload);
 });
 
 worker.get('/admin', async (ctx: Context) => {
