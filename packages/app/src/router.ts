@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { getAdminKey } from './logic/admin';
 import Home from './pages/Home.vue';
 import View from './pages/View.vue';
 
@@ -43,7 +44,7 @@ export const routes = createRouter({
         title: '管理'
       },
       beforeEnter(to, from) {
-        const key = window.localStorage.getItem('ADMIN_KEY');
+        const key = getAdminKey();
         if (!!key && key.length > 0) {
           return true;
         } else {

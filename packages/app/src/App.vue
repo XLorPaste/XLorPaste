@@ -2,7 +2,9 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import IconGithub from '~icons/mdi/github';
+
 import { Navbar, NavbarItem } from './components/navbar';
+import { getAdminKey } from './logic/admin';
 
 const version = __VERSION__;
 const commit = __COMMIT__;
@@ -76,6 +78,7 @@ const search = async () => {
       </div>
 
       <p class="font-mono my-1">
+        <span v-if="getAdminKey()"><router-link :to="{ name: 'Admin' }">管理</router-link> | </span>
         <router-link :to="{ name: 'Help' }">帮助</router-link> |
         <a href="https://upptime.xlorpaste.cn/" target="_blank" rel="noopener noreferrer">状态</a>
         |

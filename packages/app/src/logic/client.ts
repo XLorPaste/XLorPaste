@@ -1,4 +1,5 @@
 import { client } from 'xlorpaste';
+import { getAdminKey } from './admin';
 
 const xlorpaste = client();
 
@@ -11,7 +12,7 @@ export async function fetch(token: string) {
 }
 
 export async function list() {
-  const key = window.localStorage.getItem('ADMIN_KEY');
+  const key = getAdminKey();
   if (key && key.length > 0) {
     return await xlorpaste.list(key);
   } else {
