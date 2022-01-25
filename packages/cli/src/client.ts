@@ -12,7 +12,7 @@ export class XLorPasteClient {
   }
 
   private format(code: string) {
-    return code.trim();
+    return code.replace(/\r\n|\n\r|\n|\r/g, '\n').trim();
   }
 
   async upload(

@@ -1,18 +1,34 @@
 import { cac } from 'cac';
-import { green, lightRed } from 'kolorist';
+import { green, lightBlue, lightRed } from 'kolorist';
+
 import { version } from '../package.json';
+import { CliOption } from './types';
 import { client } from './client';
+import { printSubmission } from './print';
+import { getExt, readCode } from './upload';
 
 const cli = cac('xlorpaste');
 
 const xlorpaste = client();
 
-cli.command('<token>').action(async (token: string) => {
-  const sub = await xlorpaste.fetch(token);
-  console.log(sub.body);
-});
+cli
+  .command('<token>')
+  .option('--raw, -r', 'Display raw code')
+  .action(async (token: string, option: CliOption) => {
+    const sub = await xlorpaste.fetch(token);
+    printSubmission(sub, option);
+  });
 
-cli.command('up [file]').action(async () => {});
+cli
+  .command('up [file]')
+  .option('-l, --lang, --language <language>', 'Language')
+  .action(async (file: string | undefined, { language }: { language?: string }) => {
+    const body = await readCode(file);
+    const sub = await xlorpaste.upload(language ?? getExt(file), body);
+    console.log(`Link   ${lightBlue(`https://xlorpaste.cn/view/${sub.token}`)}`);
+    console.log(`Token  ${green(sub.token)}`);
+    console.log(`Delete ${lightRed(sub.delete)}`);
+  });
 
 cli.command('rm <token>').action(async (token: string) => {
   const ok = await xlorpaste.remove(token);

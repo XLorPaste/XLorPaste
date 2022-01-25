@@ -1,3 +1,7 @@
+export interface CliOption {
+  raw: boolean;
+}
+
 export interface Payload {
   timestamp: string;
   lang: string;
