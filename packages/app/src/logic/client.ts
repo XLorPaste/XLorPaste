@@ -1,10 +1,22 @@
-import { client } from 'xlorpaste';
+import { client, UploadResponse } from 'xlorpaste';
 import { getAdminKey } from './admin';
 
 const xlorpaste = client();
 
+const lastSub = {
+  lang: '',
+  body: '',
+  submission: undefined as UploadResponse | undefined
+};
+
 export async function upload(lang: string, body: string) {
-  return await xlorpaste.upload(lang, body);
+  if (lastSub.submission && lastSub.lang === lang && lastSub.body === body) {
+    return lastSub.submission;
+  }
+  lastSub.submission = await xlorpaste.upload(lang, body);
+  lastSub.lang = lang;
+  lastSub.body = body;
+  return lastSub.submission;
 }
 
 export async function fetch(token: string) {
