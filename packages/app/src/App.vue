@@ -52,9 +52,9 @@ const search = async () => {
 
   <footer class="mt-4 px-1 py-4 text-sm">
     <div class="text-center text-gray-400">
-      <div class="flex items-center justify-center font-mono h-4 my-1">
+      <div class="flex justify-center font-mono h-4 my-1">
         <a
-          class="text-$text-light-1 inline-block mr-2"
+          class="text-$text-light-1 inline-flex items-center mr-2"
           href="https://github.com/XLorPaste"
           target="_blank"
           ><icon-github class="align-middle"></icon-github
