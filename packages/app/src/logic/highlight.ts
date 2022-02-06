@@ -1,4 +1,20 @@
-import { Highlighter, getHighlighter, loadTheme, setCDN, setWasm } from 'shiki';
+import { Highlighter, getHighlighter, loadTheme, setCDN, setWasm, Lang } from 'shiki';
+
+const supportLangs: Lang[] = [
+  'c',
+  'cpp',
+  'java',
+  'javascript',
+  'json',
+  'python',
+  'typescript',
+  'yaml'
+];
+
+const alias: Map<string, Lang> = new Map([
+  ['c++', 'cpp'],
+  ['C++', 'cpp']
+]);
 
 let highlighter: Highlighter | null = null;
 
@@ -14,38 +30,52 @@ async function setup() {
 
     highlighter = await getHighlighter({
       themes,
-      langs: ['c', 'cpp', 'java', 'javascript', 'json', 'python', 'typescript', 'yaml']
+      langs: supportLangs
     });
   }
 }
 
+export function escapeCode(raw: string) {
+  return raw.replace(/[<>"& ]/g, (match) => {
+    switch (match) {
+      case '<':
+        return '&lt;';
+      case '>':
+        return '&gt;';
+      case '"':
+        return '&quot;';
+      case '&':
+        return '&amp;';
+      case ' ':
+        return '&nbsp;';
+      default:
+        return '';
+    }
+  });
+}
+
 export async function highlight(lang: string, code: string) {
   if (lang === 'text') {
-    const lines = code
-      .replace(/[<>"& ]/g, (match) => {
-        switch (match) {
-          case '<':
-            return '&lt;';
-          case '>':
-            return '&gt;';
-          case '"':
-            return '&quot;';
-          case '&':
-            return '&amp;';
-          case ' ':
-            return '&nbsp;';
-          default:
-            return '';
-        }
-      })
-      .split('\n');
-    return `<pre class="shiki"><code>${lines
+    return `<pre class="shiki"><code>${escapeCode(code)
+      .split('\n')
       .map((l) => `<span class="line">${l}</span>`)
       .join('\n')}</code></pre>`;
   } else if (lang === 'md') {
     if (!mdRender) {
+      await setup();
       const { createMarkdown } = await import('./markdown');
-      mdRender = createMarkdown();
+
+      mdRender = createMarkdown({
+        highlight: (code, lang) => {
+          code = code.trim();
+          lang = alias.get(lang) ?? lang;
+          if (supportLangs.find((l) => l === lang)) {
+            return highlighter!.codeToHtml(code, { lang });
+          } else {
+            return escapeCode(code);
+          }
+        }
+      });
     }
     return `<div class="markdown-body">${mdRender(code)}</div>`;
   } else {

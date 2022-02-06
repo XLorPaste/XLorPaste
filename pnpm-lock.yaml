@@ -28,11 +28,13 @@ importers:
     specifiers:
       '@chenfengyuan/vue-qrcode': ^2.0.0-rc.1
       '@iconify/json': ^1.1.450
+      '@types/katex': ^0.11.1
       '@unocss/preset-uno': ^0.18.0
       '@unocss/preset-wind': ^0.18.0
       '@vitejs/plugin-vue': ^2.0.0
       date-fns: ^2.28.0
       github-markdown-css: ^5.1.0
+      katex: ^0.15.2
       markdown-it: ^12.3.2
       qrcode: ^1.5.0
       shiki: ^0.10.0
@@ -50,6 +52,7 @@ importers:
       '@chenfengyuan/vue-qrcode': 2.0.0-rc.1_qrcode@1.5.0+vue@3.2.29
       date-fns: 2.28.0
       github-markdown-css: 5.1.0
+      katex: 0.15.2
       markdown-it: 12.3.2
       qrcode: 1.5.0
       shiki: 0.10.0
@@ -58,6 +61,7 @@ importers:
       xlorpaste: link:../cli
     devDependencies:
       '@iconify/json': 1.1.450
+      '@types/katex': 0.11.1
       '@unocss/preset-uno': 0.18.0
       '@unocss/preset-wind': 0.18.0
       '@vitejs/plugin-vue': 2.0.1_vite@2.7.13+vue@3.2.29
@@ -247,6 +251,10 @@ packages:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
     dependencies:
       '@types/node': 17.0.4
+    dev: true
+
+  /@types/katex/0.11.1:
+    resolution: {integrity: sha512-DUlIj2nk0YnJdlWgsFuVKcX27MLW0KbKmGVoUHmFr+74FYYNUDAaj9ZqTADvsbE8rfxuVmSFc7KczYn5Y09ozg==}
     dev: true
 
   /@types/linkify-it/3.0.2:
@@ -826,7 +834,6 @@ packages:
   /commander/8.3.0:
     resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
     engines: {node: '>= 12'}
-    dev: true
 
   /concat-map/0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
@@ -1725,6 +1732,13 @@ packages:
       is-promise: 2.2.2
       promise: 7.3.1
     dev: true
+
+  /katex/0.15.2:
+    resolution: {integrity: sha512-FfZ/f6f8bQdLmJ3McXDNTkKenQkoXkItpW0I9bsG2wgb+8JAY5bwpXFtI8ZVrg5hc1wo1X/UIhdkVMpok46tEQ==}
+    hasBin: true
+    dependencies:
+      commander: 8.3.0
+    dev: false
 
   /kind-of/6.0.3:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
