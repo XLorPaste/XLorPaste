@@ -40,21 +40,21 @@ async function setup(...lang: Lang[]) {
     setWasm(await fetch(base + `onig.wasm`).then((res) => res.arrayBuffer()));
     themes.push(await loadTheme('themes/eva-light.json'));
 
-    highlighter = await getHighlighter({
+    return (highlighter = await getHighlighter({
       themes,
       langs: lang
-    });
+    }));
   } else {
-    highlighter = await getHighlighter({
+    return (highlighter = await getHighlighter({
       themes,
       langs: lang
-    });
+    }));
   }
 }
 
 export async function preSetup() {
   await setup(supportLangs[0]);
-  return Promise.all(supportLangs.slice(1).map((lang) => setup(lang)));
+  await Promise.all(supportLangs.slice(1).map((lang) => setup(lang)));
 }
 
 export function escapeCode(raw: string) {
@@ -87,7 +87,7 @@ export async function highlight(lang: string, code: string) {
     return renderText();
   } else if (lang === 'md') {
     if (!mdRender) {
-      await setup(...supportLangs);
+      const hl = await setup(...supportLangs);
       const { createMarkdown } = await import('./markdown');
 
       mdRender = createMarkdown({
@@ -95,7 +95,7 @@ export async function highlight(lang: string, code: string) {
           code = code.trim();
           lang = alias.get(lang) ?? lang;
           if (isLangSupport(lang)) {
-            return highlighter!.codeToHtml(code, { lang });
+            return hl.codeToHtml(code, { lang });
           } else {
             return escapeCode(code);
           }
@@ -105,8 +105,7 @@ export async function highlight(lang: string, code: string) {
     return `<div class="markdown-body">${mdRender(code)}</div>`;
   } else {
     if (isLangSupport(lang)) {
-      await setup(lang);
-      return highlighter!.codeToHtml(code, { lang });
+      return (await setup(lang)).codeToHtml(code, { lang });
     } else {
       return renderText();
     }
