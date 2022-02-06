@@ -32,7 +32,7 @@ function isLangSupport(lang: string): lang is Lang {
   return !!supportLangs.find((l) => l === lang);
 }
 
-async function setup(...lang: Lang[]) {
+async function setup(...langs: Lang[]) {
   if (!highlighter) {
     // base is root
     const base = '/';
@@ -42,12 +42,12 @@ async function setup(...lang: Lang[]) {
 
     return (highlighter = await getHighlighter({
       themes,
-      langs: lang
+      langs
     }));
   } else {
     return (highlighter = await getHighlighter({
       themes,
-      langs: lang
+      langs
     }));
   }
 }
@@ -87,6 +87,7 @@ export async function highlight(lang: string, code: string) {
     return renderText();
   } else if (lang === 'md') {
     if (!mdRender) {
+      await preSetup();
       const hl = await setup(...supportLangs);
       const { createMarkdown } = await import('./markdown');
 
