@@ -8,7 +8,7 @@
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "lib": ["esnext", "dom"],
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
