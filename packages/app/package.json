@@ -14,6 +14,7 @@
     "katex": "^0.15.2",
     "markdown-it": "^12.3.2",
     "markdown-it-math": "^4.1.1",
+    "normalize.css": "^8.0.1",
     "qrcode": "^1.5.0",
     "shiki": "^0.10.0",
     "vue": "^3.2.29",

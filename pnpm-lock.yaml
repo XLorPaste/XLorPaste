@@ -37,6 +37,7 @@ importers:
       katex: ^0.15.2
       markdown-it: ^12.3.2
       markdown-it-math: ^4.1.1
+      normalize.css: ^8.0.1
       qrcode: ^1.5.0
       shiki: ^0.10.0
       tslib: ^2.3.1
@@ -56,6 +57,7 @@ importers:
       katex: 0.15.2
       markdown-it: 12.3.2
       markdown-it-math: 4.1.1
+      normalize.css: 8.0.1
       qrcode: 1.5.0
       shiki: 0.10.0
       vue: 3.2.29
@@ -1983,6 +1985,10 @@ packages:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /normalize.css/8.0.1:
+    resolution: {integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==}
+    dev: false
 
   /npm-run-path/2.0.2:
     resolution: {integrity: sha1-NakjLfo11wZ7TLLd8jV7GHFTbF8=}
