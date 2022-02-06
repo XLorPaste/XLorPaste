@@ -1,4 +1,10 @@
-import { Highlighter, getHighlighter, loadTheme, setCDN, setWasm, Lang } from 'shiki';
+import { Highlighter, getHighlighter, loadTheme, setCDN, setWasm, Lang, IShikiTheme } from 'shiki';
+
+let highlighter: Highlighter | null = null;
+
+const themes: IShikiTheme[] = [];
+
+let mdRender: ((raw: string) => string) | null = null;
 
 const supportLangs: Lang[] = [
   'c',
@@ -16,23 +22,32 @@ const alias: Map<string, Lang> = new Map([
   ['C++', 'cpp']
 ]);
 
-let highlighter: Highlighter | null = null;
+function isLangSupport(lang: string): lang is Lang {
+  return !!supportLangs.find((l) => l === lang);
+}
 
-let mdRender: ((raw: string) => string) | null = null;
-
-async function setup() {
+async function setup(...lang: Lang[]) {
   if (!highlighter) {
     // base is root
     const base = '/';
     setCDN(base);
     setWasm(await fetch(base + `onig.wasm`).then((res) => res.arrayBuffer()));
-    const themes = [await loadTheme('themes/eva-light.json')];
+    themes.push(await loadTheme('themes/eva-light.json'));
 
     highlighter = await getHighlighter({
       themes,
-      langs: supportLangs
+      langs: lang
+    });
+  } else {
+    highlighter = await getHighlighter({
+      themes,
+      langs: lang
     });
   }
+}
+
+export async function preSetup() {
+  return setup(...supportLangs);
 }
 
 export function escapeCode(raw: string) {
@@ -55,21 +70,24 @@ export function escapeCode(raw: string) {
 }
 
 export async function highlight(lang: string, code: string) {
-  if (lang === 'text') {
-    return `<pre class="shiki"><code>${escapeCode(code)
+  const renderText = () =>
+    `<pre class="shiki"><code>${escapeCode(code)
       .split('\n')
       .map((l) => `<span class="line">${l}</span>`)
       .join('\n')}</code></pre>`;
+
+  if (lang === 'text') {
+    return renderText();
   } else if (lang === 'md') {
     if (!mdRender) {
-      await setup();
+      await setup(...supportLangs);
       const { createMarkdown } = await import('./markdown');
 
       mdRender = createMarkdown({
         highlight: (code, lang) => {
           code = code.trim();
           lang = alias.get(lang) ?? lang;
-          if (supportLangs.find((l) => l === lang)) {
+          if (isLangSupport(lang)) {
             return highlighter!.codeToHtml(code, { lang });
           } else {
             return escapeCode(code);
@@ -79,7 +97,11 @@ export async function highlight(lang: string, code: string) {
     }
     return `<div class="markdown-body">${mdRender(code)}</div>`;
   } else {
-    await setup();
-    return highlighter!.codeToHtml(code, { lang });
+    if (isLangSupport(lang)) {
+      await setup(lang);
+      return highlighter!.codeToHtml(code, { lang });
+    } else {
+      return renderText();
+    }
   }
 }

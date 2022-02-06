@@ -3,10 +3,11 @@ import { ref } from 'vue';
 import { Submission } from 'xlorpaste';
 import { AdminBox } from '../../components/codebox';
 import { list } from '../../logic/client';
+import { preSetup } from '../../logic/highlight';
 
 const subs = ref<Submission[]>([]);
 
-list().then((result) => subs.value.push(...result));
+Promise.all([list(), preSetup()]).then(([result]) => subs.value.push(...result));
 </script>
 
 <template>
