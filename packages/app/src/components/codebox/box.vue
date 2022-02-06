@@ -100,6 +100,7 @@ const width = computed(() => {
 .code-box .markdown-body {
   margin-left: 1rem;
   margin-right: 1rem;
+  margin-bottom: 1rem;
 }
 
 .ml-token {
