@@ -40,7 +40,7 @@ const width = computed(() => {
       style="border-bottom: 1px solid rgb(235, 238, 245)"
     >
       <div class="<md:text-sm">
-        <span :class="[sub.lang !== 'md' && 'ml-token', '<md:text-xs']"></span>
+        <span :class="[sub.lang !== 'md' ? 'ml-token' : 'ml-md', '<md:text-xs']"></span>
         <span class="font-bold">Token </span>
         <router-link :to="{ name: 'View', params: { token: sub.token } }">{{
           sub.token
@@ -58,7 +58,7 @@ const width = computed(() => {
       class="p-4 font-mono flex justify-between items-center"
       style="border-top: 1px solid rgb(235, 238, 245)"
     >
-      <div :class="[sub.lang !== 'md' && 'ml-token', '<md:text-xs']">
+      <div :class="[sub.lang !== 'md' ? 'ml-token' : 'ml-md', '<md:text-xs']">
         <slot name="footer"></slot>
       </div>
     </div>
@@ -91,6 +91,15 @@ const width = computed(() => {
 .shiki code .line {
   height: 1em;
   line-height: 1em;
+}
+
+.ml-md {
+  margin-left: 1rem;
+}
+
+.code-box .markdown-body {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .ml-token {
