@@ -41,6 +41,8 @@ const rows =
           <option value="javascript">JavaScript</option>
           <option value="json">JSON</option>
           <option value="yaml">Yaml</option>
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
         </c-select>
       </div>
       <c-button success @click="submit"><IconUpload class="mr-2" /> 提交</c-button>

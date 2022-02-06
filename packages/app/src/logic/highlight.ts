@@ -14,12 +14,18 @@ const supportLangs: Lang[] = [
   'json',
   'python',
   'typescript',
-  'yaml'
+  'yaml',
+  'html',
+  'css'
 ];
 
 const alias: Map<string, Lang> = new Map([
   ['c++', 'cpp'],
-  ['C++', 'cpp']
+  ['C++', 'cpp'],
+  ['C', 'c'],
+  ['js', 'javascript'],
+  ['ts', 'typescript'],
+  ['py', 'python']
 ]);
 
 function isLangSupport(lang: string): lang is Lang {
@@ -47,7 +53,8 @@ async function setup(...lang: Lang[]) {
 }
 
 export async function preSetup() {
-  return setup(...supportLangs);
+  await setup(supportLangs[0]);
+  return Promise.all(supportLangs.slice(1).map((lang) => setup(lang)));
 }
 
 export function escapeCode(raw: string) {
