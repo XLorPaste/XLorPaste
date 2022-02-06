@@ -1,5 +1,6 @@
 import 'github-markdown-css';
-import * as MarkdownIt from 'markdown-it';
+// @ts-ignore
+import MarkdownIt from 'markdown-it';
 // @ts-ignore
 import MathPlugin from 'markdown-it-math';
 import { createKatexRender } from './katex';

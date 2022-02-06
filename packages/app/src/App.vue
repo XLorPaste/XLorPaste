@@ -12,6 +12,7 @@ const router = useRouter();
 const searchInput = ref('');
 
 const search = async () => {
+  if (searchInput.value === '') return;
   await router.push({ name: 'View', params: { token: searchInput.value } });
   searchInput.value = '';
 };
