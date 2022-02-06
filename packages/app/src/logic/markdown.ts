@@ -1,6 +1,8 @@
 import 'github-markdown-css';
 import * as MarkdownIt from 'markdown-it';
-import mathPlugin from './katex';
+// @ts-ignore
+import MathPlugin from 'markdown-it-math';
+import { createKatexRender } from './katex';
 
 interface MarkdownItOption {
   highlight?: (code: string, lang: string) => string;
@@ -13,7 +15,16 @@ export function createMarkdown(options: MarkdownItOption = {}) {
     typographer: true,
     highlight: options.highlight
   });
-  markdown.use(mathPlugin);
+
+  const { inlineRenderer, blockRenderer } = createKatexRender();
+  markdown.use(MathPlugin, {
+    inlineOpen: '$',
+    inlineClose: '$',
+    blockOpen: '$$',
+    blockClose: '$$',
+    inlineRenderer,
+    blockRenderer
+  });
 
   return (raw: string) => {
     return markdown.render(raw);

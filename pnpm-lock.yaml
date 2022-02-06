@@ -36,6 +36,7 @@ importers:
       github-markdown-css: ^5.1.0
       katex: ^0.15.2
       markdown-it: ^12.3.2
+      markdown-it-math: ^4.1.1
       qrcode: ^1.5.0
       shiki: ^0.10.0
       tslib: ^2.3.1
@@ -54,6 +55,7 @@ importers:
       github-markdown-css: 5.1.0
       katex: 0.15.2
       markdown-it: 12.3.2
+      markdown-it-math: 4.1.1
       qrcode: 1.5.0
       shiki: 0.10.0
       vue: 3.2.29
@@ -624,6 +626,15 @@ packages:
   /asap/2.0.6:
     resolution: {integrity: sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=}
     dev: true
+
+  /ascii2mathml/0.6.2:
+    resolution: {integrity: sha512-tkPONh2Y7ZpuGQw6AiRnExX/CSYf5C2T/rF+UMJq5n0Us7+QjL8VY5ZE16xo9wcXhdqPkl/F7lzEzU9HX0YKng==}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      minimist: 1.2.5
+    dev: false
+    optional: true
 
   /assert-never/1.2.1:
     resolution: {integrity: sha512-TaTivMB6pYI1kXwrFlEhLeGfOqoDNdTxjCdwRfFFkEA30Eu+k48W34nlok2EYWJfFFzqaEmichdNM7th6M5HNw==}
@@ -1858,6 +1869,12 @@ packages:
     resolution: {integrity: sha1-5WqpTEyAVaFkBKBnS3jyFffI4ZQ=}
     dev: true
 
+  /markdown-it-math/4.1.1:
+    resolution: {integrity: sha512-LQ0hREgMgN4tNcy2PGyw1XypjmKJjc+ZzATMuDIVD/Bagr5SGL198uHleVdiFDrNdXpqVmL4N1KD1GYyftMakQ==}
+    optionalDependencies:
+      ascii2mathml: 0.6.2
+    dev: false
+
   /markdown-it/12.3.2:
     resolution: {integrity: sha512-TchMembfxfNVpHkbtriWltGWc+m3xszaRD0CZup7GFFhzIgQqxIfn3eGj1yZpfuflzPvfkt611B2Q/Bsk1YnGg==}
     hasBin: true
@@ -1913,7 +1930,6 @@ packages:
 
   /minimist/1.2.5:
     resolution: {integrity: sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==}
-    dev: true
 
   /mlly/0.2.10:
     resolution: {integrity: sha512-xfyW6c2QBGArtctzNnTV5leOKX8nOMz2simeubtXofdsdSJFSNw+Ncvrs8kxcN3pBrQLXuYBHNFV6NgZ5Ryf4A==}
