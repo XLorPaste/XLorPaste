@@ -33,6 +33,7 @@ importers:
       '@vitejs/plugin-vue': ^2.0.0
       date-fns: ^2.28.0
       github-markdown-css: ^5.1.0
+      markdown-it: ^12.3.2
       qrcode: ^1.5.0
       shiki: ^0.10.0
       tslib: ^2.3.1
@@ -49,6 +50,7 @@ importers:
       '@chenfengyuan/vue-qrcode': 2.0.0-rc.1_qrcode@1.5.0+vue@3.2.26
       date-fns: 2.28.0
       github-markdown-css: 5.1.0
+      markdown-it: 12.3.2
       qrcode: 1.5.0
       shiki: 0.10.0
       vue: 3.2.26
@@ -599,7 +601,6 @@ packages:
 
   /argparse/2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
-    dev: true
 
   /array-union/2.1.0:
     resolution: {integrity: sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==}
@@ -1005,7 +1006,6 @@ packages:
 
   /entities/2.1.0:
     resolution: {integrity: sha512-hCx1oky9PFrJ611mf0ifBLBRW8lUUVRlFolb5gWRfIELabBlbp9xZvrqZLZAs+NxFnbfQoeGd8wDkygjg7U85w==}
-    dev: true
 
   /entities/2.2.0:
     resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
@@ -1746,7 +1746,6 @@ packages:
     resolution: {integrity: sha512-ynTsyrFSdE5oZ/O9GEf00kPngmOfVwazR5GKDq6EYfhlpFug3J2zybX56a2PRRpc9P+FuSoGNAwjlbDs9jJBPQ==}
     dependencies:
       uc.micro: 1.0.6
-    dev: true
 
   /lint-staged/11.2.6:
     resolution: {integrity: sha512-Vti55pUnpvPE0J9936lKl0ngVeTdSZpEdTNhASbkaWX7J5R9OEifo1INBGQuGW4zmy6OG+TcWPJ3m5yuy5Q8Tg==}
@@ -1853,11 +1852,9 @@ packages:
       linkify-it: 3.0.3
       mdurl: 1.0.1
       uc.micro: 1.0.6
-    dev: true
 
   /mdurl/1.0.1:
     resolution: {integrity: sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4=}
-    dev: true
 
   /merge-stream/2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
@@ -2730,7 +2727,6 @@ packages:
 
   /uc.micro/1.0.6:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
-    dev: true
 
   /unconfig/0.2.2:
     resolution: {integrity: sha512-JN1MeYJ/POnjBj7NgOJJxPp6+NcD6Nd0hEuK0D89kjm9GvQQUq8HeE2Eb7PZgtu+64mWkDiqeJn1IZoLH7htPg==}

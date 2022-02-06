@@ -2,6 +2,8 @@ import { Highlighter, getHighlighter, loadTheme, setCDN, setWasm } from 'shiki';
 
 let highlighter: Highlighter | null = null;
 
+let mdRender: ((raw: string) => string) | null = null;
+
 async function setup() {
   if (!highlighter) {
     // base is root
@@ -40,6 +42,12 @@ export async function highlight(lang: string, code: string) {
     return `<pre class="shiki"><code>${lines
       .map((l) => `<span class="line">${l}</span>`)
       .join('\n')}</code></pre>`;
+  } else if (lang === 'md') {
+    if (!mdRender) {
+      const { createMarkdown } = await import('./markdown');
+      mdRender = createMarkdown();
+    }
+    return `<div class="markdown-body">${mdRender(code)}</div>`;
   } else {
     await setup();
     return highlighter!.codeToHtml(code, { lang });

@@ -40,7 +40,7 @@ const width = computed(() => {
       style="border-bottom: 1px solid rgb(235, 238, 245)"
     >
       <div class="<md:text-sm">
-        <span class="ml-token <md:text-xs"></span>
+        <span class="ml-token <md:text-xs" v-if="sub.lang !== 'md'"></span>
         <span class="font-bold">Token </span>
         <router-link :to="{ name: 'View', params: { token: sub.token } }">{{
           sub.token
@@ -71,12 +71,12 @@ const width = computed(() => {
 .code-box {
   border: 1px solid rgb(235, 238, 245);
   box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+  tab-size: 2;
 }
 
 .shiki {
   margin: 0;
   background-color: white !important;
-  tab-size: 2;
 }
 
 .shiki code {
