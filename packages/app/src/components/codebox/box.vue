@@ -48,7 +48,7 @@ const width = computed(() => {
         <span class="font-bold ml-4">语言 </span>
         <span>{{ sub.lang }}</span>
       </div>
-      <div><a class="px-2 py-2 cursor-pointer" @click="copy">复制</a></div>
+      <div><a class="px-4 py-2 cursor-pointer" @click="copy">复制</a></div>
     </div>
 
     <div class="px-4 py-4 overflow-x-auto <md:text-xs <md:p-2" v-html="code"></div>
