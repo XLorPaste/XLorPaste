@@ -14,7 +14,7 @@ const copyDelete = async () => {
 </script>
 
 <template>
-  <code-box :sub="sub" footer>
+  <code-box :sub="sub" footer :max-line="10">
     <template #footer>
       <div>
         <div><span class="font-bold">创建时间 </span>{{ timestamp }}</div>

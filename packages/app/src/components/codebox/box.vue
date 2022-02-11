@@ -3,8 +3,8 @@ import { toRefs, ref, watch, computed } from 'vue';
 import { FetchSubmission } from 'xlorpaste';
 import { highlight } from '../../logic/highlight';
 
-const props = defineProps<{ sub: FetchSubmission; footer?: boolean }>();
-const { sub } = toRefs(props);
+const props = defineProps<{ sub: FetchSubmission; footer?: boolean; maxLine?: number }>();
+const { sub, maxLine } = toRefs(props);
 
 const code = ref('');
 
@@ -51,7 +51,10 @@ const width = computed(() => {
       <div><a class="px-4 py-2 cursor-pointer" @click="copy">复制</a></div>
     </div>
 
-    <div class="px-4 py-4 overflow-x-auto <md:text-xs <md:p-2" v-html="code"></div>
+    <div
+      :class="['px-4 py-4 overflow-x-auto <md:text-xs <md:p-2', maxLine && 'max-line']"
+      v-html="code"
+    ></div>
 
     <div
       v-if="footer"
@@ -72,6 +75,10 @@ const width = computed(() => {
   border: 1px solid rgb(235, 238, 245);
   box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
   tab-size: 2;
+}
+
+.max-line {
+  max-height: calc(v-bind(maxLine) * 1em + 1em);
 }
 
 .shiki {
