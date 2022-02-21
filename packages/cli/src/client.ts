@@ -15,6 +15,24 @@ export class XLorPasteClient {
     return code.replace(/\r\n|\n\r|\n|\r/g, '\n').trim();
   }
 
+  private encode(lang: string, code: string) {
+    const text = Base64.encode(this.format(code));
+    if (lang === 'json') {
+      return JSON.stringify(JSON.parse(text));
+    } else {
+      return text;
+    }
+  }
+
+  private decode(lang: string, code: string) {
+    const text = this.format(Base64.decode(code));
+    if (lang === 'json') {
+      return JSON.stringify(JSON.parse(text), null, 2);
+    } else {
+      return text;
+    }
+  }
+
   async upload(
     lang: string,
     body: string,
@@ -22,7 +40,7 @@ export class XLorPasteClient {
   ): Promise<UploadResponse> {
     const payload: Payload = {
       lang,
-      body: Base64.encode(this.format(body)),
+      body: this.encode(lang, body),
       timestamp: new Date().toISOString(),
       once: options.once,
       pass: options.pass
@@ -36,7 +54,7 @@ export class XLorPasteClient {
     if ('status' in data) {
       throw data;
     } else {
-      data.body = this.format(Base64.decode(data.body));
+      data.body = this.decode(data.lang, data.body);
       return data;
     }
   }
