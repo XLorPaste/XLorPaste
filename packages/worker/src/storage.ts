@@ -5,7 +5,7 @@ import memoryDriver from 'unstorage/drivers/memory';
 import { randomString } from './utils';
 
 export const storage = createStorage({
-  driver: __LOCAL__ ? memoryDriver() : cloudflareKVDriver({ binding: 'XLORPASTE' })
+  driver: __DEV__ ? memoryDriver() : cloudflareKVDriver({ binding: 'XLORPASTE' })
 });
 
 export const subStore = prefixStorage(storage, 'sub');

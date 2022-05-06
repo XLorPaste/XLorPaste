@@ -8,7 +8,7 @@
   "main": ".output/server/index.mjs",
   "scripts": {
     "build": "cross-env NITRO_PRESET=cloudflare nitropack build",
-    "dev": "nitropack dev",
+    "dev": "cross-env NODE_ENV=DEV nitropack dev",
     "preview": "miniflare .output/server/index.mjs --site .output/public"
   },
   "dependencies": {
