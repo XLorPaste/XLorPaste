@@ -31,6 +31,7 @@ export const routes = createRouter({
     },
     {
       path: '/view/:token',
+      alias: '/:token',
       name: 'View',
       component: View,
       meta: {

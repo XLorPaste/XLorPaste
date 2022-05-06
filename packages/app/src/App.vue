@@ -34,7 +34,7 @@ const search = async () => {
             id="search"
             placeholder="代码 Token"
             autocomplete="off"
-            class="flex-1 px-2 py-2 rounded-md border-1 border-light-900 outline-none focus:border-blue-300"
+            class="flex-1 px-2 py-2 text-xs rounded-md border-1 border-light-900 outline-none focus:border-blue-300"
             v-model="searchInput"
             @keypress.enter="search"
           />
