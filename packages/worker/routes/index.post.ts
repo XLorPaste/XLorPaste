@@ -1,10 +1,13 @@
 import type { Payload, Submission, UploadResponse } from 'xlorpaste';
-import { defineEventHandler, useBody, CompatibilityEvent } from 'h3';
+import { defineEventHandler, useBody, CompatibilityEvent, useMethod } from 'h3';
 
 import { subStore, delStore, genToken } from '~/storage';
 
 export default defineEventHandler(async (event) => {
-  return await uploadSub(event);
+  const method = useMethod(event);
+  if (method === 'POST') {
+    return await uploadSub(event);
+  }
 });
 
 export async function uploadSub(event: CompatibilityEvent): Promise<UploadResponse> {
