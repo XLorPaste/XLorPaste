@@ -1,19 +1,21 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
-    "module": "commonjs",
-    "target": "esnext",
+    "target": "es2017",
+    "module": "esnext",
     "lib": ["esnext"],
-    "alwaysStrict": true,
-    "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
-    "strict": true,
-    "preserveConstEnums": true,
     "moduleResolution": "node",
-    "sourceMap": true,
     "esModuleInterop": true,
-    "types": ["@types/node", "@cloudflare/workers-types", "@types/service-worker-mock"]
+    "strict": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   },
-  "include": ["src", "types.d.ts"],
-  "exclude": ["node_modules", "dist", "test"]
+  "include": [
+    "./routes/*"
+  ],
+  "extends": "./.nitro/types/tsconfig.json"
 }
