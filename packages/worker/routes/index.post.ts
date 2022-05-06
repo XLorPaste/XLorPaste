@@ -14,14 +14,8 @@ export async function uploadSub(event: CompatibilityEvent): Promise<UploadRespon
   const payload = await useBody<Payload>(event);
   const sub = await createSub(payload);
   sub.author = {
-    ip: event.req.headers['CF-Connecting-IP'] as string | undefined,
-    country: event.req?.cf?.country,
-    region: event.req?.cf?.region,
-    city: event.req?.cf?.city,
-    latitude: event.req?.cf?.latitude,
-    longitude: event.req?.cf?.longitude
+    ip: event.req.headers['x-real-ip'] as string | undefined
   };
-  console.log(event.req.headers, event.req?.cf);
   await subStore.setItem(sub.token, sub);
   await delStore.setItem(sub.delete, sub.token);
   return createUploadResp(sub);
