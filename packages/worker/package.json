@@ -14,6 +14,7 @@
     "xlorpaste": "workspace:*"
   },
   "devDependencies": {
-    "nitropack": "^0.4.0"
+    "nitropack": "^0.4.0",
+    "unstorage": "^0.4.1"
   }
 }

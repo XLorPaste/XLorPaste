@@ -12,7 +12,7 @@ id = "4cb100568fb84072ba819d668aea818d"
 preview_id = "c6aa0006430a4f82911c6afceaa06e17"
 
 [build]
-command = "npm install -g pnpm; pnpm install; pnpm run build"
+command = ""
 [build.upload]
 format = "service-worker"
 

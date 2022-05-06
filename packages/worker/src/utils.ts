@@ -1,3 +1,23 @@
+import { defineEventHandler, EventHandler, useMethod } from 'h3';
+
+export function defineGetHandler<T = any>(fn: EventHandler<T>) {
+  return defineEventHandler((event) => {
+    const method = useMethod(event);
+    if (method === 'GET') {
+      return fn(event);
+    }
+  });
+}
+
+export function definePostHandler<T = any>(fn: EventHandler<T>) {
+  return defineEventHandler((event) => {
+    const method = useMethod(event);
+    if (method === 'POST') {
+      return fn(event);
+    }
+  });
+}
+
 export function rand(l: number, r: number): number {
   return l + Math.round(Math.random() * (r - l));
 }

@@ -4,6 +4,7 @@
   "author": "XLor",
   "scripts": {
     "build": "pnpm --filter \"./packages/**\" run build",
+    "build:worker": "pnpm -C packages/worker build",
     "dev:app": "pnpm -C packages/app dev",
     "dev:worker": "pnpm -C packages/worker dev",
     "format": "prettier --write packages/**/*.{ts,js,mjs,vue} --ignore-path .gitignore",

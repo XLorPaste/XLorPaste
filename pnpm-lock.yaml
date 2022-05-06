@@ -107,11 +107,13 @@ importers:
   packages/worker:
     specifiers:
       nitropack: ^0.4.0
+      unstorage: ^0.4.1
       xlorpaste: workspace:*
     dependencies:
       xlorpaste: link:../cli
     devDependencies:
       nitropack: 0.4.0
+      unstorage: 0.4.1
 
 packages:
 

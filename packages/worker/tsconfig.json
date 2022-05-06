@@ -11,11 +11,14 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "unstorage/drivers/*": ["./node_modules/unstorage/dist/drivers/*.d.ts"]
     }
   },
   "include": [
-    "./routes/*"
+    "./src/*",
+    "./routes/*",
+    "./env.d.ts"
   ],
   "extends": "./.nitro/types/tsconfig.json"
 }
