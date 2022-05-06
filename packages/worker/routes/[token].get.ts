@@ -1,4 +1,5 @@
 import type { FetchSubmission, Submission } from 'xlorpaste';
+import { defineEventHandler } from 'h3';
 
 import { delStore, subStore } from '~/storage';
 

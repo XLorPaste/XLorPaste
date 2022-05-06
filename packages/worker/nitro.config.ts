@@ -7,6 +7,5 @@ export default defineNitroConfig({
   },
   replace: {
     __LOCAL__: `true`
-  },
-  plugins: ['plugins/cors.ts']
+  }
 });
