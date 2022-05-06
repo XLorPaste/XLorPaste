@@ -1,9 +1,8 @@
 import type { FetchSubmission, Submission } from 'xlorpaste';
 
-import { defineGetHandler } from '~/utils';
 import { delStore, subStore } from '~/storage';
 
-export default defineGetHandler(async (event) => {
+export default defineEventHandler(async (event) => {
   const token = event.context.params.token;
   if (token) {
     return await getSub(event.context.params.token);
