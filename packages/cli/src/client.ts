@@ -1,13 +1,33 @@
 import axios, { AxiosInstance } from 'axios';
 import { Base64 } from 'js-base64';
+
 import type { Payload, UploadResponse, Submission, FetchError, FetchSubmission } from './types';
+
+export interface ClientOptions {
+  /**
+   * XLorPaste API url
+   *
+   * @default 'https://api.xlorpaste.cn'
+   */
+  apiURL?: string;
+
+  /**
+   * Max code length
+   *
+   * @default 1048576
+   */
+  maxLength?: number;
+}
 
 export class XLorPasteClient {
   private readonly api: AxiosInstance;
 
-  constructor(apiURL?: string) {
+  private readonly option: Required<ClientOptions>;
+
+  constructor(option: Required<ClientOptions>) {
+    this.option = option;
     this.api = axios.create({
-      baseURL: apiURL ?? 'https://api.xlorpaste.cn'
+      baseURL: option.apiURL
     });
   }
 
@@ -38,6 +58,10 @@ export class XLorPasteClient {
     body: string,
     options: Pick<Submission, 'once' | 'pass'> = {}
   ): Promise<UploadResponse> {
+    if (body.length > this.option.maxLength) {
+      throw new Error(`Your code is too long.`);
+    }
+
     const payload: Payload = {
       lang,
       body: this.encode(lang, body),
@@ -46,6 +70,7 @@ export class XLorPasteClient {
       pass: options.pass
     };
     const { data } = await this.api.post<UploadResponse>('/', payload);
+
     return data;
   }
 
@@ -89,10 +114,12 @@ export class XLorPasteClient {
   }
 }
 
-export interface ClientOptions {
-  apiURL?: string;
-}
-
 export function client(options: ClientOptions = {}) {
-  return new XLorPasteClient(options.apiURL);
+  if (!options.apiURL) {
+    options.apiURL = 'https://api.xlorpaste.cn';
+  }
+  if (!options.maxLength) {
+    options.maxLength = 1048576;
+  }
+  return new XLorPasteClient(options as Required<ClientOptions>);
 }
