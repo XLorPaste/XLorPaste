@@ -9,8 +9,7 @@
     "dev:app": "pnpm -C packages/app dev",
     "dev:worker": "pnpm -C packages/worker dev",
     "format": "prettier --write packages/**/*.{ts,js,mjs,vue} --ignore-path .gitignore",
-    "publish": "pnpm publish -r --access public",
-    "release": "zx scripts/release.mjs"
+    "release": "bumpp packages/*/package.json --commit --push --tag && pnpm publish -r --access public"
   },
   "husky": {
     "hooks": {
@@ -27,6 +26,7 @@
   },
   "devDependencies": {
     "@types/node": "^17.0.29",
+    "bumpp": "^7.1.1",
     "cross-env": "^7.0.3",
     "husky": "^1.2.0",
     "lint-staged": "^11.0.0",
