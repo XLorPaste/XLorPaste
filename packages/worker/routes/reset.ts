@@ -3,7 +3,7 @@ import { defineEventHandler } from 'h3';
 import { storage, subStore, delStore } from '~/storage';
 
 export default defineEventHandler(async () => {
-  const keys = (await XLORPASTE.list()).map((k: any) => k.name);
+  const keys = (await XLORPASTE.list()).keys.map((k: any) => k.name);
   console.log(keys);
   for (const key of keys) {
     if (key.startsWith('sub/')) {
