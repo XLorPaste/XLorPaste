@@ -24,6 +24,7 @@
     ]
   },
   "devDependencies": {
+    "@types/node": "^17.0.4",
     "husky": "^1.2.0",
     "lint-staged": "^11.0.0",
     "pnpm": "^7.0.0",
