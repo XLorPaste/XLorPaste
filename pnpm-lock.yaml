@@ -108,12 +108,14 @@ importers:
 
   packages/worker:
     specifiers:
+      '@cloudflare/workers-types': ^3.9.0
       nitropack: ^0.4.0
       unstorage: ^0.4.1
       xlorpaste: workspace:*
     dependencies:
       xlorpaste: link:../cli
     devDependencies:
+      '@cloudflare/workers-types': 3.9.0
       nitropack: 0.4.0
       unstorage: 0.4.1
 
@@ -186,6 +188,10 @@ packages:
     resolution: {integrity: sha512-MVbXLbTcAotOPUj0pAMhVtJ+3/kFkwJqc5qNOleOZTv6QkZZABDMS21dSrSlVswEHwrpWC03e4fWytjqKvuE2A==}
     dependencies:
       mime: 3.0.0
+    dev: true
+
+  /@cloudflare/workers-types/3.9.0:
+    resolution: {integrity: sha512-juyc/T+0QlwB4p7mTPoxS87RlHjceXJdCWwbGAQ5l3dO5xSDymW41wYx6f6LYe51fLccpjibj56UvqKeec2SSw==}
     dev: true
 
   /@emmetio/abbreviation/2.2.2:

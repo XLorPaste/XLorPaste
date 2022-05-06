@@ -13,7 +13,10 @@
     "paths": {
       "~/*": ["./src/*"],
       "unstorage/drivers/*": ["./node_modules/unstorage/dist/drivers/*.d.ts"]
-    }
+    },
+    "types": [
+      "@cloudflare/workers-types"
+    ]
   },
   "include": [
     "./src/**/*.ts",
