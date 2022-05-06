@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { watch, ref } from 'vue';
+import NProgress from 'nprogress';
 import { useRoute, useRouter } from 'vue-router';
 import { FetchSubmission } from 'xlorpaste';
 import { fetch } from '../logic/client';
@@ -14,14 +15,18 @@ watch(
   () => route.params.token as string,
   async (token: string | null) => {
     try {
+      NProgress.start();
       if (!!token) {
         const data = await fetch(token);
+
         sub.value = data;
       } else {
         throw new Error('token is empty');
       }
     } catch (error) {
       setTimeout(() => router.push({ name: 'Home' }), 0);
+    } finally {
+      NProgress.done();
     }
   },
   { immediate: true }
