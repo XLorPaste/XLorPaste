@@ -12,5 +12,5 @@ export default defineEventHandler(async () => {
       await delStore.setItem(key.slice(4), await storage.getItem(key));
     }
   }
-  return { status: 'ok' };
+  return { status: 'ok', keys };
 });
