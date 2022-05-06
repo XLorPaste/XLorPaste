@@ -6,7 +6,7 @@ importers:
     specifiers:
       husky: ^1.2.0
       lint-staged: ^11.0.0
-      pnpm: ^6.24.2
+      pnpm: ^7.0.0
       prettier: ^2.3.2
       tslib: ^2.3.1
       tsup: ^4.14.0
@@ -16,7 +16,7 @@ importers:
     devDependencies:
       husky: 1.3.1
       lint-staged: 11.2.6
-      pnpm: 6.24.2
+      pnpm: 7.0.0
       prettier: 2.5.1
       tslib: 2.3.1
       tsup: 4.14.0_typescript@4.5.4
@@ -2179,6 +2179,12 @@ packages:
   /pnpm/6.24.2:
     resolution: {integrity: sha512-YUHmlLfWkA0+6upTzRCz/VWADW+dMsqTCRGXJqHrsCPeaw84MGZ6mec18nGdJufNB7hzeTuugAsi0e/ziPKUWA==}
     engines: {node: '>=12.17'}
+    hasBin: true
+    dev: true
+
+  /pnpm/7.0.0:
+    resolution: {integrity: sha512-5njVSmE/Sz6coyikS6gjwoKWaxxsJ6BY6jL1aqwvnEpNUfFednbHqid3aZ42JszOFaSOz3Qipcfp4ei22G/JEg==}
+    engines: {node: '>=14.19'}
     hasBin: true
     dev: true
 
