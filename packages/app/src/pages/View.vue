@@ -12,10 +12,14 @@ const sub = ref<FetchSubmission | null>(null);
 
 watch(
   () => route.params.token as string,
-  async (token: string) => {
+  async (token: string | null) => {
     try {
-      const data = await fetch(token);
-      sub.value = data;
+      if (!!token) {
+        const data = await fetch(token);
+        sub.value = data;
+      } else {
+        throw new Error('token is empty');
+      }
     } catch (error) {
       setTimeout(() => router.push({ name: 'Home' }), 0);
     }
