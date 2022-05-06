@@ -7,13 +7,16 @@ export default defineEventHandler((event) => {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.setHeader('Vary', 'Origin');
-  if (
-    !!event.req.headers['Access-Control-Request-Method'] &&
-    !!event.req.headers['Access-Control-Request-Headers']
-  ) {
+  console.log(event.req.headers, event.req.headers['Access-Control-Request-Headers']);
+  if (!!event.req.headers['Access-Control-Request-Headers']) {
     res.setHeader(
       'Access-Control-Allow-Headers',
       event.req.headers['Access-Control-Request-Headers']
+    );
+  } else {
+    res.setHeader(
+      'Access-Control-Allow-Headers',
+      'Origin,X-Requested-With,Content-Type,Accept,content-type'
     );
   }
   if (method === 'OPTIONS') return '';
