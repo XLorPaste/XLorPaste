@@ -17,7 +17,7 @@ watch(
       const data = await fetch(token);
       sub.value = data;
     } catch (error) {
-      setTimeout(() => router.push({ name: 'Home' }), 3000);
+      setTimeout(() => router.push({ name: 'Home' }), 0);
     }
   },
   { immediate: true }

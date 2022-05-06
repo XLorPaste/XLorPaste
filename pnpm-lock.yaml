@@ -33,6 +33,7 @@ importers:
       '@chenfengyuan/vue-qrcode': ^2.0.0-rc.1
       '@iconify/json': ^1.1.450
       '@types/katex': ^0.11.1
+      '@types/nprogress': ^0.2.0
       '@unocss/preset-uno': ^0.18.0
       '@unocss/preset-wind': ^0.18.0
       '@vitejs/plugin-vue': ^2.0.0
@@ -42,6 +43,7 @@ importers:
       markdown-it: ^12.3.2
       markdown-it-math: ^4.1.1
       normalize.css: ^8.0.1
+      nprogress: ^0.2.0
       qrcode: ^1.5.0
       shiki: ^0.10.0
       tslib: ^2.3.1
@@ -62,6 +64,7 @@ importers:
       markdown-it: 12.3.2
       markdown-it-math: 4.1.1
       normalize.css: 8.0.1
+      nprogress: 0.2.0
       qrcode: 1.5.0
       shiki: 0.10.0
       vue: 3.2.29
@@ -70,6 +73,7 @@ importers:
     devDependencies:
       '@iconify/json': 1.1.450
       '@types/katex': 0.11.1
+      '@types/nprogress': 0.2.0
       '@unocss/preset-uno': 0.18.0
       '@unocss/preset-wind': 0.18.0
       '@vitejs/plugin-vue': 2.0.1_vite@2.7.13+vue@3.2.29
@@ -582,6 +586,10 @@ packages:
 
   /@types/node/17.0.31:
     resolution: {integrity: sha512-AR0x5HbXGqkEx9CadRH3EBYx/VkiUgZIhP4wvPn/+5KIsgpNoyFaRlVe0Zlx9gRtg8fA06a9tskE2MSN7TcG4Q==}
+    dev: true
+
+  /@types/nprogress/0.2.0:
+    resolution: {integrity: sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==}
     dev: true
 
   /@types/parse-json/4.0.0:
@@ -3675,6 +3683,10 @@ packages:
       gauge: 3.0.2
       set-blocking: 2.0.0
     dev: true
+
+  /nprogress/0.2.0:
+    resolution: {integrity: sha1-y480xTIT2JVyP8urkH6UIq28r7E=}
+    dev: false
 
   /number-is-nan/1.0.1:
     resolution: {integrity: sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=}

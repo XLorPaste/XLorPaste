@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import NProgress from 'nprogress';
+
 import { getAdminKey } from './logic/admin';
 import Home from './pages/Home.vue';
 import View from './pages/View.vue';
@@ -68,6 +70,13 @@ export const routes = createRouter({
       return { top: 0 };
     }
   }
+});
+
+routes.beforeEach(() => {
+  NProgress.start();
+});
+routes.afterEach(() => {
+  NProgress.done();
 });
 
 routes.beforeEach((to) => {
