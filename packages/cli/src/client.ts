@@ -98,7 +98,7 @@ export class XLorPasteClient {
       const { data } = await this.api.get<{
         submissions: Submission[] | undefined;
         status: 'OK' | '403';
-      }>('/admin', { headers: { Authorization: adminKey } });
+      }>('/admin/list', { headers: { Authorization: adminKey } });
       const subs = data.submissions ?? [];
       for (const sub of subs) {
         sub.body = this.format(Base64.decode(sub.body));

@@ -16,8 +16,8 @@
     }
   },
   "include": [
-    "./src/*",
-    "./routes/*",
+    "./src/**/*.ts",
+    "./routes/**/*.ts",
     "./env.d.ts"
   ],
   "extends": "./.nitro/types/tsconfig.json"
