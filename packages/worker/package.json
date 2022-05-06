@@ -5,6 +5,7 @@
   "description": "XLorPaste Worker",
   "license": "MIT",
   "author": "XLor <yjl9903@vip.qq.com>",
+  "main": ".output/server/index.mjs",
   "scripts": {
     "build": "cross-env NITRO_PRESET=cloudflare nitropack build",
     "dev": "nitropack dev",
