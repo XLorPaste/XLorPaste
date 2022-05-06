@@ -1,11 +1,12 @@
 {
-  "private": "true",
   "name": "@xlorpaste/app",
   "version": "0.0.1",
+  "private": "true",
   "scripts": {
+    "build": "vite build",
     "dev": "vite --host",
-    "build": "vue-tsc --noEmit -p package.json --resolveJsonModule --skipLibCheck && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit -p package.json --resolveJsonModule --skipLibCheck"
   },
   "dependencies": {
     "@chenfengyuan/vue-qrcode": "^2.0.0-rc.1",
