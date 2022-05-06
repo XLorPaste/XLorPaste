@@ -21,7 +21,7 @@ export async function uploadSub(event: CompatibilityEvent): Promise<UploadRespon
     latitude: event.req?.cf?.latitude,
     longitude: event.req?.cf?.longitude
   };
-  console.log(event.context, event.req?.cf);
+  console.log(event.req.headers, event.req?.cf);
   await subStore.setItem(sub.token, sub);
   await delStore.setItem(sub.delete, sub.token);
   return createUploadResp(sub);
