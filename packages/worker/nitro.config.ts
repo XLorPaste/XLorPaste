@@ -2,6 +2,7 @@ import path from 'path';
 import { defineNitroConfig } from 'nitropack';
 
 export default defineNitroConfig({
+  errorHandler: 'error.ts',
   alias: {
     '~': `${path.resolve(__dirname, 'src')}`
   },

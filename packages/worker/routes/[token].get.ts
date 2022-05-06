@@ -21,7 +21,7 @@ export async function getSub(key: string): Promise<FetchSubmission | null> {
   if (sub !== null) {
     return createFetchSub(sub);
   } else {
-    return null;
+    throw new Error(`Can not find submission "${key}"`);
   }
 }
 
