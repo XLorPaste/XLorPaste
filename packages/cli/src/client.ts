@@ -17,6 +17,11 @@ export interface ClientOptions {
    * @default 1048576
    */
   maxLength?: number;
+
+  /**
+   * Admin key
+   */
+  adminKey?: string;
 }
 
 export class XLorPasteClient {
@@ -93,16 +98,24 @@ export class XLorPasteClient {
     }
   }
 
-  async list(adminKey: string): Promise<Submission[]> {
+  async list({ start = 0, count = 10 }: { start: number; count: number }): Promise<Submission[]> {
     try {
       const { data } = await this.api.get<{
         submissions: Submission[] | undefined;
         status: 'OK' | '403';
-      }>('/admin/list', { headers: { Authorization: adminKey } });
+      }>('/admin/list', {
+        params: {
+          start,
+          count
+        },
+        headers: { Authorization: this.option.adminKey }
+      });
+
       const subs = data.submissions ?? [];
       for (const sub of subs) {
         sub.body = this.format(Base64.decode(sub.body));
       }
+
       return subs.sort((lhs, rhs) => {
         const a = new Date(lhs.timestamp).getTime();
         const b = new Date(rhs.timestamp).getTime();
@@ -120,6 +133,9 @@ export function client(options: ClientOptions = {}) {
   }
   if (!options.maxLength) {
     options.maxLength = 1048576;
+  }
+  if (!options.adminKey) {
+    options.adminKey = '';
   }
   return new XLorPasteClient(options as Required<ClientOptions>);
 }

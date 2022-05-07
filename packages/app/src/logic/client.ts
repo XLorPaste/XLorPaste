@@ -1,7 +1,8 @@
 import { client, UploadResponse } from 'xlorpaste';
 import { getAdminKey } from './admin';
 
-const xlorpaste = client();
+const adminKey = getAdminKey() ?? '';
+const xlorpaste = client({ adminKey });
 
 const lastSub = {
   lang: '',
@@ -23,10 +24,9 @@ export async function fetch(token: string) {
   return await xlorpaste.fetch(token);
 }
 
-export async function list() {
-  const key = getAdminKey();
-  if (key && key.length > 0) {
-    return await xlorpaste.list(key);
+export async function list(start: number = 0, count: number = 10) {
+  if (adminKey && adminKey.length > 0) {
+    return await xlorpaste.list({ start, count });
   } else {
     return [];
   }
