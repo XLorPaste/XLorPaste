@@ -15,8 +15,17 @@ jobs:
           cache: pnpm
       - run: pnpm install
       - run: pnpm run build
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./packages/app/dist
+      - uses: manyuanrong/setup-ossutil@v2.0
+        with:
+          endpoint: ${{ secrets.ACCESS_ENDPOINT }}
+          access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+          access-key-secret: ${{ secrets.ACCESS_KEY_SECRET }}
+      - name: Deploy To OSS
+        run: |
+          ossutil rm oss://${{ secrets.BUCKET_NAME }}/ -rf
+          ossutil cp ./packages/app/dist oss://${{ secrets.BUCKET_NAME }}/ -rf
