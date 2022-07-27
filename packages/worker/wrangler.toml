@@ -17,5 +17,7 @@ command = ""
 format = "service-worker"
 
 [env.production]
-zone_id = "d46a34c01748b72153a78669c137092d"
-route = "api.xlorpaste.cn/*"
+zone_id = "0a23e291021e56440c9d1d8fa29e3fed"
+route = "paste.cpany.dev/*"
+# zone_id = "d46a34c01748b72153a78669c137092d"
+# route = "api.xlorpaste.cn/*"
