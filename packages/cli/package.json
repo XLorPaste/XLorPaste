@@ -26,16 +26,16 @@
     "build": "tsup src/index.ts src/cli.ts --dts --format esm,cjs"
   },
   "dependencies": {
-    "axios": "^0.24.0",
+    "axios": "^0.27.2",
     "cac": "^6.7.12",
     "js-base64": "^3.7.2",
     "kolorist": "^1.5.1",
     "resolve-from": "^5.0.0"
   },
   "devDependencies": {
-    "tslib": "^2.3.1",
-    "tsup": "^4.14.0",
-    "typescript": "^4.4.4"
+    "tslib": "^2.4.0",
+    "tsup": "^6.2.0",
+    "typescript": "^4.7.4"
   },
   "engines": {
     "node": ">=12.0.0"

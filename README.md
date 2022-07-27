@@ -2,9 +2,9 @@
 
 [![Build](https://github.com/XLorPaste/XLorPaste/actions/workflows/build.yml/badge.svg)](https://github.com/XLorPaste/XLorPaste/actions/workflows/build.yml) [![Deploy Worker](https://github.com/XLorPaste/XLorPaste/actions/workflows/worker.yml/badge.svg)](https://github.com/XLorPaste/XLorPaste/actions/workflows/worker.yml)
 
-![screenshot](screenshot.jpeg)
+![screenshot](./public/screenshot.jpeg)
 
-![view](view.png)
+![view](./public/view.png)
 
 ## Local usage
 
@@ -31,7 +31,7 @@ View code.
 xlorpaste lo4ywj
 ```
 
-![cli](cli.png)
+![cli](./public/cli.png)
 
 ## License
 
