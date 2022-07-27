@@ -59,14 +59,8 @@ const width = computed(() => {
 
 <template>
   <div class="code-box rounded-lg" v-if="code.length > 0">
-    <div
-      class="px-4 py-4 lt-md:px-2 font-mono"
-      flex="~"
-      justify-between
-      items-center
-      border="b-1 base"
-    >
-      <div class="lt-md:text-sm">
+    <div class="px-4 py-4 lt-md:px-2 font-mono" flex="~" items-center border="b-1 base">
+      <div lt-md="text-sm">
         <span :class="[sub.lang !== 'md' ? 'ml-token' : 'ml-md', 'lt-md:text-xs']"></span>
         <span class="font-bold">Token</span>
         <span select-none>&nbsp;</span>
@@ -77,11 +71,16 @@ const width = computed(() => {
         <span select-none>&nbsp;</span>
         <span>{{ sub.lang }}</span>
       </div>
-      <div select-none>
-        <a class="py-2 cursor-pointer" @click="() => toggleFormat()">{{
-          isFormat ? '显示源文件' : '显示格式化代码'
-        }}</a>
-        <a class="mx-4 py-2 cursor-pointer" @click="copy">复制</a>
+      <div flex-auto></div>
+      <div select-none lt-md="flex-col w-28 text-sm text-right mr2">
+        <div>
+          <a class="md:py-2 cursor-pointer" @click="() => toggleFormat()">{{
+            isFormat ? '显示源文件' : '显示格式化代码'
+          }}</a>
+        </div>
+        <div>
+          <a class="md:mx-4 md:py-2 cursor-pointer" @click="copy">复制</a>
+        </div>
       </div>
     </div>
 
