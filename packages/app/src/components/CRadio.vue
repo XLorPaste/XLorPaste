@@ -17,14 +17,14 @@ const model = useVModel(props, 'modelValue', emit, { passive: true });
 
 <template>
   <label
-    class="c-radio inline-flex items-center select-none hover:c-radio-hover c-disabled:c-disabled"
+    class="c-radio inline-flex items-center select-none cursor-pointer hover:c-radio-hover c-disabled:c-disabled"
     :checked="model === value || null"
     :disabled="disabled || null"
   >
     <input
       v-model="model"
       type="radio"
-      class="absolute op0 peer cursor-pointer"
+      class="absolute op0 peer"
       :disabled="disabled"
       :name="name"
       :value="value"
