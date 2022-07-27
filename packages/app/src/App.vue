@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import IconGithub from '~icons/mdi/github';
 
-import { Navbar, NavbarItem } from './components/navbar';
+import { version } from '~build/package';
+import { abbreviatedSha } from '~build/info';
+
 import { getAdminKey } from './logic/admin';
+import { Navbar, NavbarItem } from './components/navbar';
 
-const version = __VERSION__;
-const commit = __COMMIT__;
 const router = useRouter();
 const searchInput = ref('');
 
@@ -27,7 +27,7 @@ const search = async () => {
     </template>
     <template #start>
       <NavbarItem>
-        <div class="flex relative font-mono <md:w-full">
+        <div class="flex relative font-mono lt-md:w-full">
           <input
             type="text"
             name="search"
@@ -43,7 +43,7 @@ const search = async () => {
     </template>
   </Navbar>
 
-  <div class="md:px-10 <md:px-[1.75rem] pt-6 main-view">
+  <div class="md:px-10 lt-md:px-[1.75rem] pt-6 main-view">
     <router-view v-slot="{ Component }">
       <transition name="fade">
         <component :is="Component" />
@@ -58,10 +58,10 @@ const search = async () => {
           class="text-$text-light-1 inline-flex items-center mr-2"
           href="https://github.com/XLorPaste"
           target="_blank"
-          ><icon-github class="align-middle"></icon-github
+          ><span i-mdi-github class="align-middle"></span
         ></a>
         <a
-          v-if="!commit"
+          v-if="!abbreviatedSha"
           class="inline-block"
           :href="`https://github.com/XLorPaste/XLorPaste`"
           target="_blank"
@@ -71,10 +71,10 @@ const search = async () => {
         <a
           v-else
           class="inline-block"
-          :href="`https://github.com/XLorPaste/XLorPaste/tree/${commit}`"
+          :href="`https://github.com/XLorPaste/XLorPaste/tree/${abbreviatedSha}`"
           target="_blank"
         >
-          <span>XLorPaste: {{ commit.slice(0, 10) }}</span>
+          <span>XLorPaste: {{ abbreviatedSha }}</span>
         </a>
       </div>
 

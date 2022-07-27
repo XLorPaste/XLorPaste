@@ -2,9 +2,10 @@
   "name": "@xlorpaste/app",
   "version": "1.0.2",
   "private": "true",
+  "type": "module",
   "scripts": {
     "build": "vite build",
-    "dev": "vite --host",
+    "dev": "vite",
     "preview": "vite preview",
     "typecheck": "vue-tsc --noEmit -p package.json --resolveJsonModule --skipLibCheck"
   },
@@ -20,21 +21,22 @@
     "qrcode": "^1.5.1",
     "shiki": "^0.10.1",
     "vue": "^3.2.37",
-    "vue-router": "4.1.3",
+    "vue-router": "^4.1.3",
     "xlorpaste": "workspace:*"
   },
   "devDependencies": {
-    "@iconify/json": "^2.1.84",
+    "@iconify-json/carbon": "^1.1.7",
+    "@iconify-json/mdi": "^1.1.29",
     "@types/katex": "^0.14.0",
     "@types/nprogress": "^0.2.0",
-    "@unocss/preset-uno": "^0.44.7",
-    "@unocss/preset-wind": "^0.44.7",
+    "@unocss/reset": "^0.44.7",
     "@vitejs/plugin-vue": "^3.0.1",
+    "happy-dom": "^6.0.4",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4",
     "unocss": "^0.44.7",
-    "unplugin-icons": "^0.14.7",
     "vite": "^3.0.3",
+    "vite-plugin-info": "^0.3.0",
     "vite-plugin-md": "^0.20.0",
     "vue-tsc": "^0.39.0"
   }

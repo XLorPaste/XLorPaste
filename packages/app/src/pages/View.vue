@@ -3,6 +3,7 @@ import { watch, ref } from 'vue';
 import NProgress from 'nprogress';
 import { useRoute, useRouter } from 'vue-router';
 import { FetchSubmission } from 'xlorpaste';
+
 import { fetch } from '../logic/client';
 import { CodeBox } from '../components/codebox';
 

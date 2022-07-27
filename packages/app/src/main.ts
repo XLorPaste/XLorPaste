@@ -1,7 +1,9 @@
 import { createApp } from 'vue';
+
 import 'uno.css';
-import 'normalize.css';
-import './style/layout.css';
+import '@unocss/reset/tailwind.css';
+import './styles/main.css';
+
 import { routes } from './router';
 import App from './App.vue';
 

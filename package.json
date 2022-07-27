@@ -6,6 +6,7 @@
   "scripts": {
     "build": "pnpm -r run build",
     "build:app": "pnpm -C packages/app build",
+    "build:cli": "pnpm -C packages/cli build",
     "build:worker": "pnpm -C packages/worker build",
     "dev:app": "pnpm -C packages/app dev",
     "dev:worker": "pnpm -C packages/worker dev",

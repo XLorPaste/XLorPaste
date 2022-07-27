@@ -2,7 +2,7 @@ import { FetchSubmission } from './types';
 import { dim, bold } from 'kolorist';
 
 export function printSubmission(sub: FetchSubmission, option = { raw: true }) {
-  if (!option.raw && process.stdout.getWindowSize) {
+  if (!option.raw && process.stdout.getWindowSize()) {
     prettyPrint(sub);
   } else {
     console.log(sub.body);

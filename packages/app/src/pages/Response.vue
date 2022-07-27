@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { toRefs, ref } from 'vue';
 import { UploadResponse } from 'xlorpaste';
-import IconAlert from '~icons/mdi/alert';
+
+// import IconAlert from '~icons/mdi/alert';
 import Qrcode from '@chenfengyuan/vue-qrcode';
+
 import CButton from '../components/c-button.vue';
 
 const props = defineProps<{ sub: UploadResponse }>();
@@ -63,7 +65,7 @@ const showQrcode = ref(false);
       </li>
     </ul>
     <p class="h-8 flex items-center">
-      <icon-alert class="text-red-500" />
+      <span i-mdi-alert class="text-red-500" />
       <span class="ml-2"
         >您可以使用
         <span class="text-brand font-mono cursor-pointer" @click="copyDelete">{{

@@ -36,11 +36,11 @@ const width = computed(() => {
 <template>
   <div class="code-box rounded-lg" v-if="code.length > 0">
     <div
-      class="px-4 py-4 <md:px-2 font-mono flex justify-between items-center"
+      class="px-4 py-4 lt-md:px-2 font-mono flex justify-between items-center"
       style="border-bottom: 1px solid rgb(235, 238, 245)"
     >
-      <div class="<md:text-sm">
-        <span :class="[sub.lang !== 'md' ? 'ml-token' : 'ml-md', '<md:text-xs']"></span>
+      <div class="lt-md:text-sm">
+        <span :class="[sub.lang !== 'md' ? 'ml-token' : 'ml-md', 'lt-md:text-xs']"></span>
         <span class="font-bold">Token </span>
         <router-link :to="{ name: 'View', params: { token: sub.token } }">{{
           sub.token
@@ -52,7 +52,7 @@ const width = computed(() => {
     </div>
 
     <div
-      :class="['px-4 py-4 overflow-x-auto <md:text-xs <md:p-2', maxLine && 'max-line']"
+      :class="['px-4 py-4 overflow-x-auto lt-md:text-xs lt-md:p-2', maxLine && 'max-line']"
       v-html="code"
     ></div>
 
@@ -61,12 +61,12 @@ const width = computed(() => {
       class="p-4 font-mono flex justify-between items-center"
       style="border-top: 1px solid rgb(235, 238, 245)"
     >
-      <div :class="[sub.lang !== 'md' ? 'ml-token' : 'ml-md', '<md:text-xs']">
+      <div :class="[sub.lang !== 'md' ? 'ml-token' : 'ml-md', 'lt-md:text-xs']">
         <slot name="footer"></slot>
       </div>
     </div>
 
-    <div class="hidden-measure font-mono <md:text-xs" ref="measure">{{ line + 1 }}</div>
+    <div class="hidden-measure font-mono lt-md:text-xs" ref="measure">{{ line + 1 }}</div>
   </div>
 </template>
 
