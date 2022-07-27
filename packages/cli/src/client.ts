@@ -3,6 +3,8 @@ import { Base64 } from 'js-base64';
 
 import type { Payload, UploadResponse, Submission, FetchError, FetchSubmission } from './types';
 
+import { DefaultAPIURL } from './constant';
+
 export interface ClientOptions {
   /**
    * XLorPaste API url
@@ -129,7 +131,7 @@ export class XLorPasteClient {
 
 export function client(options: ClientOptions = {}) {
   if (!options.apiURL) {
-    options.apiURL = 'https://api.xlorpaste.cn';
+    options.apiURL = DefaultAPIURL;
   }
   if (!options.maxLength) {
     options.maxLength = 1048576;
