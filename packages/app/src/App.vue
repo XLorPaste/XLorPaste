@@ -20,7 +20,13 @@ const search = async () => {
   searchInput.value = '';
 };
 
-const GlobalSettings = reactive({ tabwidth: '2' });
+const settings = reactive({ tabwidth: '2' });
+const GlobalSettings = useLocalStorage('global-settings', settings);
+const tabwidth = ref(GlobalSettings.value.tabwidth);
+watch(tabwidth, (tabwidth) => {
+  // Why this is shallowRef?
+  GlobalSettings.value = { tabwidth };
+});
 provide(GlobalSettingsKey, GlobalSettings);
 </script>
 
@@ -83,14 +89,14 @@ provide(GlobalSettingsKey, GlobalSettings);
                   <div flex="~ gap2" items-center>
                     <c-radio
                       name="tabwidth"
-                      v-model="GlobalSettings.tabwidth"
+                      v-model="tabwidth"
                       value="2"
                       c="green-600 dark:green-300"
                       >2个</c-radio
                     >
                     <c-radio
                       name="tabwidth"
-                      v-model="GlobalSettings.tabwidth"
+                      v-model="tabwidth"
                       value="4"
                       c="green-600 dark:green-300"
                       >4个</c-radio

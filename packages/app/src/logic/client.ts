@@ -49,7 +49,7 @@ export function useClient() {
     async format(body: string, lang: CodeLanguageType) {
       if (formatedCache.value.has(body)) return formatedCache.value.get(body)!;
       const { format } = await import('./format');
-      const resp = await format(body, lang, globalSettings);
+      const resp = await format(body, lang, globalSettings.value);
       formatedCache.value.set(body, resp);
       return resp;
     },
