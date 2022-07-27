@@ -31,12 +31,21 @@ async function createSub(payload: Payload): Promise<Submission> {
     body: payload.body,
     timestamp: payload.timestamp
   };
+
+  if (!sub.body) {
+    throw new Error(`Payload does not have body`);
+  }
+  if (!sub.lang) {
+    throw new Error(`Payload does not have lang`);
+  }
+
   if (!!payload.once) {
     sub.once = payload.once;
   }
   if (!!payload.pass && payload.pass.length > 0) {
     sub.pass = payload.pass;
   }
+
   return sub;
 }
 
