@@ -19,7 +19,11 @@ watch(
   async ([sub, isFormat, isDark]) => {
     const lang = sub.lang as CodeLanguageType;
     if (isFormat) {
-      code.value = await render(await format(sub.body, lang), lang, isDark);
+      const formatRender = render(await format(sub.body, lang), lang, isDark);
+      code.value = await render(sub.body, lang, isDark);
+      nextTick(async () => {
+        code.value = await formatRender;
+      });
     } else {
       code.value = await render(sub.body, lang, isDark);
     }
