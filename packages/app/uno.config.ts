@@ -24,7 +24,7 @@ export default defineConfig({
   shortcuts: {
     'navbar-flex': 'flex lt-md:flex-col items-stretch min-h-12 relative',
     'bg-base': 'bg-op-50 bg-white dark:bg-[#1a1a1a]',
-    'text-base': 'text-[$text-light-1] dark:text-[$text-dark-1]',
+    'text-base': 'text-$text-light-1 dark:text-$text-dark-1',
     'border-base': 'border-gray/20 dark:border-gray/15',
     'icon-btn': 'op30 hover:op100'
   },
