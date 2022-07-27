@@ -38,6 +38,9 @@ async function createSub(payload: Payload): Promise<Submission> {
   if (!sub.lang) {
     throw new Error(`Payload does not have lang`);
   }
+  if (!sub.timestamp) {
+    throw new Error(`Payload does not have timestamp`);
+  }
 
   if (!!payload.once) {
     sub.once = payload.once;
