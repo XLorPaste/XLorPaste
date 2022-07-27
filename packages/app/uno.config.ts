@@ -2,25 +2,12 @@ import {
   defineConfig,
   presetUno,
   presetIcons,
-  presetWebFonts,
   presetAttributify,
   transformerDirectives,
   transformerVariantGroup
 } from 'unocss';
 
 export default defineConfig({
-  // variants: [
-  //   (matcher) => {
-  //     if (matcher.startsWith('focus:')) {
-  //       return {
-  //         matcher: matcher.slice(6),
-  //         selector: (s) => `${s}:focus`
-  //       };
-  //     } else {
-  //       return matcher;
-  //     }
-  //   }
-  // ],
   presets: [
     presetUno(),
     presetAttributify(),
@@ -58,9 +45,6 @@ export default defineConfig({
       lg: '1024px',
       xl: '1280px',
       xxl: '1536px'
-    },
-    fontFamily: {
-      mono: 'var(--font-family-mono) var(--font-family-base)'
     }
   }
 });

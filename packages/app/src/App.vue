@@ -34,7 +34,7 @@ const search = async () => {
             id="search"
             placeholder="代码 Token"
             autocomplete="off"
-            class="flex-1 px-2 py-2 text-xs rounded-md border-1 border-light-900 outline-none focus:border-blue-300"
+            class="flex-1 px-2 py-2 text-xs rounded-md border-1 border-light-900 outline-none focus-border-blue-300"
             v-model="searchInput"
             @keypress.enter="search"
           />
@@ -55,17 +55,14 @@ const search = async () => {
     <div class="text-center text-gray-400">
       <div class="flex justify-center font-mono h-4 my-1">
         <a
-          class="text-$text-light-1 inline-flex items-center mr-2"
-          href="https://github.com/XLorPaste"
-          target="_blank"
-          ><span i-mdi-github class="align-middle"></span
-        ></a>
-        <a
           v-if="!abbreviatedSha"
           class="inline-block"
           :href="`https://github.com/XLorPaste/XLorPaste`"
           target="_blank"
+          flex="~"
+          items-center
         >
+          <span i-mdi-github text-base mr1></span>
           <span>XLorPaste: {{ version }}</span>
         </a>
         <a
@@ -73,7 +70,10 @@ const search = async () => {
           class="inline-block"
           :href="`https://github.com/XLorPaste/XLorPaste/tree/${abbreviatedSha}`"
           target="_blank"
+          flex="~"
+          items-center
         >
+          <span i-mdi-github text-base mr1></span>
           <span>XLorPaste: {{ abbreviatedSha }}</span>
         </a>
       </div>
