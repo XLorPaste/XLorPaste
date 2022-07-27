@@ -1,9 +1,8 @@
 name = "xlorpaste-worker"
-type = "javascript"
+
+compatibility_date = "2022-7-27"
 
 workers_dev = true
-compatibility_date = "2021-12-24"
-account_id = "7cbfb60ad7052f0d8cf590a51e024987"
 route = "xlorpaste-worker.yjl9903.workers.dev/*"
 
 [[kv-namespaces]]
