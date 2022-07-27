@@ -1,6 +1,8 @@
 import * as wastyle from 'wastyle';
 import astyleBinaryUrl from 'wastyle/dist/astyle.wasm?url';
 
+import type { IGlobalSettings } from '~/composables/index';
+
 import { CodeLanguageType } from '~/constant';
 
 export const init = (async () => {
@@ -19,7 +21,6 @@ export const DefaultOptions = [
   'attach-extern-c',
   'attach-closing-while',
   'indent-col1-comments',
-  'indent=spaces=2',
   'break-blocks',
   'pad-oper',
   'pad-comma',
@@ -44,6 +45,7 @@ const SupportLanguage = {
 export async function format(
   code: string,
   language: CodeLanguageType,
+  settigns: IGlobalSettings,
   options: string[] = DefaultOptions
 ): Promise<string> {
   if (language in SupportLanguage) {
@@ -51,9 +53,11 @@ export async function format(
 
     const [success, result] = wastyle.format(
       code,
-      `${options.join(' ').trim()} mode=${
-        SupportLanguage[language as keyof typeof SupportLanguage]
-      }`
+      [
+        ...options,
+        `indent=spaces=${settigns.tabwidth ?? 2}`,
+        `mode=${SupportLanguage[language as keyof typeof SupportLanguage]}`
+      ].join(' ')
     );
 
     if (!success) {

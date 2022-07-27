@@ -4,9 +4,12 @@ import type { FetchSubmission } from 'xlorpaste';
 
 import { useClient } from '~/logic/client';
 import { CodeLanguageType } from '~/constant';
+import { GlobalSettingsKey } from '~/composables';
 
 const props = defineProps<{ sub: FetchSubmission; footer?: boolean; maxLine?: number }>();
 const { sub, maxLine } = toRefs(props);
+
+const GlobalSettings = inject(GlobalSettingsKey)!;
 
 const isDark = inject<Ref<boolean>>('vueuse-color-scheme')!;
 const [isFormat, toggleFormat] = useToggle(true);
@@ -15,7 +18,7 @@ const { format, render } = useClient();
 const code = ref('');
 
 watch(
-  [sub, isFormat, isDark],
+  [sub, isFormat, isDark, GlobalSettings],
   async ([sub, isFormat, isDark]) => {
     const lang = sub.lang as CodeLanguageType;
     if (isFormat) {

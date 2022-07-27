@@ -1,5 +1,6 @@
 import { client, UploadResponse, FetchSubmission } from 'xlorpaste';
 
+import { GlobalSettingsKey, IGlobalSettings } from '~/composables';
 import type { CodeLanguageType } from '~/constant';
 
 import { getAdminKey } from './admin';
@@ -33,6 +34,11 @@ export function useClient() {
   const renderedCache = useLocalStorage('cache:rendered', new Map<string, string>());
   const renderedDarkCache = useLocalStorage('cache:rendered-dark', new Map<string, string>());
 
+  const globalSettings = inject(GlobalSettingsKey)!;
+  watch(globalSettings, () => {
+    formatedCache.value.clear();
+  });
+
   return {
     async fetch(token: string) {
       if (subCache.value.has(token)) return subCache.value.get(token)!;
@@ -43,7 +49,7 @@ export function useClient() {
     async format(body: string, lang: CodeLanguageType) {
       if (formatedCache.value.has(body)) return formatedCache.value.get(body)!;
       const { format } = await import('./format');
-      const resp = await format(body, lang);
+      const resp = await format(body, lang, globalSettings);
       formatedCache.value.set(body, resp);
       return resp;
     },
