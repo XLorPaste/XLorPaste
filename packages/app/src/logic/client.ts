@@ -51,7 +51,7 @@ export function useClient() {
       const cache = isDark ? renderedDarkCache : renderedCache;
       if (cache.value.has(body)) return cache.value.get(body)!;
       const { highlight } = await import('./highlight');
-      const resp = await highlight(body, lang);
+      const resp = await highlight(body, lang, isDark);
       cache.value.set(body, resp);
       return resp;
     }
