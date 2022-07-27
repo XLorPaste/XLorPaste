@@ -1,5 +1,7 @@
 import { Highlighter, getHighlighter, loadTheme, setCDN, setWasm, Lang, IShikiTheme } from 'shiki';
 
+import type { CodeLanguageType } from '~/constant';
+
 let highlighter: Highlighter | null = null;
 
 const themes: IShikiTheme[] = [];
@@ -77,7 +79,7 @@ export function escapeCode(raw: string) {
   });
 }
 
-export async function highlight(lang: string, code: string, dark?: boolean) {
+export async function highlight(code: string, lang: CodeLanguageType, isDark: boolean = false) {
   const renderText = () =>
     `<pre class="shiki"><code>${escapeCode(code)
       .split('\n')
@@ -107,7 +109,10 @@ export async function highlight(lang: string, code: string, dark?: boolean) {
     return `<div class="markdown-body">${mdRender(code)}</div>`;
   } else {
     if (isLangSupport(lang)) {
-      return (await setup(lang)).codeToHtml(code, { lang, theme: dark ? 'Eva Dark' : 'Eva Light' });
+      return (await setup(lang)).codeToHtml(code, {
+        lang,
+        theme: isDark ? 'Eva Dark' : 'Eva Light'
+      });
     } else {
       return renderText();
     }

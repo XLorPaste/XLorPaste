@@ -1,24 +1,37 @@
 <script setup lang="ts">
-import { toRefs, ref, watch, computed } from 'vue';
-import { FetchSubmission } from 'xlorpaste';
-import { highlight } from '../../logic/highlight';
+import type { FetchSubmission } from 'xlorpaste';
+
+import { useClient } from '~/logic/client';
+import { CodeLanguageType } from '~/constant';
 
 const props = defineProps<{ sub: FetchSubmission; footer?: boolean; maxLine?: number }>();
 const { sub, maxLine } = toRefs(props);
 
 const isDark = useDark();
+const [isFormat, toggleFormat] = useToggle(true);
+const { format, render } = useClient();
+
 const code = ref('');
 
 watch(
-  sub,
-  (sub) => {
-    highlight(sub.lang, sub.body, isDark.value).then((html) => (code.value = html));
+  [sub, isFormat, isDark],
+  async ([sub, isFormat, isDark]) => {
+    const lang = sub.lang as CodeLanguageType;
+    if (isFormat) {
+      code.value = await render(await format(sub.body, lang), lang, isDark);
+    } else {
+      code.value = await render(sub.body, lang, isDark);
+    }
   },
   { immediate: true }
 );
 
 const copy = async () => {
-  await navigator.clipboard.writeText(sub.value.body);
+  if (isFormat.value) {
+    await navigator.clipboard.writeText(await format(sub.value.body, sub.value.lang));
+  } else {
+    await navigator.clipboard.writeText(sub.value.body);
+  }
 };
 
 const line = computed(() => {
@@ -52,7 +65,12 @@ const width = computed(() => {
         <span class="font-bold ml-4">语言 </span>
         <span>{{ sub.lang }}</span>
       </div>
-      <div><a class="px-4 py-2 cursor-pointer" @click="copy">复制</a></div>
+      <div select-none>
+        <a class="py-2 cursor-pointer" @click="() => toggleFormat()">{{
+          isFormat ? '显示源文件' : '显示格式化代码'
+        }}</a>
+        <a class="mx-4 py-2 cursor-pointer" @click="copy">复制</a>
+      </div>
     </div>
 
     <div

@@ -1,4 +1,7 @@
-import { client, UploadResponse } from 'xlorpaste';
+import { client, UploadResponse, FetchSubmission } from 'xlorpaste';
+
+import type { CodeLanguageType } from '~/constant';
+
 import { getAdminKey } from './admin';
 
 const adminKey = getAdminKey() ?? '';
@@ -22,6 +25,37 @@ export async function upload(lang: string, body: string) {
 
 export async function fetch(token: string) {
   return await xlorpaste.fetch(token);
+}
+
+export function useClient() {
+  const subCache = useLocalStorage('cache:submission', new Map<string, FetchSubmission>());
+  const formatedCache = useLocalStorage('cache:formated', new Map<string, string>());
+  const renderedCache = useLocalStorage('cache:rendered', new Map<string, string>());
+  const renderedDarkCache = useLocalStorage('cache:rendered-dark', new Map<string, string>());
+
+  return {
+    async fetch(token: string) {
+      if (subCache.value.has(token)) return subCache.value.get(token)!;
+      const resp = await xlorpaste.fetch(token);
+      subCache.value.set(resp.token, resp);
+      return resp;
+    },
+    async format(body: string, lang: CodeLanguageType) {
+      if (formatedCache.value.has(body)) return formatedCache.value.get(body)!;
+      const { format } = await import('./format');
+      const resp = await format(body, lang);
+      formatedCache.value.set(body, resp);
+      return resp;
+    },
+    async render(body: string, lang: CodeLanguageType, isDark = false) {
+      const cache = isDark ? renderedDarkCache : renderedCache;
+      if (cache.value.has(body)) return cache.value.get(body)!;
+      const { highlight } = await import('./highlight');
+      const resp = await highlight(body, lang);
+      cache.value.set(body, resp);
+      return resp;
+    }
+  };
 }
 
 export async function list(start: number = 0, count: number = 10) {

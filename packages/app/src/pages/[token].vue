@@ -3,13 +3,15 @@ import type { FetchSubmission } from 'xlorpaste';
 
 import NProgress from 'nprogress';
 
-import { fetch } from '~/logic/client';
+import { useClient } from '~/logic/client';
 import { CodeBox } from '~/components/codebox';
 
 const route = useRoute();
 const router = useRouter();
 
 const sub = ref<FetchSubmission | null>(null);
+
+const { fetch } = useClient();
 
 watch(
   () => route.params.token as string,
