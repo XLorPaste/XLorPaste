@@ -28,7 +28,9 @@ watch(
 
 const copy = async () => {
   if (isFormat.value) {
-    await navigator.clipboard.writeText(await format(sub.value.body, sub.value.lang));
+    await navigator.clipboard.writeText(
+      await format(sub.value.body, sub.value.lang as CodeLanguageType)
+    );
   } else {
     await navigator.clipboard.writeText(sub.value.body);
   }
