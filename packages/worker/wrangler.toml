@@ -1,13 +1,13 @@
 name = "xlorpaste-worker"
 
+main = ".output/server/index.mjs"
+
 compatibility_date = "2022-7-27"
 
 workers_dev = true
 route = "xlorpaste-worker.yjl9903.workers.dev/*"
 
-entry-point = ".output/server/index.mjs"
-
-[[kv-namespaces]]
+[[kv_namespaces]]
 binding = "XLORPASTE"
 id = "4cb100568fb84072ba819d668aea818d"
 preview_id = "c6aa0006430a4f82911c6afceaa06e17"
