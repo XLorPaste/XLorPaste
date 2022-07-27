@@ -21,7 +21,8 @@
     "strict": true,
     "target": "ESNext",
     "types": [
-      "vite-plugin-info/client"
+      "vite-plugin-info/client",
+      "vite-plugin-pages/client"
     ],
     "useDefineForClassFields": true
   },

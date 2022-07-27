@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@chenfengyuan/vue-qrcode": "^2.0.0",
+    "@vueuse/core": "^9.0.0",
     "date-fns": "^2.29.1",
     "github-markdown-css": "^5.1.0",
     "katex": "^0.16.0",
@@ -35,9 +36,11 @@
     "tslib": "^2.4.0",
     "typescript": "^4.7.4",
     "unocss": "^0.44.7",
+    "unplugin-auto-import": "0.10.1",
     "vite": "^3.0.3",
     "vite-plugin-info": "^0.3.0",
     "vite-plugin-md": "^0.20.0",
+    "vite-plugin-pages": "^0.25.0",
     "vue-tsc": "^0.39.0"
   }
 }

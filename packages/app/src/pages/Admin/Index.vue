@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { onUnmounted, ref, watch, watchEffect } from 'vue';
-import { Submission } from 'xlorpaste';
+import type { Submission } from 'xlorpaste';
+
 import NProgress from 'nprogress';
 
-import { AdminBox } from '../../components/codebox';
-import { list } from '../../logic/client';
-import { preSetup } from '../../logic/highlight';
+import { list } from '~/logic/client';
+import { preSetup } from '~/logic/highlight';
+
+import { AdminBox } from '~/components/codebox';
 
 const subs = ref<Submission[]>([]);
 const page = ref(0);
@@ -38,6 +39,15 @@ watchEffect(async () => {
   NProgress.done();
 });
 </script>
+
+<route>
+{
+  name: 'Admin',
+  meta: {
+    title: '管理'
+  }
+}
+</route>
 
 <template>
   <div>

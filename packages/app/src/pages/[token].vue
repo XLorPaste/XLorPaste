@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { watch, ref } from 'vue';
-import NProgress from 'nprogress';
-import { useRoute, useRouter } from 'vue-router';
-import { FetchSubmission } from 'xlorpaste';
+import type { FetchSubmission } from 'xlorpaste';
 
-import { fetch } from '../logic/client';
-import { CodeBox } from '../components/codebox';
+import NProgress from 'nprogress';
+
+import { fetch } from '~/logic/client';
+import { CodeBox } from '~/components/codebox';
 
 const route = useRoute();
 const router = useRouter();
@@ -33,6 +32,15 @@ watch(
   { immediate: true }
 );
 </script>
+
+<route>
+{
+  name: 'View',
+  meta: {
+    title: '代码'
+  }
+}
+</route>
 
 <template>
   <div v-if="!!sub">

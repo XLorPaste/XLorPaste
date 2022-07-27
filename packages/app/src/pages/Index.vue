@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { UploadResponse } from 'xlorpaste';
+import type { UploadResponse } from 'xlorpaste';
 
-// import IconUpload from '~icons/mdi/cloud-upload';
+import { upload } from '~/logic/client';
+import { CSelect } from '~/components/select';
 
-import CButton from '../components/c-button.vue';
-import { CSelect } from '../components/select';
-import { upload } from '../logic/client';
-import Response from './Response.vue';
+import CButton from '~/components/c-button.vue';
+
+import Response from './components/Response.vue';
 
 const body = ref('');
 const lang = ref('cpp');
@@ -28,6 +27,15 @@ const rows =
     : 10;
 </script>
 
+<route>
+{
+  name: 'Home',
+  meta: {
+    title: '上传'
+  }
+}
+</route>
+
 <template>
   <div v-if="!sub">
     <div class="mb-4 flex">
@@ -47,7 +55,7 @@ const rows =
           <option value="css">CSS</option>
         </c-select>
       </div>
-      <c-button success @click="submit"><span i-mdi-cloud-upload class="mr-2" /> 提交</c-button>
+      <c-button success @click="submit"><span i-mdi-cloud-upload class="mr-2" />上传</c-button>
     </div>
     <div class="flex mb-4">
       <textarea
@@ -64,7 +72,7 @@ const rows =
       ></textarea>
     </div>
     <div>
-      <c-button success @click="submit"><span i-mdi-cloud-upload class="mr-2" /> 提交</c-button>
+      <c-button success @click="submit"><span i-mdi-cloud-upload class="mr-2" />上传</c-button>
     </div>
   </div>
   <div v-else>
