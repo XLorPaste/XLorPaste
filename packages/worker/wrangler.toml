@@ -14,8 +14,6 @@ preview_id = "c6aa0006430a4f82911c6afceaa06e17"
 
 [build]
 command = ""
-[build.upload]
-format = "service-worker"
 
 [env.production]
 zone_id = "0a23e291021e56440c9d1d8fa29e3fed"
