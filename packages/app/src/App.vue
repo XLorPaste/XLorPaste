@@ -82,7 +82,7 @@ const search = async () => {
           flex="~"
           items-center
         >
-          <span i-mdi-github text-base mr1></span>
+          <span i-mdi-github mr1 class="text-black dark:text-white"></span>
           <span>XLorPaste: {{ version }}</span>
         </a>
         <a
@@ -93,7 +93,7 @@ const search = async () => {
           flex="~"
           items-center
         >
-          <span i-mdi-github text-base mr1></span>
+          <span i-mdi-github mr1 class="text-black dark:text-white"></span>
           <span>XLorPaste: {{ abbreviatedSha }}</span>
         </a>
       </div>
