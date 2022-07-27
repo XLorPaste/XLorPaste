@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-
 import { version } from '~build/package';
 import { abbreviatedSha } from '~build/info';
 
@@ -10,6 +7,9 @@ import { Navbar, NavbarItem } from './components/navbar';
 
 const router = useRouter();
 const searchInput = ref('');
+
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
 
 const search = async () => {
   if (searchInput.value === '') return;
@@ -21,7 +21,13 @@ const search = async () => {
 <template>
   <Navbar>
     <template #brand>
-      <NavbarItem tag="router-link" :to="{ name: 'Home' }" class="font-mono font-bold text-xl"
+      <NavbarItem
+        tag="router-link"
+        :to="{ name: 'Home' }"
+        font-mono
+        font-bold
+        text-xl
+        class="text-$text-light-1"
         >XLorPaste</NavbarItem
       >
     </template>
@@ -34,12 +40,26 @@ const search = async () => {
             id="search"
             placeholder="代码 Token"
             autocomplete="off"
-            class="flex-1 px-2 py-2 text-xs rounded-md border-1 border-light-900 outline-none focus-border-blue-300"
+            class="flex-1 px-2 py-2 text-xs text-base rounded-md outline-none border-1 border-base focus-border-blue-300"
             v-model="searchInput"
             @keypress.enter="search"
           />
         </div>
       </NavbarItem>
+    </template>
+    <template #end>
+      <div>
+        <span>
+          <button
+            icon-btn
+            i-carbon-sun
+            dark:i-carbon-moon
+            lt-md:text-sm
+            text-base
+            @click="toggleDark()"
+          />
+        </span>
+      </div>
     </template>
   </Navbar>
 

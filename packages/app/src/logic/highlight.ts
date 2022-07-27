@@ -39,6 +39,7 @@ async function setup(...langs: Lang[]) {
     setCDN(base);
     setWasm(await fetch(base + `onig.wasm`).then((res) => res.arrayBuffer()));
     themes.push(await loadTheme('themes/eva-light.json'));
+    themes.push(await loadTheme('themes/eva-dark.json'));
 
     return (highlighter = await getHighlighter({
       themes,
@@ -76,7 +77,7 @@ export function escapeCode(raw: string) {
   });
 }
 
-export async function highlight(lang: string, code: string) {
+export async function highlight(lang: string, code: string, dark?: boolean) {
   const renderText = () =>
     `<pre class="shiki"><code>${escapeCode(code)
       .split('\n')
@@ -106,7 +107,7 @@ export async function highlight(lang: string, code: string) {
     return `<div class="markdown-body">${mdRender(code)}</div>`;
   } else {
     if (isLangSupport(lang)) {
-      return (await setup(lang)).codeToHtml(code, { lang });
+      return (await setup(lang)).codeToHtml(code, { lang, theme: dark ? 'Eva Dark' : 'Eva Light' });
     } else {
       return renderText();
     }

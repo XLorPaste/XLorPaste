@@ -6,12 +6,13 @@ import { highlight } from '../../logic/highlight';
 const props = defineProps<{ sub: FetchSubmission; footer?: boolean; maxLine?: number }>();
 const { sub, maxLine } = toRefs(props);
 
+const isDark = useDark();
 const code = ref('');
 
 watch(
   sub,
   (sub) => {
-    highlight(sub.lang, sub.body).then((html) => (code.value = html));
+    highlight(sub.lang, sub.body, isDark.value).then((html) => (code.value = html));
   },
   { immediate: true }
 );
@@ -36,8 +37,11 @@ const width = computed(() => {
 <template>
   <div class="code-box rounded-lg" v-if="code.length > 0">
     <div
-      class="px-4 py-4 lt-md:px-2 font-mono flex justify-between items-center"
-      style="border-bottom: 1px solid rgb(235, 238, 245)"
+      class="px-4 py-4 lt-md:px-2 font-mono"
+      flex="~"
+      justify-between
+      items-center
+      border="b-1 base"
     >
       <div class="lt-md:text-sm">
         <span :class="[sub.lang !== 'md' ? 'ml-token' : 'ml-md', 'lt-md:text-xs']"></span>
@@ -58,8 +62,11 @@ const width = computed(() => {
 
     <div
       v-if="footer"
-      class="p-4 font-mono flex justify-between items-center"
-      style="border-top: 1px solid rgb(235, 238, 245)"
+      class="p-4 font-mono"
+      flex="~"
+      justify-between
+      items-center
+      border="t-1 base"
     >
       <div :class="[sub.lang !== 'md' ? 'ml-token' : 'ml-md', 'lt-md:text-xs']">
         <slot name="footer"></slot>
@@ -72,8 +79,7 @@ const width = computed(() => {
 
 <style>
 .code-box {
-  border: 1px solid rgb(235, 238, 245);
-  box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+  @apply border-1 border-base shadow-box;
   tab-size: 2;
 }
 
@@ -84,6 +90,10 @@ const width = computed(() => {
 .shiki {
   margin: 0;
   background-color: white !important;
+}
+
+html.dark .shiki {
+  background-color: #222 !important;
 }
 
 .markdown-body .shiki {

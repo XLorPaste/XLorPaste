@@ -1,7 +1,12 @@
 <template>
   <component
     :is="tag"
-    class="navbar-item flex select-none cursor-pointer rounded px-[0.75rem] py-[0.5rem] hover:(bg-gray-100 text-blue-500)"
+    class="navbar-item text-base dark:text-gray-400 px-[0.75rem] py-[0.5rem]"
+    flex="~"
+    select-none
+    cursor-pointer
+    rounded
+    hover="bg-gray-100 dark:bg-gray-500"
   >
     <slot></slot>
   </component>
@@ -15,9 +20,3 @@ defineProps({
   }
 });
 </script>
-
-<style>
-.navbar-item {
-  color: var(--text-light-1);
-}
-</style>

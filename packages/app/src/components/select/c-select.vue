@@ -11,7 +11,8 @@ const handleSelect = (event: any) => {
   <div class="select relative">
     <select
       @change="handleSelect"
-      class="pl-2 pr-8 py-2 cursor-pointer block w-full rounded border border-1 border-[#dbdbdb]"
+      class="pl-2 pr-8 py-2 cursor-pointer block w-full rounded"
+      border="1 base"
     >
       <slot></slot>
     </select>
