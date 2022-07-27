@@ -123,6 +123,15 @@ pre, code {
   border-right: none
 }
 
+html.dark ::selection {
+  background-color: rgba(100, 100, 100, 0.4);
+}
+html.dark ::-webkit-selection {
+  background-color: rgba(100, 100, 100, 0.4);
+}
+html.dark ::-moz-selection {
+  background-color: rgba(100, 100, 100, 0.4);
+}
 ::-webkit-selection {
   background-color: #cce2ff;
 }
