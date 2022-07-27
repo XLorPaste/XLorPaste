@@ -4,9 +4,6 @@ main = ".output/server/index.mjs"
 
 compatibility_date = "2022-07-26"
 
-workers_dev = true
-route = "xlorpaste-worker.yjl9903.workers.dev/*"
-
 [[kv_namespaces]]
 binding = "XLORPASTE"
 id = "4cb100568fb84072ba819d668aea818d"
