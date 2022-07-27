@@ -32,7 +32,7 @@ router.beforeEach((to) => {
     }
   }
   if (!!to.meta.title) {
-    document.title = to.meta.title + ' | XLor Paste';
+    document.title = to.meta.title + ' - XLor Paste';
   } else {
     document.title = 'XLor Paste';
   }
