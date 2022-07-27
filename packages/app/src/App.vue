@@ -9,6 +9,7 @@ const router = useRouter();
 const searchInput = ref('');
 
 const isDark = useDark();
+provide('vueuse-color-scheme', isDark);
 const toggleDark = useToggle(isDark);
 
 const search = async () => {

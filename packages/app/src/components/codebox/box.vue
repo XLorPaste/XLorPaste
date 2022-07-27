@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { Ref } from 'vue';
 import type { FetchSubmission } from 'xlorpaste';
 
 import { useClient } from '~/logic/client';
@@ -7,7 +8,7 @@ import { CodeLanguageType } from '~/constant';
 const props = defineProps<{ sub: FetchSubmission; footer?: boolean; maxLine?: number }>();
 const { sub, maxLine } = toRefs(props);
 
-const isDark = useDark();
+const isDark = inject<Ref<boolean>>('vueuse-color-scheme')!;
 const [isFormat, toggleFormat] = useToggle(true);
 const { format, render } = useClient();
 
