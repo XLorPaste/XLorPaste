@@ -64,61 +64,52 @@ provide(GlobalSettingsKey, GlobalSettings);
       </NavbarItem>
     </template>
     <template #end>
-      <div flex="~" items-center>
-        <span class="nav-btn" relative mr4>
-          <span icon-btn i-carbon-settings lt-md:text-sm text-base cursor-pointer></span>
-          <div
-            class="nav-dropdown"
-            hidden
-            absolute
-            top="1.5rem"
-            right="-13"
-            w60
-            h="200px"
-            pt2
-            p4
-            z-20
-          >
-            <div rounded-2 bg-base bg-op-100 border="1 base" w-full h-full p4>
-              <div pb2 mb2 font-bold border="b-1 base" select-none>
-                <p flex="~ gap1" items-center><span i-carbon-settings></span>设置</p>
-              </div>
-              <div font-mono>
-                <div>
-                  <div font-bold mb1>Tab 宽度</div>
-                  <div flex="~ gap2" items-center>
-                    <c-radio
-                      name="tabwidth"
-                      v-model="tabwidth"
-                      value="2"
-                      c="green-600 dark:green-300"
-                      >2个</c-radio
-                    >
-                    <c-radio
-                      name="tabwidth"
-                      v-model="tabwidth"
-                      value="4"
-                      c="green-600 dark:green-300"
-                      >4个</c-radio
-                    >
-                    <span select-none>空格</span>
-                  </div>
+      <span class="nav-btn" relative>
+        <span icon-btn i-carbon-settings lt-md:text-sm text-base cursor-pointer></span>
+        <div
+          class="nav-dropdown"
+          hidden
+          absolute
+          top="1.5rem"
+          right="-13"
+          lt-md:right="-400%"
+          w60
+          h="200px"
+          pt2
+          p4
+          z-20
+        >
+          <div rounded-2 bg-base bg-op-100 border="1 base" w-full h-full p4>
+            <div pb2 mb2 font-bold border="b-1 base" select-none>
+              <p flex="~ gap1" items-center><span i-carbon-settings></span>设置</p>
+            </div>
+            <div font-mono>
+              <div>
+                <div font-bold mb1>Tab 宽度</div>
+                <div flex="~ gap2" items-center>
+                  <c-radio name="tabwidth" v-model="tabwidth" value="2" c="green-600 dark:green-300"
+                    >2个</c-radio
+                  >
+                  <c-radio name="tabwidth" v-model="tabwidth" value="4" c="green-600 dark:green-300"
+                    >4个</c-radio
+                  >
+                  <span select-none>空格</span>
                 </div>
               </div>
             </div>
           </div>
-        </span>
-        <span>
-          <button
-            icon-btn
-            i-carbon-sun
-            dark:i-carbon-moon
-            lt-md:text-sm
-            text-base
-            @click="toggleDark()"
-          />
-        </span>
-      </div>
+        </div>
+      </span>
+      <span>
+        <button
+          icon-btn
+          i-carbon-sun
+          dark:i-carbon-moon
+          lt-md:text-sm
+          text-base
+          @click="toggleDark()"
+        />
+      </span>
     </template>
   </Navbar>
 
@@ -196,10 +187,10 @@ provide(GlobalSettingsKey, GlobalSettings);
   opacity: 0;
 }
 
-@media (min-width: 1024px) {
-  .nav-btn:hover .nav-dropdown,
-  .nav-dropdown:hover {
-    @apply !block transition;
-  }
+/* @media (min-width: 1024px) {
+  } */
+.nav-btn:hover .nav-dropdown,
+.nav-dropdown:hover {
+  @apply !block transition;
 }
 </style>

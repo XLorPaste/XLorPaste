@@ -8,7 +8,10 @@
         <slot name="start"></slot>
         <slot></slot>
       </div>
-      <div class="lt-md:hidden navbar-end navbar-flex justify-end items-center ml-auto">
+      <div flex-auto></div>
+      <div
+        class="navbar-end navbar-flex lt-md:flex-row flex-gap-4 md:justify-end lt-md:justify-center items-center"
+      >
         <slot name="end"></slot>
       </div>
     </div>

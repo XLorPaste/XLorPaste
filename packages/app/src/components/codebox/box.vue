@@ -73,12 +73,12 @@ const width = computed(() => {
       </div>
       <div flex-auto></div>
       <div select-none lt-md="flex-col w-28 text-sm text-right mr2">
-        <div>
+        <div md:inline>
           <a class="md:py-2 cursor-pointer" @click="() => toggleFormat()">{{
             isFormat ? '显示源文件' : '显示格式化代码'
           }}</a>
         </div>
-        <div>
+        <div md:inline>
           <a class="md:mx-4 md:py-2 cursor-pointer" @click="copy">复制</a>
         </div>
       </div>
