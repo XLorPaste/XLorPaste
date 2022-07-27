@@ -68,11 +68,13 @@ const width = computed(() => {
     >
       <div class="lt-md:text-sm">
         <span :class="[sub.lang !== 'md' ? 'ml-token' : 'ml-md', 'lt-md:text-xs']"></span>
-        <span class="font-bold">Token </span>
+        <span class="font-bold">Token</span>
+        <span select-none>&nbsp;</span>
         <router-link :to="{ name: 'View', params: { token: sub.token } }">{{
           sub.token
         }}</router-link>
-        <span class="font-bold ml-4">语言 </span>
+        <span class="font-bold ml-4">语言</span>
+        <span select-none>&nbsp;</span>
         <span>{{ sub.lang }}</span>
       </div>
       <div select-none>

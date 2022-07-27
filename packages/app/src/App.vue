@@ -16,7 +16,7 @@ const toggleDark = useToggle(isDark);
 
 const search = async () => {
   if (searchInput.value === '') return;
-  await router.push({ name: 'View', params: { token: searchInput.value } });
+  await router.push({ name: 'View', params: { token: searchInput.value.trim() } });
   searchInput.value = '';
 };
 
