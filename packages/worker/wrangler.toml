@@ -5,6 +5,8 @@ compatibility_date = "2022-7-27"
 workers_dev = true
 route = "xlorpaste-worker.yjl9903.workers.dev/*"
 
+entry-point = ".output/server/index.mjs"
+
 [[kv-namespaces]]
 binding = "XLORPASTE"
 id = "4cb100568fb84072ba819d668aea818d"
