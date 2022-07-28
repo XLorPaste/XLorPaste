@@ -55,5 +55,6 @@ jobs:
       - name: Build
         working-directory: ./jetbrains
         run: |
+          chmod +x ./gradlew
           ./gradlew build
           ./gradlew test
