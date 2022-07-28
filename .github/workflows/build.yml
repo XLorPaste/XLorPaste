@@ -4,28 +4,58 @@ on:
   push:
 
 jobs:
-  build:
+  pages:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: pnpm/action-setup@v2
+      
       - uses: actions/setup-node@v3
         with:
           node-version: 14
           cache: pnpm
+          
       - run: pnpm install
+      
       - run: pnpm run build
+      
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./packages/app/dist
+          
       - uses: manyuanrong/setup-ossutil@v2.0
         with:
           endpoint: ${{ secrets.ACCESS_ENDPOINT }}
           access-key-id: ${{ secrets.ACCESS_KEY_ID }}
           access-key-secret: ${{ secrets.ACCESS_KEY_SECRET }}
+
       - name: Deploy To OSS
         run: |
           ossutil rm oss://${{ secrets.BUCKET_NAME }}/ -rf
           ossutil cp ./packages/app/dist oss://${{ secrets.BUCKET_NAME }}/ -rf
+
+  jetbrains:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: jetbrains
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Gradle Wrapper Validation
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: openjdk
+          java-version: 11
+          cache: gradle
+
+      - name: Build
+        run: |
+          ./gradlew build
+          ./gradlew test
