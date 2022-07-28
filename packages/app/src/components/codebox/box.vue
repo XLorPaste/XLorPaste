@@ -80,7 +80,7 @@ const width = computed(() => {
         <span>{{ sub.lang }}</span>
       </div>
       <div flex-auto></div>
-      <div select-none lt-md="flex-col w-28 text-sm text-right mr2">
+      <div select-none lt-md="flex-col w-24 text-sm text-right mr2">
         <div md:inline>
           <a class="md:py-2 cursor-pointer" @click="() => toggleFormat()">{{
             sub.lang !== 'md'
