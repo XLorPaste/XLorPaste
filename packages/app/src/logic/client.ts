@@ -1,6 +1,6 @@
 import { client, UploadResponse, FetchSubmission } from 'xlorpaste';
 
-import { GlobalSettingsKey, IGlobalSettings } from '~/composables';
+import { GlobalSettingsKey } from '~/composables';
 import type { CodeLanguageType } from '~/constant';
 
 import { getAdminKey } from './admin';
@@ -31,8 +31,14 @@ export async function fetch(token: string) {
 export function useClient() {
   const subCache = useLocalStorage('cache:submission', new Map<string, FetchSubmission>());
   const formatedCache = useLocalStorage('cache:formated', new Map<string, string>());
-  const renderedCache = useLocalStorage('cache:rendered', new Map<string, string>());
-  const renderedDarkCache = useLocalStorage('cache:rendered-dark', new Map<string, string>());
+  const renderedCache = useLocalStorage(
+    'cache:rendered',
+    {} as Record<CodeLanguageType, Map<string, string>>
+  );
+  const renderedDarkCache = useLocalStorage(
+    'cache:rendered-dark',
+    {} as Record<CodeLanguageType, Map<string, string>>
+  );
 
   const globalSettings = inject(GlobalSettingsKey)!;
   watch(globalSettings, () => {
@@ -55,10 +61,11 @@ export function useClient() {
     },
     async render(body: string, lang: CodeLanguageType, isDark = false) {
       const cache = isDark ? renderedDarkCache : renderedCache;
-      if (cache.value.has(body)) return cache.value.get(body)!;
+      if (cache.value[lang]?.has(body)) return cache.value[lang]!.get(body)!;
       const { highlight } = await import('./highlight');
       const resp = await highlight(body, lang, isDark);
-      cache.value.set(body, resp);
+      if (!cache.value[lang]) cache.value[lang] = new Map();
+      cache.value[lang]!.set(body, resp);
       return resp;
     }
   };

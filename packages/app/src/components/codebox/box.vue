@@ -22,13 +22,21 @@ watch(
   async ([sub, isFormat, isDark]) => {
     const lang = sub.lang as CodeLanguageType;
     if (isFormat) {
-      const formatRender = render(await format(sub.body, lang), lang, isDark);
-      code.value = await render(sub.body, lang, isDark);
-      nextTick(async () => {
-        code.value = await formatRender;
-      });
+      if (lang !== 'md') {
+        const formatRender = render(await format(sub.body, lang), lang, isDark);
+        code.value = await render(sub.body, lang, isDark);
+        nextTick(async () => {
+          code.value = await formatRender;
+        });
+      } else {
+        code.value = await render(sub.body, 'md', isDark);
+      }
     } else {
-      code.value = await render(sub.body, lang, isDark);
+      if (lang !== 'md') {
+        code.value = await render(sub.body, lang, isDark);
+      } else {
+        code.value = await render(sub.body, 'text', isDark);
+      }
     }
   },
   { immediate: true }
@@ -75,7 +83,13 @@ const width = computed(() => {
       <div select-none lt-md="flex-col w-28 text-sm text-right mr2">
         <div md:inline>
           <a class="md:py-2 cursor-pointer" @click="() => toggleFormat()">{{
-            isFormat ? '显示源文件' : '显示格式化代码'
+            sub.lang !== 'md'
+              ? isFormat
+                ? '显示源文件'
+                : '显示格式化代码'
+              : isFormat
+              ? '显示源文件'
+              : '显示渲染'
           }}</a>
         </div>
         <div md:inline>
