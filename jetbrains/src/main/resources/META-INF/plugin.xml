@@ -1,0 +1,55 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin url="https://github.com/XLorPaste/XLorPaste">
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>cn.xlorpaste.jetbrains</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>XLorPaste</name>
+
+    <!--
+      Plugin version. Plugins uploaded to the Marketplace must follow
+      the semantic versioning: https://plugins.jetbrains.com/docs/marketplace/semver.html.
+      It is displayed in the "Plugins" settings dialog and in the Marketplace
+      plugin page. -->
+    <version>0.0.0</version>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="yjl9903@outlook.com" url="https://xlorpaste.cn">XLor</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+    Jetbrains plugin for <a href="https://xlorpaste.cn">XLorPaste</a>.<br/>
+    Upload your Code and Share it.
+    ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="XLorPaste" displayType="BALLOON" />
+    </extensions>
+
+    <actions>
+<!--        <action id="cn.xlorpaste.jetbrains.MenuUploadAction"-->
+<!--                class="cn.xlorpaste.jetbrains.MenuUploadAction"-->
+<!--                text="Upload to XLorPaste"-->
+<!--                description="Upload your current code to XLorPaste"-->
+<!--                icon="PasteIcons.Upload">-->
+<!--            <add-to-group group-id="ToolsMenu" anchor="first"/>-->
+<!--        </action>-->
+        <action id="cn.xlorpaste.jetbrains.ButtonUploadAction"
+                class="cn.xlorpaste.jetbrains.ButtonUploadAction"
+                text="Upload to XLorPaste"
+                description="Upload your current code to XLorPaste"
+                icon="PasteIcons.Upload">
+            <add-to-group group-id="NavBarToolBar" anchor="before"
+                          relative-to-action="CodeWithMeNavbarGroup" />
+        </action>
+    </actions>
+</idea-plugin>
