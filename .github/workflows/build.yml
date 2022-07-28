@@ -39,9 +39,6 @@ jobs:
 
   jetbrains:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: jetbrains
     steps:
       - uses: actions/checkout@v3
 
@@ -56,6 +53,7 @@ jobs:
           cache: gradle
 
       - name: Build
+        working-directory: ./jetbrains
         run: |
           ./gradlew build
           ./gradlew test
