@@ -31,7 +31,7 @@
     "@iconify-json/mdi": "^1.1.29",
     "@types/katex": "^0.14.0",
     "@types/nprogress": "^0.2.0",
-    "@unocss/reset": "^0.44.7",
+    "@unocss/reset": "^0.45.1",
     "@vitejs/plugin-vue": "^3.0.1",
     "happy-dom": "^6.0.4",
     "tslib": "^2.4.0",
