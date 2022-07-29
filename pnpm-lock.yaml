@@ -48,7 +48,7 @@ importers:
       unplugin-auto-import: 0.10.2
       vite: ^3.0.3
       vite-plugin-info: ^0.3.0
-      vite-plugin-md: ^0.20.0
+      vite-plugin-md: ^0.20.2
       vite-plugin-pages: ^0.25.0
       vue: ^3.2.37
       vue-router: ^4.1.3
@@ -85,7 +85,7 @@ importers:
       unplugin-auto-import: 0.10.2_ya3b5ohu7u6blcmxzl5ar2qa2a
       vite: 3.0.3
       vite-plugin-info: 0.3.0_vite@3.0.3
-      vite-plugin-md: 0.20.0_n4j2ceekgv6wqqwuyxjcuf2ec4
+      vite-plugin-md: 0.20.2_n4j2ceekgv6wqqwuyxjcuf2ec4
       vite-plugin-pages: 0.25.0_vite@3.0.3
       vue-tsc: 0.39.2_typescript@4.7.4
 
@@ -967,7 +967,7 @@ packages:
       randomfill: 1.0.4
     dev: false
 
-  /@yankeeinlondon/builder-api/0.4.0_dfvam5375c6w7q3elmzftk3jfe:
+  /@yankeeinlondon/builder-api/0.4.0_le75fwuycoyhpdglzzce2itjke:
     resolution: {integrity: sha512-mmrwd7KmTiYnRhKAvX7CXDIePjn10N6HOjuFRT8+Fwd/J9ZOFP1ZavccVoKfIHiDMz5QIhVngETd/7AukMMZcA==}
     peerDependencies:
       '@vitejs/plugin-vue': ^3.0.1
@@ -980,7 +980,7 @@ packages:
       '@vitejs/plugin-vue': 3.0.1_vite@3.0.3+vue@3.2.37
       '@yankeeinlondon/happy-wrapper': 2.5.0_happy-dom@6.0.4
       markdown-it: 13.0.1
-      vite-plugin-md: 0.20.0_n4j2ceekgv6wqqwuyxjcuf2ec4
+      vite-plugin-md: 0.20.2_n4j2ceekgv6wqqwuyxjcuf2ec4
       vue: 3.2.37
     transitivePeerDependencies:
       - happy-dom
@@ -4750,20 +4750,19 @@ packages:
       vite: 3.0.3
     dev: true
 
-  /vite-plugin-md/0.20.0_n4j2ceekgv6wqqwuyxjcuf2ec4:
-    resolution: {integrity: sha512-koOINU9h1OIx+8PNq2++edaBevPE11tuZH2fKo91GISkXc1ITbecJQ4xzZAgnffssUbW0BOGvSR9QzFBQwtIzA==}
+  /vite-plugin-md/0.20.2_n4j2ceekgv6wqqwuyxjcuf2ec4:
+    resolution: {integrity: sha512-Jkl21FPSFIJU2O1ARBK9v4A6r2Ceo4nxsSqIA+Q5SXfwIR5zjeTP+WP4swy1wSi2ju7DUkHXBVa2e4xsWjOzJA==}
     peerDependencies:
       '@rollup/pluginutils': ^4.2.1
-      '@vitejs/plugin-vue': ^3.0.1
       rollup: ^2.77.0
     dependencies:
-      '@vitejs/plugin-vue': 3.0.1_vite@3.0.3+vue@3.2.37
-      '@yankeeinlondon/builder-api': 0.4.0_dfvam5375c6w7q3elmzftk3jfe
+      '@yankeeinlondon/builder-api': 0.4.0_le75fwuycoyhpdglzzce2itjke
       '@yankeeinlondon/happy-wrapper': 2.5.0_happy-dom@6.0.4
       gray-matter: 4.0.3
       markdown-it: 13.0.1
       source-map-js: 1.0.2
     transitivePeerDependencies:
+      - '@vitejs/plugin-vue'
       - fp-ts
       - happy-dom
       - inferred-types
