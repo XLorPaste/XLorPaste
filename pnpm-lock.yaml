@@ -47,7 +47,7 @@ importers:
       unocss: ^0.44.7
       unplugin-auto-import: 0.10.2
       vite: ^3.0.4
-      vite-plugin-info: ^0.3.0
+      vite-plugin-info: ^0.3.1
       vite-plugin-md: ^0.20.2
       vite-plugin-pages: ^0.25.0
       vue: ^3.2.37
@@ -84,7 +84,7 @@ importers:
       unocss: 0.44.7_vite@3.0.4
       unplugin-auto-import: 0.10.2_v37kjkvb3j3nwuyxpflyrhwvey
       vite: 3.0.4
-      vite-plugin-info: 0.3.0_vite@3.0.4
+      vite-plugin-info: 0.3.1_vite@3.0.4
       vite-plugin-md: 0.20.2_n4j2ceekgv6wqqwuyxjcuf2ec4
       vite-plugin-pages: 0.25.0_vite@3.0.4
       vue-tsc: 0.39.2_typescript@4.7.4
@@ -4738,8 +4738,8 @@ packages:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
 
-  /vite-plugin-info/0.3.0_vite@3.0.4:
-    resolution: {integrity: sha512-k32TSx+Q6KPubnzVSf8v46w4Abxj0gyB1Pro5wVUPhgEXqyWizxSCzsPSZ7PWI4Ivft+xj4XTaRT9Ym326lSwQ==}
+  /vite-plugin-info/0.3.1_vite@3.0.4:
+    resolution: {integrity: sha512-+nhVdmBGSMBTRKNT4mTo4yBkepIH6YtIJnw4UIfW9kyDy9DDZ/xEsyCoaboait9/lZBoi1mOAOnHgZLN6+Yz3g==}
     peerDependencies:
       vite: ^2.9.13 || ^3.0.0
     dependencies:
