@@ -37,7 +37,7 @@ jobs:
           ossutil rm oss://${{ secrets.BUCKET_NAME }}/ -rf
           ossutil cp ./packages/app/dist oss://${{ secrets.BUCKET_NAME }}/ -rf
 
-  jetbrains:
+  IntelliJ:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -53,7 +53,7 @@ jobs:
           cache: gradle
 
       - name: Build
-        working-directory: ./jetbrains
+        working-directory: ./IntelliJ
         run: |
           chmod +x ./gradlew
           ./gradlew build
@@ -63,4 +63,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: IntelliJ-plugin
-          path: ./jetbrains/build/distributions/
+          path: ./IntelliJ/build/distributions/
