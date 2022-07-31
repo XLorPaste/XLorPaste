@@ -12,7 +12,7 @@
       the semantic versioning: https://plugins.jetbrains.com/docs/marketplace/semver.html.
       It is displayed in the "Plugins" settings dialog and in the Marketplace
       plugin page. -->
-    <version>0.0.0</version>
+    <version>0.0.1</version>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="yjl9903@outlook.com" url="https://xlorpaste.cn">XLor</vendor>
@@ -21,8 +21,20 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-    Jetbrains plugin for <a href="https://xlorpaste.cn">XLorPaste</a>.<br/>
-    Upload your Code and Share it.
+    IntelliJ-based plugin for <a href="https://xlorpaste.cn">XLorPaste</a>.<br/>
+    Share your code snippets with collaborators and friends, powered by <a href="https://xlorpaste.cn">XLorPaste</a>.<br/>
+
+    <h2>Installation</h2>
+    <p>Using IDE built-in plugin system:</p>
+    <p>Preferences > Plugins > Marketplace > Search for "xlorpaste" > Install Plugin</p>
+
+    <h2>Usage</h2>
+    <ol>
+      <li>Open any code you want to share</li>
+      <li>Press the cloud button at the beginning of the tool bar</li>
+      <li>Wait for a moment and you will see the notification</li>
+      <li>Press the Copy action to share the link with others</li>
+    </ol>
     ]]></description>
 
     <!-- Product and plugin compatibility requirements.
