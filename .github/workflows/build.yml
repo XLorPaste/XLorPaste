@@ -58,3 +58,9 @@ jobs:
           chmod +x ./gradlew
           ./gradlew build
           ./gradlew test
+          
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: IntelliJ-plugin
+          path: ./jetbrains/build/distributions/
