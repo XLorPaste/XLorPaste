@@ -114,14 +114,14 @@ importers:
     specifiers:
       '@cloudflare/workers-types': ^3.14.1
       nitropack: ^0.4.12
-      unstorage: ^0.5.5
+      unstorage: ^0.5.6
       xlorpaste: workspace:*
     dependencies:
       xlorpaste: link:../cli
     devDependencies:
       '@cloudflare/workers-types': 3.14.1
       nitropack: 0.4.12
-      unstorage: 0.5.5
+      unstorage: 0.5.6
 
 packages:
 
@@ -3146,7 +3146,7 @@ packages:
     dev: true
 
   /ms/2.0.0:
-    resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=}
+    resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
     dev: true
 
   /ms/2.1.2:
@@ -3244,7 +3244,7 @@ packages:
       ufo: 0.8.5
       unenv: 0.5.2
       unimport: 0.4.7_z4wjf5stc47okcxkgg4qwbc5si
-      unstorage: 0.5.5
+      unstorage: 0.5.6
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -4504,8 +4504,8 @@ packages:
       webpack-virtual-modules: 0.4.4
     dev: true
 
-  /unstorage/0.5.5:
-    resolution: {integrity: sha512-hiaJUOCWrgBp8cc7bnVYe2vAMkd6gRJ3iRLFRZuwL7LjTnPJ3o/r5F55N4t7CdRq4WThTZCRNDKZ4qzZGF7TIA==}
+  /unstorage/0.5.6:
+    resolution: {integrity: sha512-TUm1ZyLkVamRfM+uWmWtavlzri3XS0ajYXKhlrAZ8aCChMwH29lufOfAP0bsMaBHuciIVfycaGgNhHeyLONpdA==}
     dependencies:
       anymatch: 3.1.2
       chokidar: 3.5.3
