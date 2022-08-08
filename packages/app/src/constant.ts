@@ -1,6 +1,6 @@
 export const CodeLanguage = {
   text: '纯文本',
-  cpp: 'C',
+  cpp: 'C++',
   md: 'Markdown',
   c: 'C',
   java: 'Java',
