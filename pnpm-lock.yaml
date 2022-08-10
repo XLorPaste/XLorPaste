@@ -26,7 +26,7 @@ importers:
     specifiers:
       '@chenfengyuan/vue-qrcode': ^2.0.0
       '@iconify-json/carbon': ^1.1.7
-      '@iconify-json/mdi': ^1.1.29
+      '@iconify-json/mdi': ^1.1.30
       '@types/katex': ^0.14.0
       '@types/nprogress': ^0.2.0
       '@unocss/reset': ^0.45.5
@@ -73,7 +73,7 @@ importers:
       xlorpaste: link:../cli
     devDependencies:
       '@iconify-json/carbon': 1.1.7
-      '@iconify-json/mdi': 1.1.29
+      '@iconify-json/mdi': 1.1.30
       '@types/katex': 0.14.0
       '@types/nprogress': 0.2.0
       '@unocss/reset': 0.45.5
@@ -208,8 +208,8 @@ packages:
       '@iconify/types': 1.1.0
     dev: true
 
-  /@iconify-json/mdi/1.1.29:
-    resolution: {integrity: sha512-klGuStNuyOHJIaCK36XWiXuUnnxKaZfGXGh+RVf4hbB2Pyvp//PgNvluz8uK32remmQDydzPr+ipvqbenxzQ2g==}
+  /@iconify-json/mdi/1.1.30:
+    resolution: {integrity: sha512-mNhZT/14mReJRNDd//cs3oJ2RQq3nBkYj1fcDFr8sgYce4k8Br3CsOC61SIPsdw5rfNBMsXEpfJ4AOry36i0XQ==}
     dependencies:
       '@iconify/types': 1.1.0
     dev: true
