@@ -29,7 +29,7 @@ importers:
       '@iconify-json/mdi': ^1.1.30
       '@types/katex': ^0.14.0
       '@types/nprogress': ^0.2.0
-      '@unocss/reset': ^0.45.5
+      '@unocss/reset': ^0.45.6
       '@vitejs/plugin-vue': ^3.0.1
       '@vueuse/core': ^9.0.0
       date-fns: ^2.29.1
@@ -76,7 +76,7 @@ importers:
       '@iconify-json/mdi': 1.1.30
       '@types/katex': 0.14.0
       '@types/nprogress': 0.2.0
-      '@unocss/reset': 0.45.5
+      '@unocss/reset': 0.45.6
       '@vitejs/plugin-vue': 3.0.1_vite@3.0.5+vue@3.2.37
       happy-dom: 6.0.4
       tslib: 2.4.0
@@ -744,6 +744,10 @@ packages:
 
   /@unocss/reset/0.45.5:
     resolution: {integrity: sha512-JDFRoc1H0Tk1knRGI+LljOKrKkWrF1txJ50DG3oa+azTdQaX0wDQ4isyDM6PbodydhEqYCsZcJEL/2pEiPRg8A==}
+    dev: true
+
+  /@unocss/reset/0.45.6:
+    resolution: {integrity: sha512-L02ur7LFzeIzOgQ419vA14498F76jbvKMeTdiVyR3Ym2C7BkxUGg6CgqY7Exm6e2qOjgcFkYU93aWaOyKi9hzw==}
     dev: true
 
   /@unocss/scope/0.45.5:
