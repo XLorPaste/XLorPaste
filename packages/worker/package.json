@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^3.14.1",
-    "nitropack": "^0.4.12",
+    "nitropack": "^0.4.24",
     "unstorage": "^0.5.6"
   }
 }
