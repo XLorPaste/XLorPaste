@@ -10,7 +10,7 @@ plugins {
   val kotlinVersion = "1.6.21"
 
   id("java")
-  id("org.jetbrains.intellij") version "1.6.0"
+  id("org.jetbrains.intellij") version "1.9.0"
   kotlin("jvm") version kotlinVersion
   kotlin("plugin.serialization") version kotlinVersion
 }
