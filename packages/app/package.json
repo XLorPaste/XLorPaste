@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.7",
-    "@iconify-json/mdi": "^1.1.30",
+    "@iconify-json/mdi": "^1.1.33",
     "@types/katex": "^0.14.0",
     "@types/nprogress": "^0.2.0",
     "@unocss/reset": "^0.45.8",
