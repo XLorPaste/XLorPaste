@@ -27,7 +27,7 @@
     "xlorpaste": "workspace:*"
   },
   "devDependencies": {
-    "@iconify-json/carbon": "^1.1.7",
+    "@iconify-json/carbon": "^1.1.8",
     "@iconify-json/mdi": "^1.1.33",
     "@types/katex": "^0.14.0",
     "@types/nprogress": "^0.2.0",
