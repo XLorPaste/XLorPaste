@@ -61,7 +61,7 @@ export function useClient() {
     },
     async render(body: string, lang: CodeLanguageType, isDark = false) {
       const cache = isDark ? renderedDarkCache : renderedCache;
-      if (cache.value[lang]?.has(body)) return cache.value[lang]!.get(body)!;
+      if (cache.value[lang]?.has?.(body)) return cache.value[lang]!.get(body)!;
       const { highlight } = await import('./highlight');
       const resp = await highlight(body, lang, isDark);
       if (!cache.value[lang]) cache.value[lang] = new Map();
