@@ -92,7 +92,7 @@ importers:
   packages/cli:
     specifiers:
       axios: ^0.27.2
-      cac: ^6.7.12
+      cac: ^6.7.14
       js-base64: ^3.7.2
       kolorist: ^1.5.1
       resolve-from: ^5.0.0
@@ -101,7 +101,7 @@ importers:
       typescript: ^4.7.4
     dependencies:
       axios: 0.27.2
-      cac: 6.7.12
+      cac: 6.7.14
       js-base64: 3.7.2
       kolorist: 1.5.1
       resolve-from: 5.0.0
@@ -1404,11 +1404,11 @@ packages:
   /cac/6.7.12:
     resolution: {integrity: sha512-rM7E2ygtMkJqD9c7WnFU6fruFcN3xe4FM5yUmgxhZzIKJk4uHl9U/fhwdajGFQbQuv43FAUo1Fe8gX/oIKDeSA==}
     engines: {node: '>=8'}
+    dev: true
 
   /cac/6.7.14:
     resolution: {integrity: sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ==}
     engines: {node: '>=8'}
-    dev: true
 
   /call-bind/1.0.2:
     resolution: {integrity: sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==}
@@ -4717,7 +4717,7 @@ packages:
         optional: true
     dependencies:
       bundle-require: 3.1.0_esbuild@0.15.1
-      cac: 6.7.12
+      cac: 6.7.14
       chokidar: 3.5.3
       debug: 4.3.4
       esbuild: 0.15.1
