@@ -41,7 +41,7 @@ importers:
       normalize.css: ^8.0.1
       nprogress: ^0.2.0
       qrcode: ^1.5.1
-      shiki: ^0.10.1
+      shiki: ^0.11.1
       tslib: ^2.4.0
       typescript: ^4.7.4
       unocss: ^0.45.8
@@ -66,7 +66,7 @@ importers:
       normalize.css: 8.0.1
       nprogress: 0.2.0
       qrcode: 1.5.1
-      shiki: 0.10.1
+      shiki: 0.11.1
       vue: 3.2.37
       vue-router: 4.1.3_vue@3.2.37
       wastyle: 0.0.5
@@ -4150,12 +4150,12 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /shiki/0.10.1:
-    resolution: {integrity: sha512-VsY7QJVzU51j5o1+DguUd+6vmCmZ5v/6gYu4vyYAhzjuNQU6P/vmSy4uQaOhvje031qQMiW0d2BwgMH52vqMng==}
+  /shiki/0.11.1:
+    resolution: {integrity: sha512-EugY9VASFuDqOexOgXR18ZV+TbFrQHeCpEYaXamO+SZlsnT/2LxuLBX25GGtIrwaEVFXUAbUQ601SWE2rMwWHA==}
     dependencies:
       jsonc-parser: 3.0.0
       vscode-oniguruma: 1.6.1
-      vscode-textmate: 5.2.0
+      vscode-textmate: 6.0.0
     dev: false
 
   /side-channel/1.0.4:
@@ -4866,8 +4866,8 @@ packages:
     resolution: {integrity: sha512-vc4WhSIaVpgJ0jJIejjYxPvURJavX6QG41vu0mGhqywMkQqulezEqEQ3cO3gc8GvcOpX6ycmKGqRoROEMBNXTQ==}
     dev: false
 
-  /vscode-textmate/5.2.0:
-    resolution: {integrity: sha512-Uw5ooOQxRASHgu6C7GVvUxisKXfSgW4oFlO+aa+PAkgmH89O3CXxEEzNRNtHSqtXFTl0nAC1uYj0GMSH27uwtQ==}
+  /vscode-textmate/6.0.0:
+    resolution: {integrity: sha512-gu73tuZfJgu+mvCSy4UZwd2JXykjK9zAZsfmDeut5dx/1a7FeTk0XwJsSuqQn+cuMCGVbIBfl+s53X4T19DnzQ==}
     dev: false
 
   /vue-demi/0.13.6_vue@3.2.37:
