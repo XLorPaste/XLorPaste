@@ -47,13 +47,13 @@ export function useClient() {
 
   return {
     async fetch(token: string) {
-      if (subCache.value.has(token)) return subCache.value.get(token)!;
+      if (subCache.value?.has(token)) return subCache.value.get(token)!;
       const resp = await xlorpaste.fetch(token);
       subCache.value.set(resp.token, resp);
       return resp;
     },
     async format(body: string, lang: CodeLanguageType) {
-      if (formatedCache.value.has(body)) return formatedCache.value.get(body)!;
+      if (formatedCache.value?.has(body)) return formatedCache.value.get(body)!;
       const { format } = await import('./format');
       const resp = await format(body, lang, globalSettings.value);
       formatedCache.value.set(body, resp);
