@@ -29,43 +29,45 @@ export async function fetch(token: string) {
 }
 
 export function useClient() {
-  const subCache = useLocalStorage('cache:submission', new Map<string, FetchSubmission>());
-  const formatedCache = useLocalStorage('cache:formated', new Map<string, string>());
+  const subCache = useLocalStorage<Record<string, FetchSubmission>>('cache:submission', {});
+  const formatedCache = useLocalStorage<Record<string, string>>('cache:formated', {});
   const renderedCache = useLocalStorage(
     'cache:rendered',
-    {} as Record<CodeLanguageType, Map<string, string>>
+    {} as Record<CodeLanguageType, Record<string, string>>
   );
   const renderedDarkCache = useLocalStorage(
     'cache:rendered-dark',
-    {} as Record<CodeLanguageType, Map<string, string>>
+    {} as Record<CodeLanguageType, Record<string, string>>
   );
 
   const globalSettings = inject(GlobalSettingsKey)!;
   watch(globalSettings, () => {
-    formatedCache.value.clear();
+    formatedCache.value = {};
   });
 
   return {
     async fetch(token: string) {
-      if (subCache.value?.has(token)) return subCache.value.get(token)!;
+      if (token in subCache.value && subCache.value[token]) return subCache.value[token]!;
       const resp = await xlorpaste.fetch(token);
-      subCache.value.set(resp.token, resp);
+      subCache.value[resp.token] = resp;
       return resp;
     },
     async format(body: string, lang: CodeLanguageType) {
-      if (formatedCache.value?.has(body)) return formatedCache.value.get(body)!;
+      if (body in formatedCache.value && formatedCache.value[body])
+        return formatedCache.value[body]!;
       const { format } = await import('./format');
       const resp = await format(body, lang, globalSettings.value);
-      formatedCache.value.set(body, resp);
+      formatedCache.value[body] = resp;
       return resp;
     },
     async render(body: string, lang: CodeLanguageType, isDark = false) {
       const cache = isDark ? renderedDarkCache : renderedCache;
-      if (cache.value[lang]?.has?.(body)) return cache.value[lang]!.get(body)!;
+      const LangCache = cache.value[lang];
+      if (LangCache && LangCache[body]) return LangCache[body]!;
       const { highlight } = await import('./highlight');
       const resp = await highlight(body, lang, isDark);
-      if (!cache.value[lang]) cache.value[lang] = new Map();
-      cache.value[lang]!.set(body, resp);
+      if (!cache.value[lang]) cache.value[lang] = {};
+      cache.value[lang]![body] = resp;
       return resp;
     }
   };
