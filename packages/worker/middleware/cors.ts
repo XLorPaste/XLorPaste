@@ -1,8 +1,8 @@
-import { defineEventHandler, useMethod } from 'h3';
+import { defineEventHandler, getMethod } from 'h3';
 
 export default defineEventHandler((event) => {
   const res = event.res;
-  const method = useMethod(event);
+  const method = getMethod(event);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');

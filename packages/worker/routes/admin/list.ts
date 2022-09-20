@@ -1,4 +1,4 @@
-import { defineEventHandler, useQuery } from 'h3';
+import { defineEventHandler, getQuery } from 'h3';
 
 import { subStore } from '~/storage';
 
@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
   const auth = event.req.headers['Authorization'] ?? event.req.headers['authorization'];
   const key = ADMIN_KEY ?? '';
   if (key.length > 0 && auth === key) {
-    const query = useQuery(event);
+    const query = getQuery(event);
     const { start = '0', count = '20' } = query;
     const keys = await subStore.getKeys();
     return {

@@ -1,12 +1,12 @@
 import type { FetchSubmission, Submission } from 'xlorpaste';
-import { defineEventHandler, useQuery } from 'h3';
+import { defineEventHandler, getQuery } from 'h3';
 
 import { delStore, subStore } from '~/storage';
 
 export default defineEventHandler(async (event) => {
   const token = event.context.params.token;
   if (token) {
-    const query = useQuery(event);
+    const query = getQuery(event);
     const result = await getSub(event.context.params.token);
     if (['', 'true'].some((k) => k === query.raw)) {
       return result?.body ?? '';
