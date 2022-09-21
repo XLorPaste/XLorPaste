@@ -7,7 +7,7 @@ importers:
       '@types/node': ^18.6.1
       cross-env: ^7.0.3
       miniflare: ^2.9.0
-      optc: ^0.3.6
+      optc: ^0.3.8
       prettier: ^2.7.1
       tslib: ^2.4.0
       tsup: ^6.2.3
@@ -16,7 +16,7 @@ importers:
       '@types/node': 18.6.1
       cross-env: 7.0.3
       miniflare: 2.9.0
-      optc: 0.3.6
+      optc: 0.3.8
       prettier: 2.7.1
       tslib: 2.4.0
       tsup: 6.2.3_typescript@4.8.3
@@ -660,6 +660,12 @@ packages:
       '@types/node': 18.6.1
     dev: true
 
+  /@types/fs-extra/9.0.13:
+    resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
+    dependencies:
+      '@types/node': 18.6.1
+    dev: true
+
   /@types/katex/0.14.0:
     resolution: {integrity: sha512-+2FW2CcT0K3P+JMR8YG846bmDwplKUTsWgT2ENwdQ1UdVfRk3GQrh6Mi4sTopy30gI8Uau5CEqHTDZ6YvWIUPA==}
     dev: true
@@ -1151,12 +1157,6 @@ packages:
 
   /abbrev/1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
-    dev: true
-
-  /acorn/8.7.1:
-    resolution: {integrity: sha512-Xx54uLJQZ19lKygFXOWsscKUbsBZW0CPykPhVQdhIeIwrbPmJzqeASDInc8nKBnp/JT6igTs82qPXz069H8I/A==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
     dev: true
 
   /acorn/8.8.0:
@@ -3273,6 +3273,7 @@ packages:
 
   /jsonc-parser/3.0.0:
     resolution: {integrity: sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==}
+    dev: false
 
   /jsonc-parser/3.2.0:
     resolution: {integrity: sha512-gfFQZrcTc8CnKXp6Y4/CBT3fTc0OVuDofpre4aEeEpSBPV5X5v4+Vmx+8snU7RLPrNHPKSgLxGo9YuQzz20o+w==}
@@ -3314,6 +3315,10 @@ packages:
 
   /kolorist/1.5.1:
     resolution: {integrity: sha512-lxpCM3HTvquGxKGzHeknB/sUjuVoUElLlfYnXZT73K8geR9jQbroGlSCFBax9/0mpGoD3kzcMLnOlGQPJJNyqQ==}
+
+  /kolorist/1.6.0:
+    resolution: {integrity: sha512-dLkz37Ab97HWMx9KTes3Tbi3D1ln9fCAy2zr2YVExJasDRPGRaKcoE4fycWNtnCAJfjFqe0cnY+f8KT2JePEXQ==}
+    dev: true
 
   /lazystream/1.0.1:
     resolution: {integrity: sha512-b94GiNHQNy6JNTrt5w6zNyffMrNkXZb3KTkCZJb2V1xaEGCk093vkZ2jk3tpaeP33/OiXC+WvK9AxUebnf5nbw==}
@@ -3426,15 +3431,14 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /magic-regexp/0.4.0:
-    resolution: {integrity: sha512-cZfSZrV3GBGRhV+T6sUQCyhyu2VCu9NO/B70XzuCSZj/X5butfVMwM1K2Lh8IfIXSOHO1IRJuj9wxPe3/mV60A==}
+  /magic-regexp/0.4.1:
+    resolution: {integrity: sha512-JNwUo8+mV7yYUz3z6YDac4qhKMKVYOiEMU1DkW+EwG+BADaXCZpdh0wNFk1+7B2wrMGF4V6jrARWBitFZW2gGw==}
     dependencies:
       estree-walker: 3.0.1
-      jiti: 1.14.0
-      magic-string: 0.26.2
-      mlly: 0.5.5
+      magic-string: 0.26.3
+      mlly: 0.5.16
       ufo: 0.8.5
-      unplugin: 0.7.2
+      unplugin: 0.8.1
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -3638,15 +3642,6 @@ packages:
     hasBin: true
     dev: true
 
-  /mlly/0.5.13:
-    resolution: {integrity: sha512-0SK2fqoan+PMjADs4I2egAtrtNtpjqRez6PDTCeAdGjUQNJCvO5o9v2NEq52WA1jFmMU97qBr/JgdvCquehDbA==}
-    dependencies:
-      acorn: 8.8.0
-      pathe: 0.3.5
-      pkg-types: 0.3.3
-      ufo: 0.8.5
-    dev: true
-
   /mlly/0.5.16:
     resolution: {integrity: sha512-LaJ8yuh4v0zEmge/g3c7jjFlhoCPfQn6RCjXgm9A0Qiuochq4BcuOxVfWmdnCoLTlg2MV+hqhOek+W2OhG0Lwg==}
     dependencies:
@@ -3654,13 +3649,6 @@ packages:
       pathe: 0.3.8
       pkg-types: 0.3.5
       ufo: 0.8.5
-    dev: true
-
-  /mlly/0.5.5:
-    resolution: {integrity: sha512-2R4JT/SxRDPexomw4rmHYY/gWAGmL9Kkq1OR76Ua6w+P340a1aBDTWzKo2kAlxzrG82OdXs5VB9Lmcmyit0Obg==}
-    dependencies:
-      pathe: 0.3.2
-      pkg-types: 0.3.3
     dev: true
 
   /mri/1.2.0:
@@ -3964,19 +3952,21 @@ packages:
       is-wsl: 2.2.0
     dev: true
 
-  /optc/0.3.6:
-    resolution: {integrity: sha512-8NQzx8c0/Sqowtwy/I6iK14kBittOBFWB9+DNvUoTUOn5C+NrJpgNuLyogd/fgRDBrxrrx+LRa8fvM8/aGafDQ==}
-    engines: {node: '>=16.0.0'}
+  /optc/0.3.8:
+    resolution: {integrity: sha512-jzMSzW5gM7PpjCN+3kdmbTBWq9CI9gzSXCfcoShgc61Llqvp/oyU2JooL2LriD2m4ie5q+MbpttD1ygBy4+Z4A==}
+    engines: {node: '>=v16.17.0'}
     hasBin: true
     dependencies:
+      '@types/fs-extra': 9.0.13
+      '@types/node': 18.6.1
       axios: 0.27.2_debug@4.3.4
-      cac: 6.7.12
+      cac: 6.7.14
       debug: 4.3.4
       fs-extra: 10.1.0
       globby: 13.1.2
-      jiti: 1.14.0
-      kolorist: 1.5.1
-      magic-regexp: 0.4.0
+      jiti: 1.16.0
+      kolorist: 1.6.0
+      magic-regexp: 0.4.1
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -4082,14 +4072,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /pathe/0.3.2:
-    resolution: {integrity: sha512-qhnmX0TOqlCvdWWTkoM83wh5J8fZ2yhbDEc9MlsnAEtEc+JCwxUKEwmd6pkY9hRe6JR1Uecbc14VcAKX2yFSTA==}
-    dev: true
-
-  /pathe/0.3.5:
-    resolution: {integrity: sha512-grU/QeYP0ChuE5kjU2/k8VtAeODzbernHlue0gTa27+ayGIu3wqYBIPGfP9r5xSqgCgDd4nWrjKXEfxMillByg==}
-    dev: true
-
   /pathe/0.3.8:
     resolution: {integrity: sha512-c71n61F1skhj/jzZe+fWE9XDoTYjWbUwIKVwFftZ5IOgiX44BVkTkD+/803YDgR50tqeO4eXWxLyVHBLWQAD1g==}
     dev: true
@@ -4113,14 +4095,6 @@ packages:
   /pirates/4.0.4:
     resolution: {integrity: sha512-ZIrVPH+A52Dw84R0L3/VS9Op04PuQ2SEoJL6bkshmiTic/HldyW9Tf7oH5mhJZBK7NmDx27vSMrYEXPXclpDKw==}
     engines: {node: '>= 6'}
-    dev: true
-
-  /pkg-types/0.3.3:
-    resolution: {integrity: sha512-6AJcCMnjUQPQv/Wk960w0TOmjhdjbeaQJoSKWRQv9N3rgkessCu6J0Ydsog/nw1MbpnxHuPzYbfOn2KmlZO1FA==}
-    dependencies:
-      jsonc-parser: 3.0.0
-      mlly: 0.5.13
-      pathe: 0.3.5
     dev: true
 
   /pkg-types/0.3.5:
@@ -5041,8 +5015,8 @@ packages:
       - webpack
     dev: true
 
-  /unplugin/0.7.2:
-    resolution: {integrity: sha512-m7thX4jP8l5sETpLdUASoDOGOcHaOVtgNyrYlToyQUvILUtEzEnngRBrHnAX3IKqooJVmXpoa/CwQ/QqzvGaHQ==}
+  /unplugin/0.8.1:
+    resolution: {integrity: sha512-o7rUZoPLG1fH4LKinWgb77gDtTE6mw/iry0Pq0Z5UPvZ9+HZ1/4+7fic7t58s8/CGkPrDpGq+RltO+DmswcR4g==}
     peerDependencies:
       esbuild: '>=0.13'
       rollup: ^2.50.0
@@ -5058,7 +5032,7 @@ packages:
       webpack:
         optional: true
     dependencies:
-      acorn: 8.7.1
+      acorn: 8.8.0
       chokidar: 3.5.3
       webpack-sources: 3.2.3
       webpack-virtual-modules: 0.4.4
