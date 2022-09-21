@@ -15,7 +15,7 @@
     "xlorpaste": "workspace:*"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^3.14.1",
+    "@cloudflare/workers-types": "^3.16.0",
     "nitropack": "^0.4.24",
     "unstorage": "^0.5.6"
   }
