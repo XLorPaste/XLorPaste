@@ -7,7 +7,7 @@ importers:
       '@types/node': ^18.6.1
       cross-env: ^7.0.3
       miniflare: ^2.9.0
-      optc: ^0.4.0
+      optc: ^0.4.1
       prettier: ^2.7.1
       tslib: ^2.4.0
       tsup: ^6.2.3
@@ -16,7 +16,7 @@ importers:
       '@types/node': 18.6.1
       cross-env: 7.0.3
       miniflare: 2.9.0
-      optc: 0.4.0
+      optc: 0.4.1
       prettier: 2.7.1
       tslib: 2.4.0
       tsup: 6.2.3_typescript@4.8.4
@@ -3954,8 +3954,8 @@ packages:
       is-wsl: 2.2.0
     dev: true
 
-  /optc/0.4.0:
-    resolution: {integrity: sha512-FSDJxEaXeirEGPz7/R0QTzXaIH8Ov3oTHqzdfSECrNDfS1Iqr0n8+JnS5Iu5yHig2q1h4rC0FS8FbfrIXEoZJw==}
+  /optc/0.4.1:
+    resolution: {integrity: sha512-x5zg9tYTag5UTe63aRf8Rr6M79HHn5V+2bfZccUxrsBqs7YhDzOCwmHlrOqtoL9vt8a3qZNLOLTGoS36XJbzdQ==}
     engines: {node: '>=v16.17.0'}
     hasBin: true
     dependencies:
