@@ -2,13 +2,12 @@ package cn.xlorpaste.jetbrains
 
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.State
-import com.intellij.openapi.components.Storage
 
 @State(name = "History")
 class HistoryService : PersistentStateComponent<HistoryService.HistoryState> {
   data class HistoryState(val codes: List<String>)
 
-  private var state: HistoryState? = null;
+  private var state: HistoryState? = null
 
   override fun getState(): HistoryState? {
     return state
