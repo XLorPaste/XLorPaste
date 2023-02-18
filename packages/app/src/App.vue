@@ -153,7 +153,7 @@ provide(GlobalSettingsKey, GlobalSettings);
         <router-link :to="{ name: 'Help' }">帮助</router-link> |
         <a href="https://upptime.xlorpaste.cn/" target="_blank" rel="noopener noreferrer">状态</a>
         |
-        <a href="http://www.miitbeian.gov.cn" target="_blank" rel="noopener noreferrer"
+        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer"
           >苏ICP备19000844号</a
         >
       </p>
