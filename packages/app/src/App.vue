@@ -154,7 +154,7 @@ provide(GlobalSettingsKey, GlobalSettings);
         <a href="https://upptime.xlorpaste.cn/" target="_blank" rel="noopener noreferrer">状态</a>
         |
         <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer"
-          >苏ICP备19000844号</a
+          >苏ICP备19000844号-1</a
         >
       </p>
 
