@@ -94,7 +94,7 @@ importers:
       axios: ^0.27.2
       cac: ^6.7.12
       js-base64: ^3.7.2
-      kolorist: ^1.6.0
+      kolorist: ^1.8.0
       resolve-from: ^5.0.0
       tslib: ^2.4.0
       tsup: ^6.2.3
@@ -103,7 +103,7 @@ importers:
       axios: 0.27.2
       cac: 6.7.12
       js-base64: 3.7.2
-      kolorist: 1.6.0
+      kolorist: 1.8.0
       resolve-from: 5.0.0
     devDependencies:
       tslib: 2.4.0
@@ -258,7 +258,7 @@ packages:
       '@antfu/utils': 0.5.2
       '@iconify/types': 2.0.0
       debug: 4.3.4
-      kolorist: 1.6.0
+      kolorist: 1.8.0
       local-pkg: 0.4.2
     transitivePeerDependencies:
       - supports-color
@@ -3308,8 +3308,8 @@ packages:
     resolution: {integrity: sha512-2ekmY2S/VB3YGVhrIFadyJQpkjMFSf48tsXCnA+kjs4FEQIT+5FLyOF0No/X58z/2E/VaMyeJfukRoVT4gMsfQ==}
     dev: true
 
-  /kolorist/1.6.0:
-    resolution: {integrity: sha512-dLkz37Ab97HWMx9KTes3Tbi3D1ln9fCAy2zr2YVExJasDRPGRaKcoE4fycWNtnCAJfjFqe0cnY+f8KT2JePEXQ==}
+  /kolorist/1.8.0:
+    resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==}
 
   /lazystream/1.0.1:
     resolution: {integrity: sha512-b94GiNHQNy6JNTrt5w6zNyffMrNkXZb3KTkCZJb2V1xaEGCk093vkZ2jk3tpaeP33/OiXC+WvK9AxUebnf5nbw==}
@@ -3956,7 +3956,7 @@ packages:
       fs-extra: 10.1.0
       globby: 13.1.2
       jiti: 1.16.0
-      kolorist: 1.6.0
+      kolorist: 1.8.0
       magic-regexp: 0.5.0
     transitivePeerDependencies:
       - esbuild
