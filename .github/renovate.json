@@ -1,20 +1,3 @@
 {
-  "extends": [
-    "config:base"
-  ],
-  "packageRules": [
-    {
-      "matchDepTypes": ["devDependencies", "packageManager"],
-      "automerge": true
-    },
-    {
-      "matchManagers": ["github-actions"],
-      "automerge": true
-    },
-    {
-      "matchManagers": ["gradle"],
-      "enabled": false
-    }
-  ],
-  "rangeStrategy": "bump"
+  "extends": ["github>yjl9903/renovate-config"]
 }
