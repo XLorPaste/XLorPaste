@@ -27,7 +27,7 @@ importers:
       '@chenfengyuan/vue-qrcode': ^2.0.0
       '@iconify-json/carbon': ^1.1.21
       '@iconify-json/mdi': ^1.1.33
-      '@types/katex': ^0.14.0
+      '@types/katex': ^0.16.3
       '@types/nprogress': ^0.2.0
       '@unocss/reset': ^0.45.26
       '@vitejs/plugin-vue': ^3.1.2
@@ -35,7 +35,7 @@ importers:
       date-fns: ^2.29.1
       github-markdown-css: ^5.1.0
       happy-dom: ^6.0.4
-      katex: ^0.16.0
+      katex: ^0.16.8
       markdown-it: ^13.0.1
       markdown-it-math: ^4.1.1
       normalize.css: ^8.0.1
@@ -60,7 +60,7 @@ importers:
       '@vueuse/core': 9.0.0_vue@3.2.37
       date-fns: 2.29.1
       github-markdown-css: 5.1.0
-      katex: 0.16.0
+      katex: 0.16.8
       markdown-it: 13.0.1
       markdown-it-math: 4.1.1
       normalize.css: 8.0.1
@@ -74,7 +74,7 @@ importers:
     devDependencies:
       '@iconify-json/carbon': 1.1.21
       '@iconify-json/mdi': 1.1.33
-      '@types/katex': 0.14.0
+      '@types/katex': 0.16.3
       '@types/nprogress': 0.2.0
       '@unocss/reset': 0.45.26
       '@vitejs/plugin-vue': 3.1.2_vite@3.1.4+vue@3.2.37
@@ -666,8 +666,8 @@ packages:
       '@types/node': 18.6.1
     dev: true
 
-  /@types/katex/0.14.0:
-    resolution: {integrity: sha512-+2FW2CcT0K3P+JMR8YG846bmDwplKUTsWgT2ENwdQ1UdVfRk3GQrh6Mi4sTopy30gI8Uau5CEqHTDZ6YvWIUPA==}
+  /@types/katex/0.16.3:
+    resolution: {integrity: sha512-CeVMX9EhVUW8MWnei05eIRks4D5Wscw/W9Byz1s3PA+yJvcdvq9SaDjiUKvRvEgjpdTyJMjQA43ae4KTwsvOPg==}
     dev: true
 
   /@types/ms/0.7.31:
@@ -3282,8 +3282,8 @@ packages:
       graceful-fs: 4.2.9
     dev: true
 
-  /katex/0.16.0:
-    resolution: {integrity: sha512-wPRB4iUPysfH97wTgG5/tRLYxmKVq6Q4jRAWRVOUxXB1dsiv4cvcNjqabHkrOvJHM1Bpk3WrgmllSO1vIvP24w==}
+  /katex/0.16.8:
+    resolution: {integrity: sha512-ftuDnJbcbOckGY11OO+zg3OofESlbR5DRl2cmN8HeWeeFIV7wTXvAOx8kEjZjobhA+9wh2fbKeO6cdcA9Mnovg==}
     hasBin: true
     dependencies:
       commander: 8.3.0
