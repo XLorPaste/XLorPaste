@@ -1,2 +1,1 @@
-// Previous: https://api.xlorpaste.cn
-export const DefaultAPIURL = 'https://paste.cpany.dev';
+export const DefaultAPIURL = 'https://paste.onekuma.cn';

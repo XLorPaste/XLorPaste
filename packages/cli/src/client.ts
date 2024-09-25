@@ -9,7 +9,7 @@ export interface ClientOptions {
   /**
    * XLorPaste API url
    *
-   * @default 'https://api.xlorpaste.cn'
+   * @default 'https://paste.onekuma.cn'
    */
   apiURL?: string;
 
