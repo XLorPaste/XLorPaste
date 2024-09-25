@@ -1,14 +1,18 @@
-import { Highlighter, getHighlighter, loadTheme, setCDN, setWasm, Lang, IShikiTheme } from 'shiki';
+import { createHighlighter, Highlighter, LanguageInput } from 'shiki';
+
+// @ts-ignore
+import EvaDark from '../assets/themes/eva-dark.jsonc';
+// @ts-ignore
+import EvaLight from '../assets/themes/eva-light.jsonc';
 
 import type { CodeLanguageType } from '~/constant';
 
 let highlighter: Highlighter | null = null;
-
-const themes: IShikiTheme[] = [];
+let highlighterPromise: Promise<Highlighter> | null = null;
 
 let mdRender: ((raw: string) => string) | null = null;
 
-const supportLangs: Lang[] = [
+const supportLangs: string[] = [
   'c',
   'cpp',
   'java',
@@ -21,7 +25,22 @@ const supportLangs: Lang[] = [
   'css'
 ];
 
-const alias: Map<string, Lang> = new Map([
+const bundled: Map<string, LanguageInput> = new Map([
+  ['c', () => import('shiki/langs/c.mjs'),],
+  ['cpp', () => import('shiki/langs/cpp.mjs'),],
+  ['java', () => import('shiki/langs/java.mjs'),],
+  ['javascript', () => import('shiki/langs/javascript.mjs'),],
+  ['typescript', () => import('shiki/langs/typescript.mjs'),],
+  ['json', () => import('shiki/langs/json.mjs'),],
+  ['python', () => import('shiki/langs/python.mjs'),],
+  ['typescript', () => import('shiki/langs/typescript.mjs'),],
+  ['yaml', () => import('shiki/langs/yaml.mjs'),],
+  ['html', () => import('shiki/langs/html.mjs'),],
+  ['css', () => import('shiki/langs/css.mjs'),],
+])
+
+
+const alias: Map<string, string> = new Map([
   ['c++', 'cpp'],
   ['C++', 'cpp'],
   ['C', 'c'],
@@ -30,29 +49,25 @@ const alias: Map<string, Lang> = new Map([
   ['py', 'python']
 ]);
 
-function isLangSupport(lang: string): lang is Lang {
+function isLangSupport(lang: string) {
   return !!supportLangs.find((l) => l === lang);
 }
 
-async function setup(...langs: Lang[]) {
-  if (!highlighter) {
-    // base is root
-    const base = '/';
-    setCDN(base);
-    setWasm(await fetch(base + `onig.wasm`).then((res) => res.arrayBuffer()));
-    themes.push(await loadTheme('themes/eva-light.json'));
-    themes.push(await loadTheme('themes/eva-dark.json'));
-
-    return (highlighter = await getHighlighter({
-      themes,
-      langs
-    }));
-  } else {
-    return (highlighter = await getHighlighter({
-      themes,
-      langs
-    }));
+async function setup(...langs: string[]) {
+  if (!highlighterPromise) {
+    highlighterPromise = (async () => {
+      return highlighter = await createHighlighter({
+        langs: [
+          ...langs.map(l => bundled.get(l)!).filter(Boolean)
+        ],
+        // @ts-ignore
+        themes: [EvaLight, EvaDark]
+      })
+    })()
   }
+  const hl = await highlighterPromise;
+  hl.loadLanguage(...langs.map(l => bundled.get(l)!).filter(Boolean))
+  return hl;
 }
 
 export async function preSetup() {
@@ -99,7 +114,7 @@ export async function highlight(code: string, lang: CodeLanguageType, isDark: bo
           code = code.trim();
           lang = alias.get(lang) ?? lang;
           if (isLangSupport(lang)) {
-            return hl.codeToHtml(code, { lang });
+            return hl.codeToHtml(code, { lang, theme: isDark ? 'Eva Dark' : 'Eva Light' });
           } else {
             return escapeCode(code);
           }

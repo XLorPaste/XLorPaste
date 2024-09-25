@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { version } from '~build/package';
-import { abbreviatedSha } from '~build/info';
+import { abbreviatedSha } from '~build/git';
 
 import { getAdminKey } from './logic/admin';
 import CRadio from './components/CRadio.vue';

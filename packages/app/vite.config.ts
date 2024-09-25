@@ -4,11 +4,12 @@ import { readFileSync } from 'node:fs';
 import { defineConfig, Plugin } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 
-import Info from 'vite-plugin-info';
+import Info from 'unplugin-info/vite';
 import Unocss from 'unocss/vite';
 import Pages from 'vite-plugin-pages';
 import Markdown from 'vite-plugin-md';
 import AutoImport from 'unplugin-auto-import/vite';
+import Json5 from 'vite-plugin-json5'
 
 const mdPlugin: Plugin[] = [
   Markdown({
@@ -59,6 +60,7 @@ export default defineConfig({
         }
       }
     }),
-    Unocss()
+    Unocss(),
+    Json5()
   ]
 });
