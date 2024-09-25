@@ -91,7 +91,7 @@ importers:
         specifier: ^0.16.7
         version: 0.16.7
       '@types/nprogress':
-        specifier: ^0.2.0
+        specifier: ^0.2.3
         version: 0.2.3
       '@unocss/reset':
         specifier: ^0.62.4
@@ -5131,7 +5131,7 @@ snapshots:
     dependencies:
       bumpp: 8.2.1
       callsites: 4.2.0
-      inferred-types: 0.37.6(happy-dom@8.9.0)(terser@5.33.0)
+      inferred-types: 0.37.6(happy-dom@6.0.4)(terser@5.33.0)
       vitest: 0.25.8(happy-dom@8.9.0)(terser@5.33.0)
     transitivePeerDependencies:
       - '@edge-runtime/vm'
