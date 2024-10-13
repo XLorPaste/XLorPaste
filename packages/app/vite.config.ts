@@ -5,11 +5,12 @@ import { defineConfig, Plugin } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 
 import Info from 'unplugin-info/vite';
+import Analytics from 'unplugin-analytics/vite';
 import Unocss from 'unocss/vite';
 import Pages from 'vite-plugin-pages';
 import Markdown from 'vite-plugin-md';
 import AutoImport from 'unplugin-auto-import/vite';
-import Json5 from 'vite-plugin-json5'
+import Json5 from 'vite-plugin-json5';
 
 const mdPlugin: Plugin[] = [
   Markdown({
@@ -61,6 +62,14 @@ export default defineConfig({
       }
     }),
     Unocss(),
-    Json5()
+    Json5(),
+    Analytics({
+      analytics: {
+        umami: {
+          id: '9d862228-40d8-4a04-a7f9-91ed3edf1b5a',
+          src: 'https://umami.onekuma.cn/script.js'
+        }
+      }
+    })
   ]
 });
