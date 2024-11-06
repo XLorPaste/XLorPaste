@@ -33,7 +33,7 @@
     "@types/nprogress": "^0.2.3",
     "@unocss/reset": "^0.62.4",
     "@vitejs/plugin-vue": "^5.1.4",
-    "happy-dom": "^6.0.4",
+    "happy-dom": "^15.0.0",
     "unocss": "^0.62.4",
     "unplugin-analytics": "^0.0.12",
     "unplugin-auto-import": "0.18.3",
