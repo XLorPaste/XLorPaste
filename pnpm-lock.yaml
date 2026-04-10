@@ -133,8 +133,8 @@ importers:
   packages/cli:
     dependencies:
       axios:
-        specifier: ^0.27.2
-        version: 0.27.2
+        specifier: ^1.0.0
+        version: 1.7.7(debug@4.3.7)
       cac:
         specifier: ^6.7.14
         version: 6.7.14
@@ -1789,9 +1789,6 @@ packages:
 
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
-
-  axios@0.27.2:
-    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
 
   axios@1.7.7:
     resolution: {integrity: sha512-S4kL7XrjgBmvdGut0sN3yJxqYzrDOnivkBiN0OFs6hLiUam3UPvswUo0kqGyhqUZGEOytHyumEdXsAkgCOUf3Q==}
@@ -5748,13 +5745,6 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  axios@0.27.2:
-    dependencies:
-      follow-redirects: 1.15.9(debug@4.3.7)
-      form-data: 4.0.0
-    transitivePeerDependencies:
-      - debug
-
   axios@1.7.7(debug@4.3.7):
     dependencies:
       follow-redirects: 1.15.9(debug@4.3.7)
@@ -5802,7 +5792,7 @@ snapshots:
     dependencies:
       bumpp: 8.2.1
       callsites: 4.2.0
-      inferred-types: 0.37.6(happy-dom@8.9.0)(terser@5.33.0)
+      inferred-types: 0.37.6(happy-dom@20.8.9)(terser@5.33.0)
       vitest: 0.25.8(happy-dom@20.8.9)(terser@5.33.0)
     transitivePeerDependencies:
       - '@edge-runtime/vm'
