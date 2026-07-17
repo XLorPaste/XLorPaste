@@ -12,7 +12,7 @@
   "dependencies": {
     "@chenfengyuan/vue-qrcode": "^2.0.0",
     "@vueuse/core": "^11.1.0",
-    "date-fns": "^2.29.1",
+    "date-fns": "^2.30.0",
     "github-markdown-css": "^5.6.1",
     "katex": "^0.16.11",
     "markdown-it": "^13.0.1",
